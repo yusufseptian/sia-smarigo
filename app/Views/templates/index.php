@@ -125,6 +125,8 @@
 
         });
     </script>
+
+    <?= $this->include('templates/partial/notif.php'); ?>
 </body>
 
 </html>

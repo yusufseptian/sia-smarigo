@@ -52,7 +52,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Sub-Menu</h6>
-                <a class="collapse-item" href="">User</a>
+                <a class="collapse-item" href="<?= base_url() ?>">User</a>
             </div>
         </div>
     </li>
@@ -66,7 +66,7 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Sub-Menu</h6>
-                <a class="collapse-item" href="">Pengumuman</a>
+                <a class="collapse-item" href="<?= base_url('pengumuman') ?>">Pengumuman</a>
                 <!-- <a class="collapse-item" href="#">Info Sekolah</a>
                         <a class="collapse-item" href="#">Fasilitas</a>
                         <a class="collapse-item" href="#">Ekstrakurikuler</a>
