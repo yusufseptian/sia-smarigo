@@ -1,0 +1,23 @@
+Progress MASTER DATA
+master data kurang:
+guru 
+siswa
+input nilai 
+hasil belajar
+
+data master done :
+tahun ajaran
+semester 
+mapel 
+kelas
+
+pertanyaan :
+cara ben modal ora ono looping? diatasi yudi
+img preview? keri
+
+
+tugas buat arul :
+crud pengumuman
+swal
+
+

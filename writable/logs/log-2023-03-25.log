@@ -1,0 +1,90 @@
+CRITICAL - 2023-03-25 13:51:00 --> Undefined variable $sub_title
+in APPPATH\Views\templates\index.php on line 12.
+ 1 APPPATH\Views\templates\index.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $sub_title', 'APPPATH\\Views\\templates\\index.php', 12)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\templates\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('templates/index', [], true)
+ 5 APPPATH\Controllers\Home.php(13): view('templates/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-25 15:47:28 --> Invalid file: "../templates/index.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../templates/index.php')
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('../templates/index', [], true)
+ 3 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/guru/index', [], true)
+ 4 APPPATH\Controllers\Guru.php(15): view('admin/guru/index', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Guru->index()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Guru))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-25 15:47:42 --> Invalid file: "../../templates/index.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../../templates/index.php')
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('../../templates/index', [], true)
+ 3 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/guru/index', [], true)
+ 4 APPPATH\Controllers\Guru.php(15): view('admin/guru/index', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Guru->index()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Guru))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-03-25 17:21:33 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', '', '', '', 3306, '', 0)
+#1 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Model.php(241): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\siasmarigo\app\Controllers\TahunAjaran.php(22): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\TahunAjaran->index()
+#8 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+#9 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\siasmarigo\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Model.php(241): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\siasmarigo\app\Controllers\TahunAjaran.php(22): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\TahunAjaran->index()
+#7 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+#8 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\siasmarigo\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#11 {main}
+CRITICAL - 2023-03-25 17:21:33 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tahun_ajaran`', [], false)
+ 3 SYSTEMPATH\Model.php(241): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\TahunAjaran.php(22): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\TahunAjaran->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-25 17:27:40 --> Undefined array key "id"
+in APPPATH\Views\admin\guru\index.php on line 39.
+ 1 APPPATH\Views\admin\guru\index.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'APPPATH\\Views\\admin\\guru\\index.php', 39)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\guru\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/guru/index', [], true)
+ 5 APPPATH\Controllers\Guru.php(23): view('admin/guru/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Guru->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Guru))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

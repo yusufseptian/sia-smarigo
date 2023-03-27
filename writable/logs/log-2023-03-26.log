@@ -1,0 +1,430 @@
+ERROR - 2023-03-26 05:41:34 --> mysqli_sql_exception: Unknown column 'tahun_ajar' in 'field list' in C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\siasmarigo\app\Controllers\TahunAjaran.php(33): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\TahunAjaran->insertData()
+#9 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+#10 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\siasmarigo\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2023-03-26 05:41:34 --> Unknown column 'tahun_ajar' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tahun_ajaran` (`tahun_ajar`, `status`) VALUES (:tahun_ajar:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\TahunAjaran.php(33): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\TahunAjaran->insertData()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-03-26 05:42:10 --> mysqli_sql_exception: Unknown column 'tahun_ajar' in 'field list' in C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\siasmarigo\app\Controllers\TahunAjaran.php(33): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\TahunAjaran->insertData()
+#9 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+#10 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\siasmarigo\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2023-03-26 05:42:10 --> Unknown column 'tahun_ajar' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tahun_ajaran` (`tahun_ajar`, `status`) VALUES (:tahun_ajar:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\TahunAjaran.php(33): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\TahunAjaran->insertData()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-03-26 05:42:44 --> mysqli_sql_exception: Unknown column 'tahun_ajar' in 'field list' in C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\siasmarigo\app\Controllers\TahunAjaran.php(33): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\TahunAjaran->insertData()
+#9 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+#10 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\siasmarigo\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2023-03-26 05:42:44 --> Unknown column 'tahun_ajar' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tahun_ajaran` (`tahun_ajar`, `status`) VALUES (:tahun_ajar:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\TahunAjaran.php(33): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\TahunAjaran->insertData()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-03-26 05:43:36 --> mysqli_sql_exception: Column 'tahun_ajaran' cannot be null in C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\siasmarigo\app\Controllers\TahunAjaran.php(33): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\TahunAjaran->insertData()
+#9 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+#10 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\siasmarigo\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2023-03-26 05:43:36 --> Column 'tahun_ajaran' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tahun_ajaran` (`tahun_ajaran`, `status`) VALUES (:tahun_ajaran:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\TahunAjaran.php(33): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\TahunAjaran->insertData()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-03-26 05:43:52 --> mysqli_sql_exception: Column 'status' cannot be null in C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\siasmarigo\app\Controllers\TahunAjaran.php(33): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\TahunAjaran->insertData()
+#9 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+#10 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\siasmarigo\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2023-03-26 05:43:52 --> Column 'status' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tahun_ajaran` (`tahun_ajaran`, `status`) VALUES (:tahun_ajaran:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\TahunAjaran.php(33): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\TahunAjaran->insertData()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TahunAjaran))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-03-26 05:44:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 05:53:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 05:53:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 05:53:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 05:56:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 06:06:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 06:06:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-03-26 06:10:41 --> Undefined array key "id_semeter"
+in APPPATH\Views\admin\semester\index.php on line 95.
+ 1 APPPATH\Views\admin\semester\index.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_semeter"', 'APPPATH\\Views\\admin\\semester\\index.php', 95)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\semester\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/semester/index', [], true)
+ 5 APPPATH\Controllers\Semester.php(30): view('admin/semester/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Semester->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Semester))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-03-26 06:11:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 06:12:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 06:12:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 06:13:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-03-26 06:48:29 --> Undefined array key "jam_pelajaran"
+in APPPATH\Views\admin\mapel\index.php on line 142.
+ 1 APPPATH\Views\admin\mapel\index.php(142): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "jam_pelajaran"', 'APPPATH\\Views\\admin\\mapel\\index.php', 142)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\mapel\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/mapel/index', [], true)
+ 5 APPPATH\Controllers\Mapel.php(28): view('admin/mapel/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Mapel->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mapel))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 06:49:37 --> Undefined array key "jam_pelajaran"
+in APPPATH\Views\admin\mapel\index.php on line 142.
+ 1 APPPATH\Views\admin\mapel\index.php(142): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "jam_pelajaran"', 'APPPATH\\Views\\admin\\mapel\\index.php', 142)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\mapel\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/mapel/index', [], true)
+ 5 APPPATH\Controllers\Mapel.php(28): view('admin/mapel/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Mapel->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mapel))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 06:50:25 --> Undefined array key "jam_pelajaran"
+in APPPATH\Views\admin\mapel\index.php on line 142.
+ 1 APPPATH\Views\admin\mapel\index.php(142): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "jam_pelajaran"', 'APPPATH\\Views\\admin\\mapel\\index.php', 142)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\mapel\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/mapel/index', [], true)
+ 5 APPPATH\Controllers\Mapel.php(28): view('admin/mapel/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Mapel->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mapel))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 06:50:33 --> Undefined array key "jam_pelajaran"
+in APPPATH\Views\admin\mapel\index.php on line 142.
+ 1 APPPATH\Views\admin\mapel\index.php(142): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "jam_pelajaran"', 'APPPATH\\Views\\admin\\mapel\\index.php', 142)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\mapel\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/mapel/index', [], true)
+ 5 APPPATH\Controllers\Mapel.php(28): view('admin/mapel/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Mapel->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mapel))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-03-26 06:53:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-03-26 07:08:40 --> Undefined array key "id_semester"
+in APPPATH\Views\admin\kelas\index.php on line 99.
+ 1 APPPATH\Views\admin\kelas\index.php(99): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_semester"', 'APPPATH\\Views\\admin\\kelas\\index.php', 99)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\kelas\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/kelas/index', [], true)
+ 5 APPPATH\Controllers\Kelas.php(27): view('admin/kelas/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Kelas->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kelas))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-03-26 07:09:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 07:09:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 07:09:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 07:28:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-03-26 07:28:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-03-26 07:45:20 --> Undefined variable $kelas
+in APPPATH\Views\admin\siswa\index.php on line 122.
+ 1 APPPATH\Views\admin\siswa\index.php(122): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $kelas', 'APPPATH\\Views\\admin\\siswa\\index.php', 122)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\siswa\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/siswa/index', [], true)
+ 5 APPPATH\Controllers\Siswa.php(25): view('admin/siswa/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-03-26 11:28:45 --> mysqli_sql_exception: Unknown column 'semester.ta_id' in 'on clause' in C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\siasmarigo\app\Models\ModelSemester.php(23): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\siasmarigo\app\Controllers\Semester.php(26): App\Models\ModelSemester->getDataSmt()
+#6 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\Semester->index()
+#7 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Semester))
+#8 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\siasmarigo\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#11 {main}
+CRITICAL - 2023-03-26 11:28:45 --> Unknown column 'semester.ta_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `semester`
+JOIN `tahun_ajaran` ON `tahun_ajaran`.`id`=`semester`.`ta_id`', [], false)
+ 2 APPPATH\Models\ModelSemester.php(23): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Semester.php(26): App\Models\ModelSemester->getDataSmt()
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Semester->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Semester))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-03-26 11:34:00 --> mysqli_sql_exception: Unknown column 'semester.id' in 'on clause' in C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\siasmarigo\app\Models\ModelMapel.php(27): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\siasmarigo\app\Controllers\Mapel.php(25): App\Models\ModelMapel->getDataMapel()
+#6 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\Mapel->index()
+#7 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mapel))
+#8 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\siasmarigo\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\siasmarigo\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#11 {main}
+CRITICAL - 2023-03-26 11:34:00 --> Unknown column 'semester.id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `matapelajaran`
+JOIN `semester` ON `semester`.`id`=`matapelajaran`.`id_semester`
+JOIN `guru` ON `guru`.`id_guru`=`matapelajaran`.`id_guru`', [], false)
+ 2 APPPATH\Models\ModelMapel.php(27): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Mapel.php(25): App\Models\ModelMapel->getDataMapel()
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Mapel->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Mapel))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-03-26 11:47:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-03-26 11:54:28 --> Undefined array key "guru_id"
+in APPPATH\Views\admin\siswa\index.php on line 178.
+ 1 APPPATH\Views\admin\siswa\index.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "guru_id"', 'APPPATH\\Views\\admin\\siswa\\index.php', 178)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\siswa\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/siswa/index', [], true)
+ 5 APPPATH\Controllers\Siswa.php(29): view('admin/siswa/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 11:54:56 --> Undefined array key "id_siswa"
+in APPPATH\Views\admin\siswa\index.php on line 178.
+ 1 APPPATH\Views\admin\siswa\index.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_siswa"', 'APPPATH\\Views\\admin\\siswa\\index.php', 178)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\siswa\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/siswa/index', [], true)
+ 5 APPPATH\Controllers\Siswa.php(29): view('admin/siswa/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 11:55:03 --> Undefined array key "alamat"
+in APPPATH\Views\admin\siswa\index.php on line 249.
+ 1 APPPATH\Views\admin\siswa\index.php(249): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "alamat"', 'APPPATH\\Views\\admin\\siswa\\index.php', 249)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\siswa\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/siswa/index', [], true)
+ 5 APPPATH\Controllers\Siswa.php(29): view('admin/siswa/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 11:57:23 --> Undefined array key "alamat"
+in APPPATH\Views\admin\siswa\index.php on line 249.
+ 1 APPPATH\Views\admin\siswa\index.php(249): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "alamat"', 'APPPATH\\Views\\admin\\siswa\\index.php', 249)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\siswa\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/siswa/index', [], true)
+ 5 APPPATH\Controllers\Siswa.php(29): view('admin/siswa/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 11:57:31 --> Undefined array key "alamat"
+in APPPATH\Views\admin\siswa\index.php on line 249.
+ 1 APPPATH\Views\admin\siswa\index.php(249): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "alamat"', 'APPPATH\\Views\\admin\\siswa\\index.php', 249)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\siswa\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/siswa/index', [], true)
+ 5 APPPATH\Controllers\Siswa.php(29): view('admin/siswa/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 11:58:04 --> Undefined array key "alamat"
+in APPPATH\Views\admin\siswa\index.php on line 249.
+ 1 APPPATH\Views\admin\siswa\index.php(249): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "alamat"', 'APPPATH\\Views\\admin\\siswa\\index.php', 249)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\siswa\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/siswa/index', [], true)
+ 5 APPPATH\Controllers\Siswa.php(29): view('admin/siswa/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 11:58:51 --> Undefined array key "no_hp"
+in APPPATH\Views\admin\siswa\index.php on line 255.
+ 1 APPPATH\Views\admin\siswa\index.php(255): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "no_hp"', 'APPPATH\\Views\\admin\\siswa\\index.php', 255)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\siswa\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/siswa/index', [], true)
+ 5 APPPATH\Controllers\Siswa.php(29): view('admin/siswa/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 11:59:06 --> Undefined array key "photo"
+in APPPATH\Views\admin\siswa\index.php on line 269.
+ 1 APPPATH\Views\admin\siswa\index.php(269): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "photo"', 'APPPATH\\Views\\admin\\siswa\\index.php', 269)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\siswa\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/siswa/index', [], true)
+ 5 APPPATH\Controllers\Siswa.php(29): view('admin/siswa/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 14:33:55 --> Undefined variable $semester
+in APPPATH\Views\admin\semester\index.php on line 119.
+ 1 APPPATH\Views\admin\semester\index.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $semester', 'APPPATH\\Views\\admin\\semester\\index.php', 119)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\semester\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/semester/index', [], true)
+ 5 APPPATH\Controllers\Semester.php(30): view('admin/semester/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Semester->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Semester))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 14:37:32 --> Undefined array key "alamat"
+in APPPATH\Views\admin\siswa\index.php on line 249.
+ 1 APPPATH\Views\admin\siswa\index.php(249): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "alamat"', 'APPPATH\\Views\\admin\\siswa\\index.php', 249)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\siswa\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/siswa/index', [], true)
+ 5 APPPATH\Controllers\Siswa.php(29): view('admin/siswa/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Siswa->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 14:39:56 --> Call to a member function getRandomName() on null
+in APPPATH\Controllers\Siswa.php on line 34.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Siswa->insertData()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-26 14:43:54 --> Call to a member function getRandomName() on null
+in APPPATH\Controllers\Siswa.php on line 34.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Siswa->insertData()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Siswa))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-03-26 14:44:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
