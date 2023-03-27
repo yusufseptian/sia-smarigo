@@ -1,15 +1,17 @@
 Progress MASTER DATA
-master data kurang:
-guru 
-siswa
-input nilai 
-hasil belajar
-
 data master done :
 tahun ajaran
 semester 
 mapel 
 kelas
+guru 
+siswa
+
+kurang:
+input nilai 
+hasil belajar
+
+
 
 pertanyaan :
 cara ben modal ora ono looping? diatasi yudi
