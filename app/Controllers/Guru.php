@@ -48,7 +48,7 @@ class Guru extends BaseController
     }
     public function editData($id_guru)
     {
-        // jika logo tidak diganti
+        // jika photo tidak diganti
         $file = $this->request->getFile('photo');
         if ($file->getError() == 4) {
             $data = [
@@ -68,10 +68,10 @@ class Guru extends BaseController
             ];
             $this->ModelGuru->update($id_guru, $data);
         } else {
-            // jika logo diganti
+            // jika photo diganti
             $guru = $this->ModelGuru->where('id_guru', $id_guru)->get()->getRowArray();
-            if ($guru['guru_foto'] != "") {
-                unlink('./foto_guru/' . $guru['guru_foto']);
+            if ($guru['photo'] != "") {
+                unlink('./foto_guru/' . $guru['photo']);
             }
             $nama_file = $file->getRandomName();
             $data = [

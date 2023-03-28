@@ -78,7 +78,7 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label>password</label>
+                            <label>Password</label>
                             <input type="password" name="password" class="form-control" placeholder="password" required>
                         </div>
                     </div>
@@ -144,9 +144,9 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>Foto Siswa</label>
-                            <input id="preview_gambar" type="file" accept="image/*" name="photo" class="form-control" required>
+                            <input id="foto" type="file" accept="image/*" name="photo" class="form-control" onchange="bacaGambar(event)" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="pre">
                             <label>Preview</label><br>
                             <img id="gambar_load" src="" width="200px">
                         </div>
@@ -194,7 +194,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label>password</label>
+                                <label>Password</label>
                                 <input type="password" name="password" class="form-control" placeholder="password" required>
                             </div>
                         </div>
@@ -260,13 +260,13 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Ganti Foto Siswa</label>
-                                <input id="preview_gambar" type="file" accept="image/*" name="photo" class="form-control">
+                                <input id="foto" type="file" accept="image/*" name="photo" onchange="bacaGambar(event)" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>Preview</label><br>
-                            <img id="gambar_load" src="" width="200px">
+                            <img id="gambar_load" src="<?= $value['photo'] ?>" width="200px">
                         </div>
                     </div>
                 </div>

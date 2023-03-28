@@ -72,7 +72,7 @@
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <label>password</label>
+                            <label>Password</label>
                             <input type="password" name="password" class="form-control" placeholder="password" required>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label>email</label>
+                            <label>Email</label>
                             <input name="email" class="form-control" placeholder="Masukkan Email" required>
                         </div>
                     </div>
@@ -155,11 +155,11 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>Foto Guru</label>
-                            <input id="preview_gambar" type="file" accept="image/*" name="photo" class="form-control" required>
+                            <input id="foto" type="file" accept="image/*" name="photo" class="form-control" onchange="bacaGambar(event)" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="pre">
                             <label>Preview</label><br>
-                            <img id="gambar_load" src="" width="200px">
+                            <img src="" id="gambar_load" width="200px">
                         </div>
                     </div>
                 </div>
@@ -197,7 +197,7 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label>password</label>
+                                <label>Password</label>
                                 <input type="password" name="password" class="form-control" placeholder="password" required>
                             </div>
                         </div>
@@ -251,7 +251,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label>email</label>
+                                <label>Email</label>
                                 <input name="email" class="form-control" value="<?= $value['email'] ?>" placeholder="Masukkan Email" required>
                             </div>
                         </div>
@@ -271,7 +271,7 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label>Penddikan Terakhir</label>
+                                <label>Pendikan Terakhir</label>
                                 <input name="pendidikan_terakhir" class="form-control" value="<?= $value['pendidikan_terakhir'] ?>" placeholder="Pendidikan Terakhir" required>
                             </div>
                         </div>
@@ -280,11 +280,11 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Foto Guru</label>
-                                <input id="preview_gambar" type="file" accept="image/*" name="photo" class="form-control" required>
+                                <input id="foto" type="file" accept="image/*" name="photo" class="form-control" onchange="bacaGambar(event)" required>
                             </div>
                             <div class="form-group">
                                 <label>Preview</label><br>
-                                <img id="gambar_load" src="" width="200px">
+                                <img src="<?= $value['photo'] ?>" id="gambar_load" width="200px">
                             </div>
                         </div>
                     </div>
