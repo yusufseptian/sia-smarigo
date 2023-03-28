@@ -31,8 +31,7 @@ class TahunAjaran extends BaseController
             'status' => $this->request->getPost('status'),
         ];
         $this->ModelTahunAjar->insert($data);
-        session()->setFlashdata('tambah', 'Data berhasil ditambahkan..!!');
-        return redirect()->to('tahunajaran');
+        return redirect()->to('tahunajaran')->with('success', 'Data berhasil ditambahkan');
     }
 
     public function editData($id)
@@ -42,14 +41,12 @@ class TahunAjaran extends BaseController
             'status' => $this->request->getPost('status'),
         ];
         $this->ModelTahunAjar->update($id, $data);
-        session()->setFlashdata('edit', 'Data berhasil diedit..!!');
-        return redirect()->to('tahunajaran');
+        return redirect()->to('tahunajaran')->with('warning', 'Data berhasil diubah');
     }
 
     public function deleteData($id)
     {
         $this->ModelTahunAjar->delete($id);
-        session()->setFlashdata('delete', 'Data berhasil dihapus..!!');
-        return redirect()->to('tahunajaran');
+        return redirect()->to('tahunajaran')->with('danger', 'Data berhasil dihapus');
     }
 }

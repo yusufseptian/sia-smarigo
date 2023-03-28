@@ -41,8 +41,7 @@ class Mapel extends BaseController
             'jam_pelajaran' => $this->request->getPost('jam_pelajaran'),
         ];
         $this->ModelMapel->insert($data);
-        session()->setFlashdata('tambah', 'Data berhasil ditambahkan..!!');
-        return redirect()->to('mapel');
+        return redirect()->to('mapel')->with('success', 'Data berhasil ditambahkan');
     }
     public function editData($id)
     {
@@ -54,14 +53,12 @@ class Mapel extends BaseController
             'jam_pelajaran' => $this->request->getPost('jam_pelajaran'),
         ];
         $this->ModelMapel->update($id, $data);
-        session()->setFlashdata('edit', 'Data berhasil diedit..!!');
-        return redirect()->to('mapel');
+        return redirect()->to('mapel')->with('warning', 'Data berhasil diubah');
     }
 
     public function deleteData($id)
     {
         $this->ModelMapel->delete($id);
-        session()->setFlashdata('delete', 'Data berhasil dihapus..!!');
-        return redirect()->to('mapel');
+        return redirect()->to('mapel')->with('danger', 'Data berhasil dihapus');
     }
 }

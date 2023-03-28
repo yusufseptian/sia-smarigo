@@ -44,8 +44,7 @@ class Guru extends BaseController
         $file->move('foto_guru/', $nama_file);
         $this->ModelGuru->insert($data);
 
-        session()->setFlashdata('tambah', 'Data berhasil ditambahkan..!!');
-        return redirect()->to('guru');
+        return redirect()->to('guru')->with('success', 'Data berhasil ditambahkan');
     }
     public function editData($id_guru)
     {
@@ -94,8 +93,7 @@ class Guru extends BaseController
             $file->move('foto_guru/', $nama_file);
             $this->ModelGuru->update($id_guru, $data);
         }
-        session()->setFlashdata('edit', 'Data berhasil diedit..!!');
-        return redirect()->to('Guru');
+        return redirect()->to('Guru')->with('warning', 'Data berhasil diubah');;
     }
     public function deleteData($id_guru)
     {
@@ -107,7 +105,6 @@ class Guru extends BaseController
             'id_guru' => $id_guru,
         ];
         $this->ModelGuru->delete($data);
-        session()->setFlashdata('delete', 'Data berhasil dihapus..!!');
-        return redirect()->to('guru');
+        return redirect()->to('guru')->with('danger', 'Data berhasil dihapus');
     }
 }

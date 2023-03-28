@@ -34,8 +34,7 @@ class Kelas extends BaseController
             'id_ta' => $this->request->getPost('id_ta'),
         ];
         $this->ModelKelas->insert($data);
-        session()->setFlashdata('tambah', 'Data berhasil ditambahkan..!!');
-        return redirect()->to('kelas');
+        return redirect()->to('kelas')->with('success', 'Data berhasil ditambahkan');
     }
     public function editData($id_kelas)
     {
@@ -45,14 +44,12 @@ class Kelas extends BaseController
             'id_ta' => $this->request->getPost('id_ta'),
         ];
         $this->ModelKelas->update($id_kelas, $data);
-        session()->setFlashdata('edit', 'Data berhasil diedit..!!');
-        return redirect()->to('kelas');
+        return redirect()->to('kelas')->with('warning', 'Data berhasil diubah');
     }
 
     public function deleteData($id_kelas)
     {
         $this->ModelKelas->delete($id_kelas);
-        session()->setFlashdata('delete', 'Data berhasil dihapus..!!');
-        return redirect()->to('kelas');
+        return redirect()->to('kelas')->with('danger', 'Data berhasil dihapus');
     }
 }

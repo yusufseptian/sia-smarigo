@@ -36,8 +36,7 @@ class Semester extends BaseController
             'semester' => $this->request->getPost('semester'),
         ];
         $this->ModelSemester->insert($data);
-        session()->setFlashdata('tambah', 'Data berhasil ditambahkan..!!');
-        return redirect()->to('semester');
+        return redirect()->to('semester')->with('success', 'Data berhasil ditambahkan');
     }
     public function editData($id_semester)
     {
@@ -46,14 +45,12 @@ class Semester extends BaseController
             'semester' => $this->request->getPost('semester'),
         ];
         $this->ModelSemester->update($id_semester, $data);
-        session()->setFlashdata('edit', 'Data berhasil diedit..!!');
-        return redirect()->to('semester');
+        return redirect()->to('semester')->with('warning', 'Data berhasil diubah');
     }
 
     public function deleteData($id_semester)
     {
         $this->ModelSemester->delete($id_semester);
-        session()->setFlashdata('delete', 'Data berhasil dihapus..!!');
-        return redirect()->to('semester');
+        return redirect()->to('semester')->with('danger', 'Data berhasil dihapus');
     }
 }

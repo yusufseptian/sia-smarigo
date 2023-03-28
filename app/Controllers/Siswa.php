@@ -48,8 +48,7 @@ class Siswa extends BaseController
         $file->move('foto_siswa/', $nama_file);
         $this->ModelSiswa->insert($data);
 
-        session()->setFlashdata('tambah', 'Data berhasil ditambahkan..!!');
-        return redirect()->to('siswa');
+        return redirect()->to('siswa')->with('success', 'Data berhasil ditambahkan');
     }
     public function editData($id)
     {
@@ -96,8 +95,7 @@ class Siswa extends BaseController
             $file->move('foto_siswa/', $nama_file);
             $this->ModelSiswa->update($id, $data);
         }
-        session()->setFlashdata('edit', 'Data berhasil diedit..!!');
-        return redirect()->to('siswa');
+        return redirect()->to('siswa')->with('warning', 'Data berhasil diubah');
     }
     public function deleteData($id)
     {
@@ -109,7 +107,6 @@ class Siswa extends BaseController
             'id' => $id,
         ];
         $this->ModelSiswa->delete($data);
-        session()->setFlashdata('delete', 'Data berhasil dihapus..!!');
-        return redirect()->to('siswa');
+        return redirect()->to('siswa')->with('danger', 'Data berhasil dihapus');
     }
 }
