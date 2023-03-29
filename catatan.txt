@@ -6,20 +6,11 @@ mapel
 kelas
 guru 
 siswa
-
 kurang:
 input nilai 
 hasil belajar
 
-
-
-pertanyaan :
-cara ben modal ora ono looping? diatasi yudi
-img preview? keri
-
-
-tugas buat arul :
-crud pengumuman
-swal
-
-
+tugas yudi :
+ubah looping data modal
+ubah gambar di image preview
+input data siswa di kelas

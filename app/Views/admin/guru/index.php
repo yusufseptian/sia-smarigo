@@ -284,7 +284,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Preview</label><br>
-                                <img src="<?= $value['photo'] ?>" id="gambar_load" width="200px">
+                                <img src="<?= base_url('foto_guru') . '/' . $value['photo'] ?>" id="gambar_load" width="200px">
                             </div>
                         </div>
                     </div>
