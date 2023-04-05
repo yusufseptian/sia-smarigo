@@ -147,9 +147,11 @@
         $('#foto').change(function() {
             bacaGambar(this);
         });
+        $("#listNotMemberSiswa").DataTable();
     </script>
 
     <?= $this->include('templates/partial/notif.php'); ?>
+    <?= $this->renderSection('bottomScript') ?>
 </body>
 
 </html>

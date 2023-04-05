@@ -28,12 +28,15 @@
                             <td><?= $value['kode_kelas'] ?></td>
                             <td><?= $value['nama_kelas'] ?></td>
                             <td><?= $value['tahun_ajaran'] ?></td>
-                            <td>
+                            <td align="center">
                                 <button class="btn btn-xs btn-flat btn-warning" data-toggle="modal" data-target="#edit<?= $value['id_kelas'] ?>">
                                     <i class="fas fa-pen"></i>
                                 </button>
                                 <button class="btn btn-xs btn-flat btn-danger" data-toggle="modal" data-target="#delete<?= $value['id_kelas'] ?>">
                                     <i class="fas fa-trash"></i>
+                                </button>
+                                <button class="btn btn-xs btn-flat btn-primary" onclick="window.location.href='<?= base_url('kelas/siswa') ?>/<?= $value['id_kelas'] ?>'">
+                                    <i class="fas fa-user-graduate"></i>
                                 </button>
                             </td>
                         </tr>

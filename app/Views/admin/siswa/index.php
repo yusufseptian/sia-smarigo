@@ -27,6 +27,7 @@
                 </thead>
                 <tbody>
                     <?php $no = 1;
+                    $dataSiswa = [];
                     foreach ($siswa as $key => $value) { ?>
                         <tr>
                             <td><?= $no++ ?></td>
@@ -34,14 +35,27 @@
                             <td><?= $value['nama'] ?></td>
                             <td><?= $value['alamat'] ?></td>
                             <td>
-                                <button class="btn btn-xs btn-flat btn-warning" data-toggle="modal" data-target="#edit<?= $value['id'] ?>">
+                                <button class="btn btn-xs btn-flat btn-warning" data-toggle="modal" data-target="#editSiswa" onclick="editSiswa('<?= $value['nis'] ?>')">
                                     <i class="fas fa-pen"></i>
                                 </button>
-                                <button class="btn btn-xs btn-flat btn-danger" data-toggle="modal" data-target="#delete<?= $value['id'] ?>">
+                                <button class="btn btn-xs btn-flat btn-danger" data-toggle="modal" data-target="#deleteSiswa" onclick="deleteSiswa('<?= $value['nis'] ?>', '<?= $value['nama'] ?>')">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
                         </tr>
+                        <?php $tmp = [
+                            'nis' => $value['nis'],
+                            'username' => $value['username'],
+                            'nama' => $value['nama'],
+                            'tempatLahir' => $value['tempat_lahir'],
+                            'tglLahir' => $value['tgl_lahir'],
+                            'gender' => $value['gender'],
+                            'kelas' => null,
+                            'alamat' => $value['alamat'],
+                            'noHp' => $value['no_hp'],
+                            'foto' => $value['photo']
+                        ];
+                        array_push($dataSiswa, $tmp) ?>
                     <?php } ?>
                 </tbody>
             </table>
@@ -163,31 +177,29 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-
 <!-- Modal Edit -->
-<?php foreach ($siswa as $key => $value) { ?>
-    <div class="modal fade bd-example-modal-lg" id="edit<?= $value['id'] ?>">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-warning">
-                    <h4 class="modal-title">Edit Data Siswa</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <?= form_open_multipart('siswa/editData/' . $value['id']) ?>
+<div class="modal fade bd-example-modal-lg" id="editSiswa">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h4 class="modal-title">Edit Data Siswa</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="siswa/editData" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label>NIS</label>
-                                <input name="nis" class="form-control" value="<?= $value['nis'] ?>" placeholder="Nomor Induk Siswa" required>
+                                <input name="nis" class="form-control" placeholder="Nomor Induk Siswa" id="txtEditNIS" required>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Username</label>
-                                <input name="username" class="form-control" value="<?= $value['username'] ?>" placeholder="username" required>
+                                <input name="username" class="form-control" placeholder="username" id="txtEditUsername" required>
                             </div>
                         </div>
                     </div>
@@ -201,7 +213,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Nama Lengkap</label>
-                                <input name="nama" class="form-control" value="<?= $value['nama'] ?>" placeholder="Nama Lengkap Siswa" required>
+                                <input name="nama" class="form-control" placeholder="Nama Lengkap Siswa" id="txtEditNama" required>
                             </div>
                         </div>
                     </div>
@@ -209,13 +221,13 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Tempat Lahir</label>
-                                <input name="tempat_lahir" class="form-control" value="<?= $value['tempat_lahir'] ?>" placeholder="Tempat Lahir" required>
+                                <input name="tempat_lahir" class="form-control" placeholder="Tempat Lahir" id="txtEditTempatLahir" required>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Tanggal Lahir</label>
-                                <input type="date" name="tgl_lahir" class="form-control" value="<?= $value['tgl_lahir'] ?>" placeholder="Tanggal Lahir" required>
+                                <input type="date" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" id="txtEditTglLahir" required>
                             </div>
                         </div>
                     </div>
@@ -223,10 +235,10 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Jenis Kelamin</label>
-                                <select name="gender" class="form-control">
+                                <select name="gender" class="form-control" id="cmbGender">
                                     <option value="">--Pilih Jenis Kelamin--</option>
-                                    <option value="Laki-laki">Laki-laki</option>
-                                    <option value="Perempuan">Perempuan</option>
+                                    <option value="Laki-laki" id="optGenderLaki-laki">Laki-laki</option>
+                                    <option value="Perempuan" id="optGenderPerempuan">Perempuan</option>
                                 </select>
                             </div>
                         </div>
@@ -246,13 +258,13 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Alamat</label>
-                                <input name="alamat" class="form-control" value="<?= $value['alamat'] ?>" placeholder="Alamat Siswa" required>
+                                <input name="alamat" class="form-control" placeholder="Alamat Siswa" id="txtEditAlamat" required>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>No Telepon</label>
-                                <input name="no_hp" class="form-control" value="<?= $value['no_hp'] ?>" placeholder="nomor telepon" required>
+                                <input name="no_hp" class="form-control" placeholder="nomor telepon" id="txtEditNoHp" required>
                             </div>
                         </div>
                     </div>
@@ -260,13 +272,13 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Ganti Foto Siswa</label>
-                                <input id="foto" type="file" accept="image/*" name="photo" onchange="bacaGambar(event)" class="form-control">
+                                <input id="foto" type="file" accept="image/*" name="photo" onchange="editGambar(event)" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>Preview</label><br>
-                            <img id="gambar_load" src="<?= $value['photo'] ?>" width="200px">
+                            <img id="gambar_load_edit" src="" width="200px">
                         </div>
                     </div>
                 </div>
@@ -274,37 +286,68 @@
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-warning btn-sm">Ubah</button>
                 </div>
-                <?= form_close() ?>
-            </div>
-            <!-- /.modal-content -->
+            </form>
         </div>
-        <!-- /.modal-dialog -->
+        <!-- /.modal-content -->
     </div>
-    <!-- /.modal -->
-<?php } ?>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 <!-- Modal Delete -->
-<?php foreach ($siswa as $key => $value) { ?>
-    <div class="modal fade" id="delete<?= $value['id'] ?>">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-danger">
-                    <h4 class="modal-title">Hapus Siswa</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Apakah Anda ingin menghapus <b><?= $value['nama'] ?></b>?
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
-                    <a href="<?= base_url('siswa/deleteData/' . $value['id']) ?>" class="btn btn-danger btn-sm">Hapus</a>
-                </div>
+<div class="modal fade" id="deleteSiswa">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h4 class="modal-title">Hapus Siswa</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <!-- /.modal-content -->
+            <div class="modal-body">
+                Apakah Anda ingin menghapus <b id="deleteNamaSiswa"></b>?
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+                <a href="" class="btn btn-danger btn-sm" id="linkDeleteSiswa">Hapus</a>
+            </div>
         </div>
-        <!-- /.modal-dialog -->
+        <!-- /.modal-content -->
     </div>
-    <!-- /.modal -->
-<?php } ?>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<script>
+    const dtaSiswa = <?= json_encode($dataSiswa) ?>;
+
+    function editSiswa(nis) {
+        dtaSiswa.forEach(element => {
+            if (element.nis == nis) {
+                $('#cmbGender>option:selected').removeAttr('selected');
+                $("#txtEditNIS").val(element.nis);
+                $("#txtEditUsername").val(element.username);
+                $("#txtEditNama").val(element.nama);
+                $("#txtEditTempatLahir").val(element.tempatLahir);
+                $("#txtEditTglLahir").val(element.tglLahir);
+                $("#txtEditAlamat").val(element.alamat);
+                $("#txtEditNoHp").val(element.noHp);
+                $("#optGender" + element.gender).attr("selected", "");
+                $("#gambar_load_edit").attr("src", "<?= base_url() ?>/foto_siswa/" + element.foto);
+                return false;
+            }
+        });
+    }
+
+    function deleteSiswa(nis, nama) {
+        $('#deleteNamaSiswa').html(nama);
+        $('#linkDeleteSiswa').attr('href', '<?= base_url('siswa/deleteData') ?>/' + nis);
+    }
+
+    function editGambar(event) {
+        try {
+            $('#gambar_load_edit').attr('src', URL.createObjectURL(event.target.files[0]));
+        } catch (error) {
+
+        }
+    }
+</script>
 <?= $this->endSection() ?>

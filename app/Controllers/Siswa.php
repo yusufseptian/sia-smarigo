@@ -97,16 +97,16 @@ class Siswa extends BaseController
         }
         return redirect()->to('siswa')->with('warning', 'Data berhasil diubah');
     }
-    public function deleteData($id)
+    public function deleteData($nis)
     {
-        $guru = $this->ModelSiswa->where('id', $id)->get()->getRowArray();
-        if ($guru['photo'] != "") {
-            unlink('./foto_siswa/' . $guru['photo']);
+        $siswa = $this->ModelSiswa->where('nis', $nis)->get()->getRowArray();
+        if ($siswa['photo'] != "") {
+            unlink('./foto_siswa/' . $siswa['photo']);
         }
         $data = [
-            'id' => $id,
+            'id' => $siswa['id'],
         ];
         $this->ModelSiswa->delete($data);
-        return redirect()->to('siswa')->with('danger', 'Data berhasil dihapus');
+        return redirect()->to('siswa')->with('success', 'Data berhasil dihapus');
     }
 }
