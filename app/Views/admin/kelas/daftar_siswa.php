@@ -61,7 +61,7 @@
                     <tbody>
                         <?php foreach ($dtSiswaNotMember as $dt) { ?>
                             <tr>
-                                <td><input type="radio" name="nisSiswa" id="nisSiswa_<?= $dt['nis'] ?>" value="<?= $dt['nis'] ?>"></td>
+                                <td><input type="checkbox" name="nisSiswa[]" id="nisSiswa_<?= $dt['nis'] ?>" value="<?= $dt['nis'] ?>"></td>
                                 <td><label for="nisSiswa_<?= $dt['nis'] ?>"><?= $dt['nis'] ?></label></td>
                                 <td><label for="nisSiswa_<?= $dt['nis'] ?>"><?= $dt['nama'] ?></label></td>
                             </tr>

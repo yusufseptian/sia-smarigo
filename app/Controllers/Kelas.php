@@ -76,29 +76,44 @@ class Kelas extends BaseController
     {
         // Cek and get data 
         if (!$this->validate([
-            'nisSiswa' => 'required|numeric',
+            'nisSiswa' => 'required',
             'kelas' => 'required|numeric'
         ])) {
             return redirect()->to(base_url('kelas'))->with('danger', 'Data tidak valid');
         }
         $idKelas = $this->request->getPost('kelas');
-        $nis = $this->request->getPost('nisSiswa');
         // Cek data kelas
         $dtKelas = $this->ModelKelas->find($idKelas);
         if (empty($dtKelas)) {
             return redirect()->to(base_url('kelas'))->with('danger', 'Data kelas tidak ditemukan');
         }
-        // cek data siswa
-        $dtSiswa = $this->ModelSiswa->where('nis', $nis)->first();
-        if (empty($dtSiswa)) {
-            return redirect()->to(base_url("kelas/siswa/$idKelas"))->with('danger', 'Data siswa tidak ditemukan');
-        }
-        // Update kelas pada data siswa
         $data['id_kelas'] = $idKelas;
-        if ($this->ModelSiswa->update($dtSiswa['id'], $data)) {
-            return redirect()->to(base_url("kelas/siswa/$idKelas"))->with('success', 'Data siswa berhasil ditambahkan');
+        $success = 0;
+        $fail = 0;
+        foreach ($this->request->getPost('nisSiswa') as $nis) {
+            // cek data siswa
+            $dtSiswa = $this->ModelSiswa->where('nis', $nis)->first();
+            if (empty($dtSiswa)) {
+                $fail++;
+                break;
+            }
+            // Update kelas pada data siswa
+            if ($this->ModelSiswa->update($dtSiswa['id'], $data)) {
+                $success++;
+            } else {
+                $fail++;
+            }
         }
-        return redirect()->to(base_url("kelas/siswa/$idKelas"))->with('danger', 'Data siswa gagal ditambahkan karena ada masalah pada sistem');
+        if (count($this->request->getPost('nisSiswa')) != 0) {
+            if ($success == count($this->request->getPost('nisSiswa'))) {
+                session()->setFlashdata('success', "Seluruh data siswa berhasil ditambahkan. Jumlah data siswa: $success");
+            } else {
+                session()->setFlashdata('warning', "Jumlah data siswa yang berhasil ditambahkan: $success. Jumlah data siswa yang gagal ditambahkan: $fail");
+            }
+        } else {
+            session()->setFlashdata('danger', "Seluruh data siswa gagal dimasukan.");
+        }
+        return redirect()->to(base_url("kelas/siswa/$idKelas"));
     }
     public function deleteSiswa()
     {

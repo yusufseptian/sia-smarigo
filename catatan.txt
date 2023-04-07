@@ -13,7 +13,7 @@ hasil belajar
 tugas yudi :
 ubah looping data modal (guru, siswa)
 ubah gambar di image preview (fix)
-input data siswa di kelas (fix)
+input data siswa di kelas (merubah ke check list)
 
 pertanyaan
     1. jabatan edit guru apakah bisa dirubah?
