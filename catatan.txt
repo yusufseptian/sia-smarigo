@@ -1,5 +1,6 @@
 Progress MASTER DATA
 data master done :
+DATA ORANG TUA
 tahun ajaran
 semester 
 mapel 
@@ -16,4 +17,3 @@ ubah gambar di image preview (fix)
 input data siswa di kelas (merubah ke check list)
 
 pertanyaan
-    1. jabatan edit guru apakah bisa dirubah?
