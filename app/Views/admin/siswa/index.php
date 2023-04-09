@@ -187,7 +187,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Username</label>
-                                <input name="username" class="form-control" value="<?= $value['username'] ?>" placeholder="username" required>
+                                <input name="Username" class="form-control" value="<?= $value['username'] ?>" placeholder="Username" required>
                             </div>
                         </div>
                     </div>
