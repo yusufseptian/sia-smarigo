@@ -1,5 +1,6 @@
 Progress MASTER DATA
 data master done :
+DATA ORANG TUA
 tahun ajaran
 semester 
 mapel 
@@ -11,6 +12,8 @@ input nilai
 hasil belajar
 
 tugas yudi :
-ubah looping data modal
-ubah gambar di image preview
-input data siswa di kelas
+ubah looping data modal (guru, siswa)
+ubah gambar di image preview (fix)
+input data siswa di kelas (merubah ke check list)
+
+pertanyaan

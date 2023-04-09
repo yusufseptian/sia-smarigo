@@ -32,6 +32,7 @@
                 <h6 class="collapse-header">Sub-Menu</h6>
                 <a class="collapse-item" href="<?= base_url('guru') ?>">Data Guru</a>
                 <a class="collapse-item" href="<?= base_url('siswa') ?>">Data Siswa</a>
+                <a class="collapse-item" href="<?= base_url('ortu') ?>">Data Orang Tua</a>
                 <a class="collapse-item" href="<?= base_url('kelas') ?>">Kelas</a>
                 <a class="collapse-item" href="<?= base_url('mapel') ?>">Mata Pelajaran</a>
                 <a class="collapse-item" href="<?= base_url('nilai') ?>">Input Nilai</a>

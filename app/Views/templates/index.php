@@ -21,6 +21,12 @@
     <!-- Custom styles for this page -->
     <link href="<?php base_url() ?>/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <style>
+        table th {
+            text-align: center !important;
+        }
+    </style>
+
 </head>
 
 <body id="page-top">
@@ -147,9 +153,11 @@
         $('#foto').change(function() {
             bacaGambar(this);
         });
+        $("#listNotMemberSiswa").DataTable();
     </script>
 
     <?= $this->include('templates/partial/notif.php'); ?>
+    <?= $this->renderSection('bottomScript') ?>
 </body>
 
 </html>

@@ -16,4 +16,9 @@ class ModelTahunAjar extends Model
         'tahun_ajaran',
         'status'
     ];
+
+    public function getTANow(): array
+    {
+        return $this->orderBy('id', 'desc')->first();
+    }
 }

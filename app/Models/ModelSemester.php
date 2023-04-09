@@ -14,7 +14,9 @@ class ModelSemester extends Model
     protected $allowedFields    = [
         'id_semester',
         'id_ta',
-        'semester'
+        'semester',
+        'mulai',
+        'selesai'
     ];
     public function getDataSmt()
     {
