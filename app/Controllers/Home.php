@@ -8,7 +8,7 @@ class Home extends BaseController
     {
         $data = [
             'title' => 'Siasmarigo',
-            'sub_title' => 'Home'
+            'sub_title' => 'Dashboard'
         ];
         return view('templates/index', $data);
     }

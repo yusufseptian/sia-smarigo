@@ -68,12 +68,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Sub-Menu</h6>
                 <a class="collapse-item" href="<?= base_url('pengumuman') ?>">Pengumuman</a>
-                <!-- <a class="collapse-item" href="#">Info Sekolah</a>
-                        <a class="collapse-item" href="#">Fasilitas</a>
-                        <a class="collapse-item" href="#">Ekstrakurikuler</a>
-                        <a class="collapse-item" href="#">Gallery</a>
-                        <a class="collapse-item" href="#">Tentang Kami</a>
-                        <a class="collapse-item" href="#">Kontak</a> -->
+
             </div>
         </div>
     </li>
@@ -91,6 +86,4 @@
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
-
-
 </ul>
