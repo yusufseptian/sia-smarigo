@@ -19,8 +19,8 @@ input data siswa di kelas (merubah ke check list)
 pertanyaan
 
 tugas yusuf :
-dahboard-> sidbar 3 level
-
+dahboard-> sidbar 3 level (fix)
+Logic login kurang filter per level (fix)
 
 Kekurangan:
-    - Logic login kurang filter per level
+    - tampilan pengumuman -> arul
