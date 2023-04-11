@@ -35,7 +35,17 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <?php include_once('sidebar.php') ?>
+        <?php
+        if (session('log_auth')['role'] == 'ADMINISTRATOR') {
+            echo $this->include('templates/sidebar');
+        } elseif (session('log_auth')['role'] == 'GURU') {
+            echo $this->include('templates/sidebar_guru');
+        } elseif (session('log_auth')['role'] == 'ORTU') {
+            echo $this->include('templates/sidebar_ortu');
+        } elseif (session('log_auth')['role'] == 'SISWA') {
+            echo $this->include('templates/sidebar_siswa');
+        } ?>
+
 
         <!-- End of Sidebar -->
 
