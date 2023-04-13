@@ -25,12 +25,14 @@
                             <td><?= $no++ ?></td>
                             <td><?= $value['tahun_ajaran'] ?></td>
                             <td align="center">
-                                <button class="btn btn-sm btn-flat btn-warning" data-toggle="modal" data-target="#edit<?= $value['id'] ?>">
-                                    <i class="fas fa-pen"></i>
-                                </button>
-                                <button class="btn btn-sm btn-flat btn-danger" data-toggle="modal" data-target="#delete<?= $value['id'] ?>">
-                                    <i class="fas fa-trash"></i>
-                                </button>
+                                <?php if ($no == 2 && !$isFinished) : ?>
+                                    <button class="btn btn-sm btn-flat btn-warning" data-toggle="modal" data-target="#edit<?= $value['id'] ?>">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-flat btn-danger" data-toggle="modal" data-target="#delete<?= $value['id'] ?>">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                <?php endif ?>
                                 <button class="btn btn-sm btn-flat btn-primary" onclick="selectTA(<?= $value['id'] ?>, '<?= $value['tahun_ajaran'] ?>')">
                                     <i class="fas fa-eye"></i>
                                 </button>
@@ -78,18 +80,14 @@
             </div>
             <?= form_open('tahunajaran/insertdata') ?>
             <div class="modal-body">
+                <div class="alert alert-warning my-3" role="alert">
+                    <div><i class="fas fa-exclamation-triangle"></i> <b>Perhatian</b></div>
+                    Jika anda menambahkan tahun ajaran baru maka semester pada tahun ajaran lama akan di non aktifkan. Anda tidak bisa merubah data tahun ajaran lama.
+                </div>
                 <div class="form-group">
                     <label>Tahun Ajaran</label>
                     <input name="tahun_ajaran" class="form-control" placeholder="Masukkan Tahun Ajaran" required>
                 </div>
-                <!-- <div class="form-group">
-                    <label>Status</label>
-                    <select name="status" class="form-control">
-                        <option value="">--Pilih Status--</option>
-                        <option value="aktif">aktif</option>
-                        <option value="tidak aktif">Tidak aktif</option>
-                    </select>
-                </div> -->
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
@@ -101,10 +99,10 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-
-<!-- Modal Edit -->
-<?php foreach ($th_ajar as $key => $value) { ?>
-    <div class="modal fade" id="edit<?= $value['id'] ?>">
+<?php if (!$isFinished) : ?>
+    <?php $first_tahun_ajar = $th_ajar[0]; ?>
+    <!-- Modal Edit -->
+    <div class="modal fade" id="edit<?= $first_tahun_ajar['id'] ?>">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-warning">
@@ -113,19 +111,11 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <?= form_open('tahunajaran/editdata/' . $value['id']) ?>
+                <?= form_open(base_url('tahunajaran/editdata/' . $first_tahun_ajar['id'])) ?>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tahun Ajaran</label>
-                        <input name="tahun_ajaran" class="form-control" value="<?= $value['tahun_ajaran'] ?>" placeholder="tahun ajaran" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Status</label>
-                        <select name="status" class="form-control">
-                            <option value="">--Pilih Status--</option>
-                            <option value="aktif">aktif</option>
-                            <option value="tidak aktif">Tidak aktif</option>
-                        </select>
+                        <input name="tahun_ajaran" class="form-control" value="<?= $first_tahun_ajar['tahun_ajaran'] ?>" placeholder="tahun ajaran" required>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -139,11 +129,8 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-<?php } ?>
-
-<!-- Modal Delete -->
-<?php foreach ($th_ajar as $key => $value) { ?>
-    <div class="modal fade" id="delete<?= $value['id'] ?>">
+    <!-- Modal Delete -->
+    <div class="modal fade" id="delete<?= $first_tahun_ajar['id'] ?>">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-danger">
@@ -153,11 +140,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Apakah Anda ingin menghapus data ini</b>?
+                    Apakah Anda ingin menghapus data ini? Jika anda menghapus data ini, maka nilai yang terkait dengan tahun ajaran ini akan terhapus.
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
-                    <a href="<?= base_url('tahunajaran/deleteData/' . $value['id']) ?>" class="btn btn-danger btn-sm">Hapus</a>
+                    <a href="<?= base_url('tahunajaran/deleteData/' . $first_tahun_ajar['id']) ?>" class="btn btn-danger btn-sm">Hapus</a>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -165,8 +152,7 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-<?php } ?>
-
+<?php endif ?>
 <script>
     const dtSemester = <?= json_encode($semester) ?>;
 
@@ -198,7 +184,11 @@
                     mulai = $("<td></td>").html(element.mulai);
                     if (element.selesai == null) {
                         var btnSelesai = btn.addClass("btn-danger");
-                        btnSelesai.attr('href', '<?= base_url('tahunAjaran') ?>/finishSemester');
+                        if (element.semester == 'genap') {
+                            btnSelesai.attr('onclick', 'finishTA()');
+                        } else {
+                            btnSelesai.attr('href', '<?= base_url('tahunAjaran') ?>/finishSemester');
+                        }
                         btnSelesai.html('Selesai');
                         selesai = $("<td></td>").append(btnSelesai);
                     } else {
@@ -214,6 +204,22 @@
             }
         });
     }
-</script>
 
+    function finishTA() {
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Jika anda menyelesaikan semester genap ini, maka tahun ajaran ini akan dianggap selesai. Akses edit pada tahun ajaran ini akan ditutup.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ffc107',
+            cancelButtonColor: '#dc3545',
+            confirmButtonText: 'Lanjutan',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '<?= base_url('tahunajaran') ?>/finishSemester';
+            }
+        })
+    }
+</script>
 <?= $this->endSection() ?>

@@ -24,16 +24,43 @@ class TahunAjaran extends BaseController
         $data = [
             'title' => 'Siasmarigo',
             'sub_title' => 'Tahun Ajaran',
-            'th_ajar' => $this->ModelTahunAjar->findAll(),
-            'semester' => $this->ModelSemester->select('id_ta as tahunAjaran, semester, mulai, selesai')->findAll()
+            'th_ajar' => $this->ModelTahunAjar->orderBy('id', 'desc')->findAll(),
+            'semester' => $this->ModelSemester->select('id_ta as tahunAjaran, semester, mulai, selesai')->findAll(),
+            'isFinished' => $this->ModelTahunAjar->isFinished()
         ];
         // dd($data);
         return view('admin/tahunajaran/index', $data);
     }
     public function insertData()
     {
+        if (!$this->validate([
+            'tahun_ajaran' => 'required|is_unique[tahun_ajaran.tahun_ajaran]'
+        ])) {
+            return redirect()->to(base_url('tahunajaran'))->with('danger', 'Tahun ajaran harus diisi dan tidak boleh sama. (Unique value)');
+        }
+        if (!is_null($this->ModelTahunAjar->getTANow())) {
+            $dtTA_before = $this->ModelTahunAjar->getTANow();
+            foreach ($this->ModelSemester->where('id_ta', $dtTA_before['id'])->findAll() as $dt) {
+                if (is_null($dt['mulai'])) {
+                    $data = [
+                        'mulai' => date('Y-m-d H:i:s'),
+                        'mulai_by' => session('log_auth')['akunID']
+                    ];
+                    $this->ModelSemester->update($dt['id_semester'], $data);
+                }
+                if (is_null($dt['selesai'])) {
+                    $data = [
+                        'selesai' => date('Y-m-d H:i:s'),
+                        'selesai_by' => session('log_auth')['akunID']
+                    ];
+                    $this->ModelSemester->update($dt['id_semester'], $data);
+                }
+            }
+        }
         $data = [
-            'tahun_ajaran' => $this->request->getPost('tahun_ajaran')
+            'tahun_ajaran' => $this->request->getPost('tahun_ajaran'),
+            'created_at' => date("Y-m-d H:i:s"),
+            'created_by' => session('log_auth')['akunID']
         ];
         if ($this->ModelTahunAjar->insert($data)) {
             $idTA = $this->ModelTahunAjar->orderBy('id', 'DESC')->first()['id'];
@@ -44,15 +71,15 @@ class TahunAjaran extends BaseController
             if ($this->ModelSemester->insert($data)) {
                 $data['semester'] = 'Genap';
                 if ($this->ModelSemester->insert($data)) {
-                    return redirect()->to('tahunajaran')->with('success', 'Data berhasil ditambahkan');
+                    return redirect()->to(base_url('tahunajaran'))->with('success', 'Data berhasil ditambahkan');
                 } else {
-                    return redirect()->to('tahunajaran')->with('danger', 'Gagal menambahkan data semester genap');
+                    return redirect()->to(base_url('tahunajaran'))->with('danger', 'Gagal menambahkan data semester genap');
                 }
             } else {
-                return redirect()->to('tahunajaran')->with('danger', 'Gagal menambahkan data semester ganjil');
+                return redirect()->to(base_url('tahunajaran'))->with('danger', 'Gagal menambahkan data semester ganjil');
             }
         }
-        return redirect()->to('tahunajaran')->with('danger', 'Gagal menambahkan data tahun ajaran');
+        return redirect()->to(base_url('tahunajaran'))->with('danger', 'Gagal menambahkan data tahun ajaran');
     }
 
     public function startSemester()
@@ -62,6 +89,9 @@ class TahunAjaran extends BaseController
         if (empty($dtTA)) {
             return redirect()->to(base_url('tahunajaran'))->with('danger', 'Data tahun ajaran belum  ada');
         }
+        if ($this->ModelTahunAjar->isFinished()) {
+            return redirect()->to(base_url('tahunajaran'))->with('danger', 'Akses edit data tahun ajaran telah ditutup!');
+        }
         // Get data semester by tahun ajaran
         $dtSemester = $this->ModelSemester->where('id_ta', $dtTA['id'])->findAll();
         if (count($dtSemester) == 0) {
@@ -70,7 +100,10 @@ class TahunAjaran extends BaseController
         foreach ($dtSemester as $dt) {
             if (strtolower($dt['semester']) == 'ganjil') {
                 if ($dt['mulai'] == null) {
-                    $data['mulai'] = date("Y-m-d H:i:s");
+                    $data = [
+                        'mulai' => date("Y-m-d H:i:s"),
+                        'mulai_by' => session('log_auth')['akunID']
+                    ];
                     if ($this->ModelSemester->update($dt['id_semester'], $data)) {
                         return redirect()->to(base_url('tahunajaran'))->with('success', 'Semester ganjil tahun ajaran ' . $dtTA['tahun_ajaran'] . ' berhasil dimulai');
                     } else {
@@ -81,12 +114,14 @@ class TahunAjaran extends BaseController
                 $dtGanjil = $this->ModelSemester->where('semester', 'ganjil')->where('id_ta', $dtTA['id'])->first();
                 if (is_null($dtGanjil['selesai'])) {
                     $data = [
-                        'selesai' => date('Y-m-d H:i:s')
+                        'selesai' => date('Y-m-d H:i:s'),
+                        'selesai_by' => session('log_auth')['akunID']
                     ];
                     $this->ModelSemester->update($dtGanjil['id_semester'], $data);
                 }
                 $data = [
-                    'mulai' => date('Y-m-d H:i:s')
+                    'mulai' => date('Y-m-d H:i:s'),
+                    'mulai_by' => session('log_auth')['akunID']
                 ];
                 if ($dt['mulai'] == null) {
                     $data['mulai'] = date("Y-m-d H:i:s");
@@ -106,6 +141,9 @@ class TahunAjaran extends BaseController
         if (empty($dtTA)) {
             return redirect()->to(base_url('tahunajaran'))->with('danger', 'Data tahun ajaran belum  ada');
         }
+        if ($this->ModelTahunAjar->isFinished()) {
+            return redirect()->to(base_url('tahunajaran'))->with('danger', 'Akses edit data tahun ajaran telah ditutup!');
+        }
         // Get data semester by tahun ajaran
         $dtSemester = $this->ModelSemester->where('id_ta', $dtTA['id'])->findAll();
         if (count($dtSemester) == 0) {
@@ -114,7 +152,10 @@ class TahunAjaran extends BaseController
         foreach ($dtSemester as $dt) {
             if (!is_null($dt['mulai'])) {
                 if ($dt['selesai'] == null) {
-                    $data['selesai'] = date('Y-m-d H:i:s');
+                    $data = [
+                        'selesai' => date('Y-m-d H:i:s'),
+                        'selesai_by' => session('log_auth')['akunID']
+                    ];
                     if ($this->ModelSemester->update($dt['id_semester'], $data)) {
                         return redirect()->to(base_url('tahunajaran'))->with('success', 'Semester ' . $dt['semester'] . ' tahun ajaran ' . $dtTA['tahun_ajaran'] . ' berhasil diselesaikan');
                     } else {
@@ -127,17 +168,40 @@ class TahunAjaran extends BaseController
     }
     public function editData($id)
     {
+        $dtTA = $this->ModelTahunAjar->getTANow();
+        if (empty($dtTA)) {
+            return redirect()->to(base_url('tahunajaran'))->with('danger', 'Data tahun ajaran belum  ada');
+        }
+        if ($this->ModelTahunAjar->isFinished()) {
+            return redirect()->to(base_url('tahunajaran'))->with('danger', 'Akses edit data tahun ajaran telah ditutup!');
+        }
+        if ($id != $this->ModelTahunAjar->getTANow()['id']) {
+            return redirect()->to(base_url('tahunajaran'))->with('danger', 'Anda hanya dapat mengedit tahun ajaran saat ini saja');
+        }
+        if (!$this->validate([
+            'tahun_ajaran' => 'required|is_unique[tahun_ajaran.tahun_ajaran]'
+        ])) {
+            return redirect()->to(base_url('tahunajaran'))->with('danger', 'Tahun ajaran harus diisi dan tidak boleh sama. (Unique value)');
+        }
         $data = [
             'tahun_ajaran' => $this->request->getPost('tahun_ajaran'),
-            'status' => $this->request->getPost('status'),
+            'edited_at' => date('Y-m-d H:i:s'),
+            'edited_by' => session('log_auth')['akunID']
         ];
         $this->ModelTahunAjar->update($id, $data);
-        return redirect()->to('tahunajaran')->with('warning', 'Data berhasil diubah');
+        return redirect()->to('tahunajaran')->with('success', 'Data berhasil diubah');
     }
 
     public function deleteData($id)
     {
+        if ($this->ModelTahunAjar->isFinished()) {
+            return redirect()->to(base_url('tahunajaran'))->with('danger', 'Akses edit data tahun ajaran telah ditutup!');
+        }
+        if ($id != $this->ModelTahunAjar->getTANow()['id']) {
+            return redirect()->to(base_url('tahunajaran'))->with('danger', 'Anda hanya dapat mengedit tahun ajaran saat ini saja');
+        }
+        // Data semester tidak dihapus melalui program karena pada relasi sudah menggunakan CASCADE on DELETE
         $this->ModelTahunAjar->delete($id);
-        return redirect()->to('tahunajaran')->with('danger', 'Data berhasil dihapus');
+        return redirect()->to('tahunajaran')->with('success', 'Data berhasil dihapus');
     }
 }

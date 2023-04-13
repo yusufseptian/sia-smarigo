@@ -23,8 +23,6 @@ dahboard-> sidbar 3 level (fix)
 Logic login kurang filter per level (fix)
 
 Kekurangan:
+    - Authorized setiap aktifitas yang berkaitan dengan db
     - Logic login kurang filter per level
-    - Validasi duplicate tahun ajaran
-    - Pembatasan edit dan hapus untuk tahun ajaran yang sudah tidak aktif
-    - Non aktifkan semester pada tahun ajaran sebelumnya ketika menambahkan tahun ajaran baru
     - tampilan pengumuman -> arul

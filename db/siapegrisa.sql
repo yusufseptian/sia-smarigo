@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Apr 2023 pada 12.00
+-- Waktu pembuatan: 13 Apr 2023 pada 03.42
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.12
 
@@ -240,16 +240,20 @@ CREATE TABLE `semester` (
   `id_ta` int(11) DEFAULT NULL,
   `semester` enum('ganjil','genap') NOT NULL,
   `mulai` datetime DEFAULT NULL,
-  `selesai` datetime DEFAULT NULL
+  `selesai` datetime DEFAULT NULL,
+  `mulai_by` int(11) DEFAULT NULL,
+  `selesai_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `semester`
 --
 
-INSERT INTO `semester` (`id_semester`, `id_ta`, `semester`, `mulai`, `selesai`) VALUES
-(7, 8, 'ganjil', '2023-04-07 09:26:22', '2023-04-07 09:58:08'),
-(8, 8, 'genap', '2023-04-07 09:58:15', '2023-04-07 09:58:22');
+INSERT INTO `semester` (`id_semester`, `id_ta`, `semester`, `mulai`, `selesai`, `mulai_by`, `selesai_by`) VALUES
+(23, 16, 'ganjil', '2023-04-13 08:38:07', '2023-04-13 08:38:07', 2, 2),
+(24, 16, 'genap', '2023-04-13 08:38:07', '2023-04-13 08:38:07', 2, 2),
+(27, 18, 'ganjil', NULL, NULL, NULL, NULL),
+(28, 18, 'genap', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -290,15 +294,20 @@ INSERT INTO `siswa` (`id`, `nis`, `username`, `password`, `nama`, `tempat_lahir`
 
 CREATE TABLE `tahun_ajaran` (
   `id` int(11) NOT NULL,
-  `tahun_ajaran` varchar(20) NOT NULL
+  `tahun_ajaran` varchar(20) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `edited_at` datetime DEFAULT NULL,
+  `edited_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tahun_ajaran`
 --
 
-INSERT INTO `tahun_ajaran` (`id`, `tahun_ajaran`) VALUES
-(8, '2019/2020');
+INSERT INTO `tahun_ajaran` (`id`, `tahun_ajaran`, `created_at`, `created_by`, `edited_at`, `edited_by`) VALUES
+(16, '2019/2020', '2023-04-13 08:36:11', 2, NULL, NULL),
+(18, '2020/2021', '2023-04-13 08:41:09', 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -381,7 +390,8 @@ ALTER TABLE `pengumuman`
 -- Indeks untuk tabel `semester`
 --
 ALTER TABLE `semester`
-  ADD PRIMARY KEY (`id_semester`);
+  ADD PRIMARY KEY (`id_semester`),
+  ADD KEY `id_ta` (`id_ta`);
 
 --
 -- Indeks untuk tabel `siswa`
@@ -393,7 +403,8 @@ ALTER TABLE `siswa`
 -- Indeks untuk tabel `tahun_ajaran`
 --
 ALTER TABLE `tahun_ajaran`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tahun_ajaran` (`tahun_ajaran`);
 
 --
 -- Indeks untuk tabel `user`
@@ -457,7 +468,7 @@ ALTER TABLE `pengumuman`
 -- AUTO_INCREMENT untuk tabel `semester`
 --
 ALTER TABLE `semester`
-  MODIFY `id_semester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_semester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `siswa`
@@ -469,13 +480,23 @@ ALTER TABLE `siswa`
 -- AUTO_INCREMENT untuk tabel `tahun_ajaran`
 --
 ALTER TABLE `tahun_ajaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `semester`
+--
+ALTER TABLE `semester`
+  ADD CONSTRAINT `semester_ibfk_1` FOREIGN KEY (`id_ta`) REFERENCES `tahun_ajaran` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
