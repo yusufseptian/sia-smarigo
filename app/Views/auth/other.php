@@ -3,7 +3,10 @@
 <div class="row bg-white  mt-5 border border-primary rounded pb-3">
     <div class="col-12 p-0 text-black">
         <img src="<?= base_url('assets/img/bg-login.jpg') ?>" class="img-fluid w-100 mb-3 rounded-top" style="height: 80px; object-fit: cover;">
-        <h3 class="mx-2 mb-3 font-weight-bold">Login Form</h3>
+        <div class="mx-2 mb-4 text-center">
+            <h2 class="font-weight-bold">Login Form</h2>
+            <h5 class="text-primary font-weight-bold">SIA SMA PGRI 1 GOMBONG</h5>
+        </div>
         <form action="<?= base_url('auth/login') ?>" method="post" style="width: 400px;" class="px-3">
             <?php if (session('wrongData')) : ?>
                 <div class="alert alert-danger my-2" role="alert" id="alert">

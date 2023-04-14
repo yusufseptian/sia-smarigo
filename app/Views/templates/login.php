@@ -41,8 +41,9 @@
             }, 1500);
         </script>
     <?php endif ?>
-</body>
 
-<?= $this->include('templates/partial/notif'); ?>
+    <?= $this->include('templates/partial/notif'); ?>
+
+</body>
 
 </html>
