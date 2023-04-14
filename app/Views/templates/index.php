@@ -57,7 +57,6 @@
 
                 <!-- Topbar -->
                 <?php include_once('navbar.php') ?>
-
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -67,51 +66,6 @@
                     <div class="alert alert-success mb-3" role="alert">
                         <i class="fas fa-university"></i> <?= $sub_title ?>
                     </div>
-
-                    <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading font-weight-bold">Selamat Datang</h4>
-                        <p>Selamat Datang <strong><?= ''; ?></strong> di Sistem Informasi Akademik SMA PGRI 1 Go, Anda Login sebagai <strong><?= ''; ?></strong></p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="font-weight-bold">Pengumuman</h4>
-                                </div>
-                                <div class="card-body">
-                                    <img class="w-100 rounded mb-3 img-fluid" style="height: 350px; object-fit: cover;" src="<?= base_url() . 'assets/img/megawati.jpg' ?>" alt="">
-                                    <ul class="list-group">
-                                        <?php foreach ($pengumuman as $key => $value) : ?>
-                                            <li class="list-group-item list-group-item-primary" data-toggle="modal" data-target="#pengumuman<?= $value['id'] ?>">
-                                                <label for="cek"><?= $value['judul'] ?></label>
-                                                <i class="fa fa-angle-right float-right fa-2x" id="cek"></i>
-                                            </li>
-                                        <?php endforeach ?>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal -->
-                    <?php foreach ($pengumuman as $key => $value) { ?>
-                        <div class="modal fade" id="pengumuman<?= $value['id'] ?>" tabindex="-1" aria-labelledby="pengumumanLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-primary" style="color: #fff !important;">
-                                        <h5 class="modal-title" id="pengumumanLabel"><?= $value['judul'] ?></h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <?= $value['pengumuman'] ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
 
                     <div class="row">
                         <?= $this->renderSection('content') ?>

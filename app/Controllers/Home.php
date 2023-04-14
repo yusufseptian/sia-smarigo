@@ -18,11 +18,25 @@ class Home extends BaseController
 
     public function index()
     {
+        if (session('log_auth')['role'] == 'ADMINISTRATOR') {
+            $data_akun = $this->db->table('user')->where('id', session('log_auth')['akunID'])->get()->getResultArray();
+        }
+        if (session('log_auth')['role'] == 'GURU') {
+            $data_akun = $this->db->table('guru')->where('id', session('log_auth')['akunID'])->get()->getResultArray();
+        }
+        if (session('log_auth')['role'] == 'SISWA') {
+            $data_akun = $this->db->table('siswa')->where('id', session('log_auth')['akunID'])->get()->getResultArray();
+        }
+        if (session('log_auth')['role'] == 'ORTU') {
+            $data_akun = $this->db->table('orangtua')->where('id', session('log_auth')['akunID'])->get()->getResultArray();
+        }
+
         $data = [
             'title' => 'Siasmarigo',
             'sub_title' => 'Dashboard',
             'pengumuman' => $this->ModelPengumuman->findAll(),
+            'user' => $data_akun,
         ];
-        return view('templates/index', $data);
+        return view('/dashboard/index', $data);
     }
 }
