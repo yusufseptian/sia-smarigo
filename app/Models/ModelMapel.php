@@ -15,15 +15,7 @@ class ModelMapel extends Model
         'id',
         'kode_matapelajaran',
         'nama_matapelajaran',
-        'id_semester',
-        'id_guru',
-        'jam_pelajaran'
+        'kategori_mapel',
+        'jurusan_mapel',
     ];
-    public function getDataMapel()
-    {
-        return $this->db->table('matapelajaran')
-            ->join('semester', 'semester.id_semester=matapelajaran.id_semester')
-            ->join('guru', 'guru.id_guru=matapelajaran.id_guru')
-            ->get()->getResultArray();
-    }
 }

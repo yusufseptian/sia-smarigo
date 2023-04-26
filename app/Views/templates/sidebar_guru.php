@@ -30,11 +30,11 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Sub-Menu</h6>
-                <a class="collapse-item" href="<?= base_url('guru') ?>">Mata Pelajaran</a>
-                <a class="collapse-item" href="<?= base_url('siswa') ?>">Kelas</a>
-                <a class="collapse-item" href="<?= base_url('ortu') ?>">Input Nilai</a>
-                <a class="collapse-item" href="<?= base_url('ortu') ?>">Hasil Belajar</a>
-                <a class="collapse-item" href="<?= base_url('ortu') ?>">Profil</a>
+                <a class="collapse-item" href="<?= base_url('guru_jadwal') ?>">Mata Pelajaran</a>
+                <a class="collapse-item" href="<?= base_url('guru_kelas') ?>">Kelas</a>
+                <a class="collapse-item" href="<?= base_url('guru_input_nilai') ?>">Input Nilai</a>
+                <a class="collapse-item" href="<?= base_url('guru_hasil_belajar') ?>">Hasil Belajar</a>
+                <a class="collapse-item" href="<?= base_url('guru_profil') ?>">Profil</a>
             </div>
         </div>
     </li>

@@ -26,3 +26,14 @@ Kekurangan:
     - Authorized setiap aktifitas yang berkaitan dengan db
     - Logic login kurang filter per level
     - tampilan pengumuman -> arul
+
+    -card selamat datang belum dinamis
+    -card pengumuman mawut
+    -revisi tampilan login
+
+mapel:
+semester dihapus
+
+tahun ajaran dimasukke nggon jadwal
+
+profil wes kabeh

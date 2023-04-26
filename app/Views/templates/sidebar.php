@@ -35,6 +35,7 @@
                 <a class="collapse-item" href="<?= base_url('ortu') ?>">Data Orang Tua</a>
                 <a class="collapse-item" href="<?= base_url('kelas') ?>">Kelas</a>
                 <a class="collapse-item" href="<?= base_url('mapel') ?>">Mata Pelajaran</a>
+                <a class="collapse-item" href="<?= base_url('jadwal') ?>">Jadwal Guru</a>
                 <a class="collapse-item" href="<?= base_url('nilai') ?>">Input Nilai</a>
                 <a class="collapse-item" href="<?= base_url('hasilbelajar') ?>">Hasil Belajar</a>
                 <a class="collapse-item" href="<?= base_url('semester') ?>">Semester</a>

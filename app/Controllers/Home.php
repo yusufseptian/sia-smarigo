@@ -22,13 +22,13 @@ class Home extends BaseController
             $data_akun = $this->db->table('user')->where('id', session('log_auth')['akunID'])->get()->getResultArray();
         }
         if (session('log_auth')['role'] == 'GURU') {
-            $data_akun = $this->db->table('guru')->where('id', session('log_auth')['akunID'])->get()->getResultArray();
+            $data_akun = $this->db->table('guru')->where('id_guru', session('log_auth')['akunID'])->get()->getResultArray();
         }
         if (session('log_auth')['role'] == 'SISWA') {
             $data_akun = $this->db->table('siswa')->where('id', session('log_auth')['akunID'])->get()->getResultArray();
         }
         if (session('log_auth')['role'] == 'ORTU') {
-            $data_akun = $this->db->table('orangtua')->where('id', session('log_auth')['akunID'])->get()->getResultArray();
+            $data_akun = $this->db->table('orangtua')->where('id_orangtua', session('log_auth')['akunID'])->get()->getResultArray();
         }
 
         $data = [

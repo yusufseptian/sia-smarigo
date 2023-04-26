@@ -16,7 +16,6 @@ class Mapel extends BaseController
     public function __construct()
     {
         $this->ModelMapel = new ModelMapel();
-        $this->ModelGuru = new ModelGuru();
         $this->ModelSemester = new ModelSemester();
         helper('form');
     }
@@ -25,9 +24,9 @@ class Mapel extends BaseController
         $data = [
             'title' => 'Siasmarigo',
             'sub_title' => 'Mata Pelajaran',
-            'mapel' => $this->ModelMapel->getDataMapel(),
-            'semester' => $this->ModelSemester->getDataSmt(),
-            'guru' => $this->ModelGuru->findAll(),
+            'mapel' => $this->ModelMapel->findAll(),
+            'kategori_mapel' => $this->kategori_mapel,
+            'jurusan'   => $this->jurusan,
         ];
         return view('admin/mapel/index', $data);
     }
@@ -36,9 +35,8 @@ class Mapel extends BaseController
         $data = [
             'kode_matapelajaran' => $this->request->getPost('kode_matapelajaran'),
             'nama_matapelajaran' => $this->request->getPost('nama_matapelajaran'),
-            'id_semester' => $this->request->getPost('id_semester'),
-            'id_guru' => $this->request->getPost('id_guru'),
-            'jam_pelajaran' => $this->request->getPost('jam_pelajaran'),
+            'kategori_mapel' => $this->request->getPost('kategori_mapel'),
+            'jurusan_mapel' => $this->request->getPost('jurusan_mapel'),
         ];
         $this->ModelMapel->insert($data);
         return redirect()->to('mapel')->with('success', 'Data berhasil ditambahkan');
@@ -48,9 +46,8 @@ class Mapel extends BaseController
         $data = [
             'kode_matapelajaran' => $this->request->getPost('kode_matapelajaran'),
             'nama_matapelajaran' => $this->request->getPost('nama_matapelajaran'),
-            'id_semester' => $this->request->getPost('id_semester'),
-            'id_guru' => $this->request->getPost('id_guru'),
-            'jam_pelajaran' => $this->request->getPost('jam_pelajaran'),
+            'kategori_mapel' => $this->request->getPost('kategori_mapel'),
+            'jurusan_mapel' => $this->request->getPost('jurusan_mapel'),
         ];
         $this->ModelMapel->update($id, $data);
         return redirect()->to('mapel')->with('warning', 'Data berhasil diubah');

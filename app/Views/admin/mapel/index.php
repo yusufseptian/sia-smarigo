@@ -15,10 +15,9 @@
                     <tr>
                         <th>NO</th>
                         <th>KODE MATA PELAJARAN</th>
-                        <th>NAMA MATA PELAJARAN</th>
-                        <th>SEMESTE-TA</th>
-                        <th>GURU</th>
-                        <th>JUMLAH JAM</th>
+                        <th>NAMA</th>
+                        <th>KATEGORI</th>
+                        <th>JURUSAN</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>
@@ -29,9 +28,8 @@
                             <td><?= $no++ ?></td>
                             <td><?= $value['kode_matapelajaran'] ?></td>
                             <td><?= $value['nama_matapelajaran'] ?></td>
-                            <td><?= $value['semester'] ?></td>
-                            <td><?= $value['nama'] ?></td>
-                            <td><?= $value['jam_pelajaran'] ?></td>
+                            <td><?= $value['kategori_mapel'] ?></td>
+                            <td><?= $value['jurusan_mapel'] ?></td>
                             <td>
                                 <button class="btn btn-xs btn-flat btn-warning" data-toggle="modal" data-target="#edit<?= $value['id'] ?>">
                                     <i class="fas fa-pen"></i>
@@ -44,7 +42,6 @@
                     <?php } ?>
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>
@@ -70,26 +67,22 @@
                     <input name="nama_matapelajaran" class="form-control" placeholder="Nama Mata Pelajaran" required>
                 </div>
                 <div class="form-group">
-                    <label>Semester</label>
-                    <select name="id_semester" class="form-control">
-                        <option value="">--Pilih Semester--</option>
-                        <?php foreach ($semester as $value) : ?>
-                            <option value="<?= $value['id_semester'] ?>"><?= $value['semester'] ?> - <?= $value['tahun_ajaran'] ?></option>
+                    <label>Kategori Mata Pelajaran</label>
+                    <select name="kategori_mapel" class="form-control">
+                        <option value="">--Pilih Kategori--</option>
+                        <?php foreach ($kategori_mapel as $kategori) : ?>
+                            <option value="<?= $kategori ?>"><?= $kategori ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Guru</label>
-                    <select name="id_guru" class="form-control">
-                        <option value="">--Pilih Guru--</option>
-                        <?php foreach ($guru as $value) : ?>
-                            <option value="<?= $value['id_guru'] ?>"><?= $value['nama'] ?></option>
+                    <label>Jurusan</label>
+                    <select name="jurusan_mapel" class="form-control">
+                        <option value="">--Pilih Jurusan--</option>
+                        <?php foreach ($jurusan as $jur) : ?>
+                            <option value="<?= $jur ?>"><?= $jur ?></option>
                         <?php endforeach; ?>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label>Jam Pelajaran</label>
-                    <input name="jam_pelajaran" class="form-control" placeholder="Jam Pelajaran" required>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -124,27 +117,24 @@
                         <input name="nama_matapelajaran" class="form-control" value="<?= $value['nama_matapelajaran'] ?>" placeholder="Nama Mata Pelajaran" required>
                     </div>
                     <div class="form-group">
-                        <label>Semester</label>
-                        <select name="id_semester" class="form-control">
-                            <option value="">--Pilih Semester--</option>
-                            <?php foreach ($semester as $value) : ?>
-                                <option value="<?= $value['id_semester'] ?>"><?= $value['semester'] ?> - <?= $value['tahun_ajaran'] ?></option>
-                            <?php endforeach; ?>
+                        <label>Kategori Mata Pelajaran</label>
+                        <select name="kategori_mapel" class="form-control">
+                            <option value="">--Pilih Kategori--</option>
+                            <option value="Kelompok A (Umum)">Kelompok A (Umum)</option>
+                            <option value="Kelompok B (Umum)">Kelompok B (Umum)</option>
+                            <option value="Kelompok C (Peminatan)">Kelompok C (Peminatan)</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Guru</label>
-                        <select name="id_guru" class="form-control">
-                            <option value="">--Pilih Guru--</option>
-                            <?php foreach ($guru as $value) : ?>
-                                <option value="<?= $value['id_guru'] ?>"><?= $value['nama'] ?></option>
-                            <?php endforeach; ?>
+                        <label>Jurusan</label>
+                        <select name="jurusan_mapel" class="form-control">
+                            <option value="">--Pilih Jurusan--</option>
+                            <option value="IPA">IPA</option>
+                            <option value="IPS">IPS</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>Jam Pelajaran</label>
-                        <input name="jam_pelajaran" class="form-control" placeholder="Jam Pelajaran" required>
-                    </div>
+
+
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>

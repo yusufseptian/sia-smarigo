@@ -27,6 +27,22 @@ abstract class BaseController extends Controller
      * @var CLIRequest|IncomingRequest
      */
     protected $request;
+    protected $hari = [
+        'Senin',
+        'Selasa',
+        'Rabu',
+        'Kamis',
+        'Jumat',
+    ];
+    protected $jurusan = [
+        'IPA',
+        'IPS'
+    ];
+    protected $kategori_mapel = [
+        'Kelompok A (Umum)',
+        'Kelompok B (Umum)',
+        'Kelompok C (Peminatan)',
+    ];
 
     /**
      * An array of helpers to be loaded automatically upon
