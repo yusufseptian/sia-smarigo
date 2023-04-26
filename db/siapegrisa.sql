@@ -86,7 +86,7 @@ CREATE TABLE `guru` (
   `jabatan` varchar(30) NOT NULL,
   `pendidikan_terakhir` varchar(30) NOT NULL,
   `photo` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `guru`
@@ -124,7 +124,7 @@ CREATE TABLE `jadwal` (
   `hari` enum('Senin','Selasa','Rabu','Kamis','Jumat') NOT NULL,
   `jam_mengajar` varchar(20) NOT NULL,
   `tahun_ajaran` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `jadwal`
@@ -146,7 +146,7 @@ CREATE TABLE `kelas` (
   `kode_kelas` varchar(3) NOT NULL,
   `nama_kelas` varchar(25) NOT NULL,
   `id_ta` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `kelas`
@@ -169,9 +169,9 @@ CREATE TABLE `matapelajaran` (
   `id` int NOT NULL,
   `kode_matapelajaran` varchar(10) NOT NULL,
   `nama_matapelajaran` varchar(100) NOT NULL,
-  `kategori_mapel` enum('Kelompok A (Umum)','Kelompok B (Umum)','Kelompok C (Peminatan)') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `kategori_mapel` enum('Kelompok A (Umum)','Kelompok B (Umum)','Kelompok C (Peminatan)') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `jurusan_mapel` enum('IPA','IPS') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `matapelajaran`
@@ -201,7 +201,7 @@ CREATE TABLE `nilai` (
   `kode_matapelajaran` varchar(10) NOT NULL,
   `kkm` int NOT NULL,
   `nilai` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `nilai`
@@ -302,7 +302,7 @@ CREATE TABLE `siswa` (
   `alamat` varchar(150) NOT NULL,
   `no_hp` varchar(20) NOT NULL,
   `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `siswa`
@@ -323,7 +323,7 @@ INSERT INTO `siswa` (`id`, `nis`, `username`, `password`, `nama`, `tempat_lahir`
 CREATE TABLE `tahun_ajaran` (
   `id` int NOT NULL,
   `tahun_ajaran` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `tahun_ajaran`
@@ -346,7 +346,7 @@ CREATE TABLE `user` (
   `level` enum('admin','guru','siswa','orangtua') NOT NULL,
   `blokir` enum('N','Y') NOT NULL,
   `id_sessions` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `user`

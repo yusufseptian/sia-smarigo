@@ -4,7 +4,7 @@
 <div class="col-sm-12">
     <div class="alert alert-success" role="alert">
         <h4 class="alert-heading font-weight-bold">Selamat Datang</h4>
-        <p>Selamat Datang <b><?= $user[0]['username'] ?></b> di Sistem Informasi Akademik SMA PGRI 1 Gombong, Anda Login sebagai
+        <p>Selamat Datang <b><?= session('log_auth')['role'] == 'ADMINISTRATOR' ? $user[0]['username'] : $user[0]['nama'] ?></b> di Sistem Informasi Akademik SMA PGRI 1 Gombong, Anda Login sebagai
             <b>
                 <?php if (session('log_auth')['role'] == 'ADMINISTRATOR') {
                     echo 'Admin';
