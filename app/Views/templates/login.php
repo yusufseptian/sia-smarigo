@@ -22,12 +22,24 @@
     <!-- Custom styles for this page -->
     <link href="<?php base_url() ?>/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <style>
+        body {
+            background: url("../../../public/assets/img/upacara.jpg"), no-repeat, 100%;
+            display: block;
+        }
+
+        .wrapperr {
+            background-color: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+
 </head>
 
-<body style="background-color: azure;">
+<body>
 
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" class="vh-100 wrapperr">
         <div class="container-fluid mt-5">
             <div class="d-flex justify-content-center">
                 <?= $this->renderSection('content'); ?>

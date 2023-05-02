@@ -1,6 +1,6 @@
 <?= $this->extend('templates/login'); ?>
 <?= $this->section('content'); ?>
-<div class="row bg-white  mt-5 border border-primary rounded pb-3">
+<div class="row bg-white mt-5 border border-primary rounded pb-3">
     <div class="col-12 p-0 text-black">
         <img src="<?= base_url('assets/img/bg-login.jpg') ?>" class="img-fluid w-100 mb-3 rounded-top" style="height: 80px; object-fit: cover;">
         <div class="mx-2 mb-4 text-center">
