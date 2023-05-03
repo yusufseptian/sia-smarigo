@@ -24,8 +24,7 @@
 
     <style>
         body {
-            background: url("../../../public/assets/img/upacara.jpg"), no-repeat, 100%;
-            display: block;
+            background: url('<?= base_url('assets/img/upacara.jpg') ?>');
         }
 
         .wrapperr {
@@ -40,7 +39,7 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper" class="vh-100 wrapperr">
-        <div class="container-fluid mt-5">
+        <div class="blur container-fluid mt-5">
             <div class="d-flex justify-content-center">
                 <?= $this->renderSection('content'); ?>
             </div>
