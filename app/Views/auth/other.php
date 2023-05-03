@@ -2,9 +2,9 @@
 <?= $this->section('content'); ?>
 <div class="row bg-white mt-5 border border-primary rounded pb-3">
     <div class="col-12 p-0 text-black">
-        <img src="<?= base_url('assets/img/bg-login.jpg') ?>" class="img-fluid w-100 mb-3 rounded-top" style="height: 80px; object-fit: cover;">
+        <img src="<?= base_url('assets/img/pattern_book.jpg') ?>" class="img-fluid w-100 mb-3 rounded-top" style="height: 80px; object-fit: cover;">
         <div class="mx-2 mb-4 text-center">
-            <h2 class="font-weight-bold">Login Form</h2>
+            <h2 class="font-weight-bold text-primary">Login Form</h2>
             <h5 class="text-primary font-weight-bold">SIA SMA PGRI 1 GOMBONG</h5>
         </div>
         <form action="<?= base_url('auth/login') ?>" method="post" style="width: 400px;" class="px-3">
