@@ -32,7 +32,7 @@
                 <h6 class="collapse-header">Sub-Menu</h6>
                 <a class="collapse-item" href="<?= base_url('guru_jadwal') ?>">Mata Pelajaran</a>
                 <a class="collapse-item" href="<?= base_url('guru_kelas') ?>">Kelas</a>
-                <a class="collapse-item" href="<?= base_url('guru_input_nilai') ?>">Input Nilai</a>
+                <a class="collapse-item" href="<?= base_url('penilaianakademik') ?>">Input Nilai</a>
                 <a class="collapse-item" href="<?= base_url('guru_hasil_belajar') ?>">Hasil Belajar</a>
                 <a class="collapse-item" href="<?= base_url('guru_profil') ?>">Profil</a>
             </div>

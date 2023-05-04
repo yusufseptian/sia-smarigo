@@ -25,6 +25,11 @@
         table th {
             text-align: center !important;
         }
+
+        .cellFit {
+            white-space: nowrap;
+            width: 1% !important;
+        }
     </style>
 
 </head>

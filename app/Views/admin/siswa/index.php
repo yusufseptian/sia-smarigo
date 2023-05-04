@@ -199,7 +199,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Username</label>
-                                <input name="Username" class="form-control" value="<?= $value['username'] ?>" placeholder="Username" id="txtEditUsername" required>
+                                <input name="Username" class="form-control" placeholder="Username" id="txtEditUsername" required>
                             </div>
                         </div>
                     </div>

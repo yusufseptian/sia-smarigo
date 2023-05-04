@@ -48,7 +48,7 @@ class Jadwal extends BaseController
             'kelas_id' => $this->request->getPost('kelas_id'),
             'hari' => $this->request->getPost('hari'),
             'jam_mengajar' => $this->request->getPost('jam_mengajar'),
-            'tahun_ajaran' => $dt_th_ajar['tahun_ajaran']
+            'tahun_ajaran' => $dt_th_ajar['id']
         ];
         $this->ModelJadwal->insert($data);
         return redirect()->to(base_url('jadwal'))->with('success', 'Data berhasil ditambahkan');

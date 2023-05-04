@@ -25,7 +25,7 @@ class Kelas extends BaseController
         $data = [
             'title' => 'Siasmarigo',
             'sub_title' => 'Kelas',
-            'kelas' => $this->ModelKelas->getDataKelas(),
+            'kelas' => $this->ModelKelas->findAll(),
             'th_ajar' => $this->ModelTahunAjar->findAll(),
         ];
         return view('admin/kelas/index', $data);

@@ -31,6 +31,9 @@ Kekurangan:
     -card pengumuman mawut
     -revisi tampilan login
 
+    - Pemindahan siswa ke kelas lain mungkin menyebabkan error pada penilaian akademik
+    - Pembatasan edit pada kategori untuk tahun ajaran yang sudah tidak aktif
+
 mapel:
 semester dihapus
 

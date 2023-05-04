@@ -16,7 +16,6 @@
                         <th>NO</th>
                         <th>KODE KELAS</th>
                         <th>NAMA KELAS</th>
-                        <th>TAHUN AJARAN</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>
@@ -27,7 +26,6 @@
                             <td><?= $no++ ?></td>
                             <td><?= $value['kode_kelas'] ?></td>
                             <td><?= $value['nama_kelas'] ?></td>
-                            <td><?= $value['tahun_ajaran'] ?></td>
                             <td align="center">
                                 <button class="btn btn-xs btn-flat btn-warning" data-toggle="modal" data-target="#edit<?= $value['id_kelas'] ?>">
                                     <i class="fas fa-pen"></i>
