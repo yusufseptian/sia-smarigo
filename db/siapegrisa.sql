@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Bulan Mei 2023 pada 15.53
+-- Waktu pembuatan: 07 Bulan Mei 2023 pada 05.04
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.12
 
@@ -162,7 +162,8 @@ CREATE TABLE `kategori_tugas` (
 
 INSERT INTO `kategori_tugas` (`kt_id`, `kt_nama`, `kt_deskripsi`, `kt_tanggal`, `kt_kkm`, `kt_bobot`, `kt_jadwal_id`, `kt_created_at`, `kt_edited_at`, `kt_deleted_at`, `kt_assessed_at`, `kt_value_changed_at`) VALUES
 (1, 'Tugas Harian', 'Mencari berita terkait pengamalan sila-sila pancasila dalam kehidupan sehari-hari.', '2023-04-26', 75, 5, 9, '2023-04-27 14:28:32', '2023-04-30 12:18:23', NULL, '2023-04-23 15:11:35', '2023-04-29 15:12:18'),
-(2, 'UTS', 'Ujian tengah semester', '2023-04-28', 80, 20, 9, '2023-04-27 15:32:40', '2023-04-29 19:19:27', NULL, '2023-04-29 19:19:27', NULL);
+(2, 'UTS', 'Ujian tengah semester', '2023-04-28', 80, 20, 9, '2023-04-27 15:32:40', '2023-04-29 19:19:27', NULL, '2023-04-29 19:19:27', NULL),
+(3, 'UAS', 'Ujian Akhir Semester', '2023-05-08', 75, 75, 9, '2023-05-06 17:42:44', '2023-05-06 17:42:44', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -291,7 +292,7 @@ CREATE TABLE `orangtua` (
 --
 
 INSERT INTO `orangtua` (`id_orangtua`, `username`, `password`, `nama`, `no_hp`, `pekerjaan`, `nis_siswa`, `alamat`) VALUES
-(5, 'ncipp', '098f6bcd4621d373cade4e832627b4f6', 'sipaa', '819381', 'tidur', '', 'sewonderlan');
+(5, 'ncipp', '81dc9bdb52d04dc20036dbd8313ed055', 'sipaa', '819381', 'tidur', '5191', 'sewonderlan');
 
 -- --------------------------------------------------------
 
@@ -539,7 +540,7 @@ ALTER TABLE `jadwal`
 -- AUTO_INCREMENT untuk tabel `kategori_tugas`
 --
 ALTER TABLE `kategori_tugas`
-  MODIFY `kt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelas`
