@@ -102,6 +102,9 @@ class Auth extends BaseController
         } else {
             $link = "";
         }
+        if (session('log_auth')['role'] == "GURU") {
+            session()->remove('idKelasForHasil');
+        }
         session()->remove('log_auth');
         return redirect()->to(base_url("auth/$link"));
     }
