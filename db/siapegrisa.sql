@@ -2,17 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
-<<<<<<< HEAD
 -- Host: localhost:3306
--- Waktu pembuatan: 09 Bulan Mei 2023 pada 06.14
+-- Waktu pembuatan: 09 Bulan Mei 2023 pada 14.35
 -- Versi server: 8.0.30
 -- Versi PHP: 8.1.10
-=======
--- Host: 127.0.0.1
--- Waktu pembuatan: 07 Bulan Mei 2023 pada 05.04
--- Versi server: 10.4.22-MariaDB
--- Versi PHP: 8.1.12
->>>>>>> 36e9f9eea420a0b61d16515cc5e05530b42d96c3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,7 +42,7 @@ CREATE TABLE `guru` (
   `jabatan` varchar(30) NOT NULL,
   `pendidikan_terakhir` varchar(30) NOT NULL,
   `photo` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `guru`
@@ -74,7 +67,7 @@ CREATE TABLE `jadwal` (
   `hari` enum('Senin','Selasa','Rabu','Kamis','Jumat') NOT NULL,
   `jam_mengajar` varchar(20) NOT NULL,
   `tahun_ajaran` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `jadwal`
@@ -103,7 +96,7 @@ CREATE TABLE `kategori_tugas` (
   `kt_deleted_at` datetime DEFAULT NULL,
   `kt_assessed_at` datetime DEFAULT NULL,
   `kt_value_changed_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `kategori_tugas`
@@ -111,8 +104,7 @@ CREATE TABLE `kategori_tugas` (
 
 INSERT INTO `kategori_tugas` (`kt_id`, `kt_nama`, `kt_deskripsi`, `kt_tanggal`, `kt_kkm`, `kt_bobot`, `kt_jadwal_id`, `kt_created_at`, `kt_edited_at`, `kt_deleted_at`, `kt_assessed_at`, `kt_value_changed_at`) VALUES
 (1, 'Tugas Harian', 'Mencari berita terkait pengamalan sila-sila pancasila dalam kehidupan sehari-hari.', '2023-04-26', 75, 5, 9, '2023-04-27 14:28:32', '2023-04-30 12:18:23', NULL, '2023-04-23 15:11:35', '2023-04-29 15:12:18'),
-(2, 'UTS', 'Ujian tengah semester', '2023-04-28', 80, 20, 9, '2023-04-27 15:32:40', '2023-04-29 19:19:27', NULL, '2023-04-29 19:19:27', NULL),
-(3, 'UAS', 'Ujian Akhir Semester', '2023-05-08', 75, 75, 9, '2023-05-06 17:42:44', '2023-05-06 17:42:44', NULL, NULL, NULL);
+(2, 'UTS', 'Ujian tengah semester', '2023-04-28', 80, 20, 9, '2023-04-27 15:32:40', '2023-04-29 19:19:27', NULL, '2023-04-29 19:19:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -125,7 +117,7 @@ CREATE TABLE `kelas` (
   `kode_kelas` varchar(3) NOT NULL,
   `nama_kelas` varchar(25) NOT NULL,
   `id_ta` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `kelas`
@@ -150,7 +142,7 @@ CREATE TABLE `matapelajaran` (
   `nama_matapelajaran` varchar(100) NOT NULL,
   `kategori_mapel` enum('Kelompok A (Umum)','Kelompok B (Umum)','Kelompok C (Peminatan)') NOT NULL,
   `jurusan_mapel` enum('IPA','IPS') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `matapelajaran`
@@ -179,7 +171,7 @@ CREATE TABLE `nilai_akademik` (
   `na_kategori_id` int NOT NULL,
   `na_siswa_id` int NOT NULL,
   `na_nilai` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `nilai_akademik`
@@ -217,7 +209,7 @@ CREATE TABLE `orangtua` (
 --
 
 INSERT INTO `orangtua` (`id_orangtua`, `username`, `password`, `nama`, `no_hp`, `pekerjaan`, `nis_siswa`, `alamat`) VALUES
-(5, 'ncipp', '81dc9bdb52d04dc20036dbd8313ed055', 'sipaa', '819381', 'tidur', '5191', 'sewonderlan');
+(5, 'ncipp', '098f6bcd4621d373cade4e832627b4f6', 'sipaa', '819381', 'tidur', '', 'sewonderlan');
 
 -- --------------------------------------------------------
 
@@ -284,7 +276,7 @@ CREATE TABLE `siswa` (
   `alamat` varchar(150) NOT NULL,
   `no_hp` varchar(20) NOT NULL,
   `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `siswa`
@@ -305,7 +297,7 @@ INSERT INTO `siswa` (`id`, `nis`, `username`, `password`, `nama`, `tempat_lahir`
 CREATE TABLE `tahun_ajaran` (
   `id` int NOT NULL,
   `tahun_ajaran` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `tahun_ajaran`
@@ -328,7 +320,7 @@ CREATE TABLE `user` (
   `level` enum('admin','guru','siswa','orangtua') NOT NULL,
   `blokir` enum('N','Y') NOT NULL,
   `id_sessions` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `user`
@@ -443,11 +435,7 @@ ALTER TABLE `jadwal`
 -- AUTO_INCREMENT untuk tabel `kategori_tugas`
 --
 ALTER TABLE `kategori_tugas`
-<<<<<<< HEAD
   MODIFY `kt_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-=======
-  MODIFY `kt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
->>>>>>> 36e9f9eea420a0b61d16515cc5e05530b42d96c3
 
 --
 -- AUTO_INCREMENT untuk tabel `kelas`
