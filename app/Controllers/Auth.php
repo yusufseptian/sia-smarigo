@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ModelGuru;
+use App\Models\ModelKelas;
 use App\Models\ModelOrtu;
 use App\Models\ModelSiswa;
 use App\Models\ModelUser;
@@ -13,6 +14,7 @@ class Auth extends BaseController
     private $modelSiswa = null;
     private $modelOrtu = null;
     private $modelAdmin = null;
+    private $modelKelas = null;
 
     public function __construct()
     {
@@ -20,6 +22,7 @@ class Auth extends BaseController
         $this->modelGuru = new ModelGuru();
         $this->modelOrtu = new ModelOrtu();
         $this->modelSiswa = new ModelSiswa();
+        $this->modelKelas = new ModelKelas();
     }
 
     public function index()
@@ -88,6 +91,15 @@ class Auth extends BaseController
             'akunID' => $dtAkun[$key],
             'role' => strtoupper((string)$role)
         ];
+        if ($role == 'Guru') {
+            $dtWaliKelas = $this->modelKelas->where('wali_kelas_id', $dtAkun[$key])->first();
+            if (!empty($dtWaliKelas)) {
+                $tmp['waliKelas'] = [
+                    'id' => $dtWaliKelas['id_kelas'],
+                    'namaKelas' => $dtWaliKelas['nama_kelas']
+                ];
+            }
+        }
         session()->set('log_auth', $tmp);
         return redirect()->to(base_url());
     }

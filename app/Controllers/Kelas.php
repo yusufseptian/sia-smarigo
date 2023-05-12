@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ModelGuru;
+use App\Models\ModelJadwal;
 use App\Models\ModelKelas;
 use App\Models\ModelSiswa;
 use App\Models\ModelTahunAjar;
@@ -12,20 +14,31 @@ class Kelas extends BaseController
     private $ModelKelas = null;
     private $ModelTahunAjar = null;
     private $ModelSiswa = null;
+    private $ModelGuru = null;
+    private $ModelJadwal = null;
 
     public function __construct()
     {
         $this->ModelKelas = new ModelKelas();
         $this->ModelTahunAjar = new ModelTahunAjar();
         $this->ModelSiswa = new ModelSiswa();
+        $this->ModelGuru = new ModelGuru();
+        $this->ModelJadwal = new ModelJadwal();
         helper('form');
     }
     public function index()
     {
+        $dtKelas = $this->ModelKelas->select('kelas.*, nama, id_guru, nip, no_hp')->join('guru', 'wali_kelas_id=id_guru')->findAll();
+        $listGuru = [];
+        foreach ($dtKelas as $dt) {
+            array_push($listGuru, $dt['id_guru']);
+        }
         $data = [
             'title' => 'Siasmarigo',
             'sub_title' => 'Kelas',
-            'kelas' => $this->ModelKelas->findAll(),
+            'kelas' => $this->ModelKelas->select('kelas.*, nama, id_guru')->join('guru', 'wali_kelas_id=id_guru', 'left')->findAll(),
+            'dtGuru' => (count($listGuru) == 0) ? $this->ModelGuru->findAll() : $this->ModelGuru->whereNotIn('id_guru', $listGuru)->findAll(),
+            'listWaliKelas' => $dtKelas,
             'th_ajar' => $this->ModelTahunAjar->findAll(),
         ];
         return view('admin/kelas/index', $data);
@@ -34,21 +47,76 @@ class Kelas extends BaseController
     {
         $data = [
             'kode_kelas' => $this->request->getPost('kode_kelas'),
-            'nama_kelas' => $this->request->getPost('nama_kelas'),
-            'id_ta' => $this->request->getPost('id_ta'),
+            'nama_kelas' => $this->request->getPost('nama_kelas')
         ];
+        if ($this->validate([
+            'wali_kelas_id' => 'required|is_natural_no_zero'
+        ])) {
+            $dtGuru = $this->ModelGuru->find($this->request->getPost('wali_kelas_id'));
+            if (!empty($dtGuru)) {
+                $tmpKelas = $this->ModelKelas->where('wali_kelas_id', $this->request->getPost('wali_kelas_id'))->first();
+                if (!empty($tmpKelas)) {
+                    $tmpData['wali_kelas_id'] = null;
+                    $this->ModelKelas->update($tmpKelas['id_kelas'], $tmpData);
+                }
+                $data['wali_kelas_id'] = $dtGuru['id_guru'];
+            }
+        }
         $this->ModelKelas->insert($data);
         return redirect()->to(base_url('kelas'))->with('success', 'Data berhasil ditambahkan');
     }
     public function editData($id_kelas)
     {
+        $dtTA = $this->ModelTahunAjar->getTANow();
+        if (empty($dtTA)) {
+            session()->setFlashdata('danger', 'Data tahun ajaran masih kosong');
+            return $this->redirectBack();
+        }
         $data = [
             'kode_kelas' => $this->request->getPost('kode_kelas'),
-            'nama_kelas' => $this->request->getPost('nama_kelas'),
-            'id_ta' => $this->request->getPost('id_ta'),
+            'nama_kelas' => $this->request->getPost('nama_kelas')
         ];
-        $this->ModelKelas->update($id_kelas, $data);
-        return redirect()->to(base_url('kelas'))->with('warning', 'Data berhasil diubah');
+        $editedWali = false;
+        $chagedWali = false;
+        $chagedPreClass = null;
+        if ($this->validate([
+            'wali_kelas_id' => 'required|is_natural_no_zero'
+        ])) {
+            $dtGuru = $this->ModelGuru->find($this->request->getPost('wali_kelas_id'));
+            if (!empty($dtGuru)) {
+                $tmpKelas = $this->ModelKelas->where('wali_kelas_id', $this->request->getPost('wali_kelas_id'))->first();
+                if (!empty($tmpKelas)) {
+                    $tmpData['wali_kelas_id'] = null;
+                    $this->ModelKelas->update($tmpKelas['id_kelas'], $tmpData);
+                    $chagedWali = true;
+                    $chagedPreClass = $tmpKelas['id_kelas'];
+                }
+                $data['wali_kelas_id'] = $dtGuru['id_guru'];
+                $editedWali = true;
+            }
+        }
+        if ($this->ModelKelas->update($id_kelas, $data)) {
+            if ($editedWali) {
+                $dtJadwal = $this->ModelJadwal->where('kelas_id', $id_kelas)->where('tahun_ajaran', $dtTA['id'])->findAll();
+                $data = [
+                    'wali_kelas_id' => $this->request->getPost('wali_kelas_id')
+                ];
+                foreach ($dtJadwal as $jadwal) {
+                    $this->ModelJadwal->update($jadwal['jadwal_id'], $data);
+                }
+                if ($chagedWali) {
+                    $dtJadwal = $this->ModelJadwal->where('kelas_id', $chagedPreClass)->where('tahun_ajaran', $dtTA['id'])->findAll();
+                    $data = [
+                        'wali_kelas_id' => null
+                    ];
+                    foreach ($dtJadwal as $jadwal) {
+                        $this->ModelJadwal->update($jadwal['jadwal_id'], $data);
+                    }
+                }
+            }
+            return redirect()->to(base_url('kelas'))->with('warning', 'Data berhasil diubah');
+        }
+        return redirect()->to(base_url('kelas'))->with('danger', 'Data gagal diubah');
     }
 
     public function deleteData($id_kelas)

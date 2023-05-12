@@ -26,7 +26,7 @@
                 <tbody>
                     <?php $no = 1;
                     foreach ($dt_jadwal as $key => $value) { ?>
-                        <tr>
+                        <tr class="<?= (is_null($value['wali_kelas_id'])) ? 'bg-danger text-white' : '' ?>" <?= (is_null($value['wali_kelas_id'])) ? 'data-toggle="tooltip" data-placement="top" title="Mohon isi wali kelas pada kelas ' . $value['nama_kelas'] . '"' : '' ?>>
                             <td><?= $no++ ?></td>
                             <td><?= $value['nama_matapelajaran'] ?></td>
                             <td><?= $value['nama'] ?></td>
@@ -34,7 +34,6 @@
                             <td><?= $value['hari'] ?></td>
                             <td><?= $value['jam_mengajar'] ?></td>
                             <td><?= $value['tahun_ajaran'] ?></td>
-
                             <td>
                                 <button class="btn btn-xs btn-flat btn-warning" data-toggle="modal" data-target="#edit<?= $value['jadwal_id'] ?>">
                                     <i class="fas fa-pen"></i>
@@ -47,7 +46,6 @@
                     <?php } ?>
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>
@@ -84,12 +82,20 @@
                 </div>
                 <div class="form-group">
                     <label>Kelas</label>
-                    <select name="kelas_id" class="form-control">
+                    <select name="kelas_id" class="form-control" onclick="showWaliKelas(this.value, '#wali_kelas')">
                         <option value="">--Pilih Kelas--</option>
+                        <?php $listGuru = []; ?>
                         <?php foreach ($dt_kelas as $value) : ?>
                             <option value="<?= $value['id_kelas'] ?>"><?= $value['nama_kelas'] ?></option>
+                            <?php $listGuru[$value['id_kelas']] = $value['nama'] ?>
                         <?php endforeach; ?>
                     </select>
+                    <small id="kelas_help" class="form-text text-info">Kelas yang ditampilkan hanya kelas yang telah ada wali kelasnya.</small>
+                </div>
+                <div class="form-group">
+                    <label>Wali Kelas</label>
+                    <input type="text" name="wali_kelas" id="wali_kelas" class="form-control disabled" disabled>
+                    <small id="wali_kelas_help" class="form-text text-info">Untuk megganti wali kelas ada pada fitur kelas.</small>
                 </div>
                 <div class="form-group">
                     <label>Hari</label>
@@ -148,12 +154,18 @@
                     </div>
                     <div class="form-group">
                         <label>Kelas</label>
-                        <select name="kelas_id" class="form-control">
+                        <select name="kelas_id" class="form-control" id="kelas_id_<?= $value['jadwal_id'] ?>" onclick="showWaliKelas(this.value, '#wali_kelas_<?= $value['jadwal_id'] ?>')">
                             <option value="">--Pilih Kelas--</option>
                             <?php foreach ($dt_kelas as $kelas) : ?>
                                 <option value="<?= $kelas['id_kelas'] ?>" <?= ($kelas['id_kelas']) == ($value['kelas_id']) ? 'selected' : '' ?>><?= $kelas['nama_kelas'] ?></option>
                             <?php endforeach; ?>
                         </select>
+                        <small id="kelas_help_<?= $value['jadwal_id'] ?>" class="form-text text-info">Kelas yang ditampilkan hanya kelas yang telah ada wali kelasnya.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Wali Kelas</label>
+                        <input type="text" name="wali_kelas" id="wali_kelas_<?= $value['jadwal_id'] ?>" class="form-control disabled" value="<?= $value['nama'] ?>" readonly disabled>
+                        <small id="wali_kelas_help_<?= $value['jadwal_id'] ?>" class="form-text text-info">Untuk megganti wali kelas ada pada fitur kelas.</small>
                     </div>
                     <div class="form-group">
                         <label>Hari</label>
@@ -206,4 +218,29 @@
     </div>
     <!-- /.modal -->
 <?php } ?>
+<?= $this->endSection() ?>
+<?= $this->section('bottomScript') ?>
+<script>
+    const listGuru = <?= json_encode($listGuru) ?>;
+
+    function showWaliKelas(id, target) {
+        if (id.replace(/^\s+|\s+$/gm, '') != "") {
+            try {
+                $(target).val(listGuru[id]);
+            } catch (e) {
+                Swal.fire(
+                    'Gagal!',
+                    'Ada kesalahan data. Mohon refresh halaman!',
+                    'error'
+                )
+            }
+        } else {
+            $(target).val("");
+        }
+    }
+
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
 <?= $this->endSection() ?>

@@ -27,13 +27,18 @@ class Jadwal extends BaseController
     }
     public function index()
     {
+        $dtKelas = $this->ModelKelas->join('guru', 'wali_Kelas_id=id_guru')->where('wali_kelas_id is not null')->findAll();
+        if (count($dtKelas) == 0) {
+            session()->setFlashdata('danger', 'Data mata pelajaran masih kosong. Pastikan kelas sudah ada wali kelasnya.');
+            return $this->redirectBack();
+        }
         $data = [
             'title' => 'Siasmarigo',
             'sub_title' => 'Jadwal',
             'dt_jadwal' => $this->ModelJadwal->getDataJadwal(),
             'dt_mapel'  => $this->ModelMapel->findAll(),
             'dt_guru'   => $this->ModelGuru->findAll(),
-            'dt_kelas'  => $this->ModelKelas->findAll(),
+            'dt_kelas'  => $dtKelas,
             'hari'      => $this->hari
         ];
         return view('admin/jadwal/index', $data);
@@ -55,10 +60,34 @@ class Jadwal extends BaseController
     }
     public function editData($jadwal_id)
     {
+        $dtTA = $this->ModelThajar->getTANow();
+        if (empty($dtTA)) {
+            session()->setFlashdata('danger', 'Data tahun ajaran belum ada');
+            return $this->redirectBack();
+        }
+        $dtJadwal = $this->ModelJadwal->where('tahun_ajaran', $dtTA['id'])->where('jadwal_id', $jadwal_id)->first();
+        if (empty($dtJadwal)) {
+            session()->setFlashdata('danger', 'Data jadwal tia=dak ditemukan');
+            return $this->redirectBack();
+        }
         $data = [
             'mapel_id' => $this->request->getPost('mapel_id'),
             'jam_mengajar' => $this->request->getPost('jam_mengajar'),
         ];
+        if ($this->validate([
+            'kelas_id' => 'required|is_natural_no_zero'
+        ])) {
+            $dtKelas = $this->ModelKelas->find($this->request->getPost('kelas_id'));
+            if (!empty($dtKelas)) {
+                if (is_null($dtKelas['wali_kelas_id'])) {
+                    session()->setFlashdata('danger', 'Wali kelas pada kelas ini belum ditentukan.');
+                    return $this->redirectBack();
+                } else {
+                    $data['kelas_id'] = $dtKelas['id_kelas'];
+                    $data['wali_kelas_id'] = $dtKelas['wali_kelas_id'];
+                }
+            }
+        }
         $this->ModelJadwal->update($jadwal_id, $data);
         return redirect()->to(base_url('jadwal'))->with('warning', 'Data berhasil diubah');
     }

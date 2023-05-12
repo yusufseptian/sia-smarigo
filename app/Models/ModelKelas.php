@@ -15,7 +15,8 @@ class ModelKelas extends Model
         'id_kelas',
         'kode_kelas',
         'nama_kelas',
-        'id_ta'
+        'id_ta',
+        'wali_kelas_id'
     ];
     public function getDataKelas()
     {

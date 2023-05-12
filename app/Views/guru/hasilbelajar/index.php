@@ -8,7 +8,7 @@
                     <thead>
                         <tr>
                             <th class="cellFit">NO</th>
-                            <th>Kelas</th>
+                            <th>KELAS</th>
                             <th>TAHUN AJARAN</th>
                         </tr>
                     </thead>
