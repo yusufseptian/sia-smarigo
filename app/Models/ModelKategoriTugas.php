@@ -15,7 +15,7 @@ class ModelKategoriTugas extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'kt_nama', 'kt_deskripsi', 'kt_tanggal', 'kt_kkm', 'kt_bobot', 'kt_jadwal_id', 'kt_created_at', 'kt_edited_at', 'kt_deleted_at', 'kt_assessed_at', 'kt_value_changed_at'
+        'kt_nama', 'kt_jenis', 'kt_deskripsi', 'kt_tanggal', 'kt_kkm', 'kt_bobot', 'kt_jadwal_id', 'kt_semester_id', 'kt_created_at', 'kt_edited_at', 'kt_deleted_at', 'kt_assessed_at', 'kt_value_changed_at'
     ];
 
     // Dates

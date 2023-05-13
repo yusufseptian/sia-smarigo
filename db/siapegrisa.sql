@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Waktu pembuatan: 09 Bulan Mei 2023 pada 14.35
--- Versi server: 8.0.30
--- Versi PHP: 8.1.10
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 13 Bulan Mei 2023 pada 11.05
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `guru` (
-  `id_guru` int NOT NULL,
+  `id_guru` int(11) NOT NULL,
   `username` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
-  `nip` int NOT NULL,
+  `nip` int(11) NOT NULL,
   `nama` varchar(150) NOT NULL,
   `tempat_lahir` varchar(50) NOT NULL,
   `tgl_lahir` date NOT NULL,
@@ -42,14 +42,14 @@ CREATE TABLE `guru` (
   `jabatan` varchar(30) NOT NULL,
   `pendidikan_terakhir` varchar(30) NOT NULL,
   `photo` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `guru`
 --
 
 INSERT INTO `guru` (`id_guru`, `username`, `password`, `nip`, `nama`, `tempat_lahir`, `tgl_lahir`, `gender`, `no_hp`, `email`, `alamat`, `jabatan`, `pendidikan_terakhir`, `photo`) VALUES
-(1, 'sudarmiyati', 'f0c413d1d4719bcb155e58dc3fd137a0', 1413123331, 'Sudarmiyati, S.Pd', 'Kebumen', '1969-11-04', 'Perempuan', '+62892813181', 'bueti@gmail.com', 'Petahunan ', 'Guru Mapel', 'S1', 'aiony-haust-3TLl_97HNJo-unsplash.jpg'),
+(1, 'sudarmiyati', '098f6bcd4621d373cade4e832627b4f6', 1413123331, 'Sudarmiyati, S.Pd', 'Kebumen', '1969-11-04', 'Perempuan', '+62892813181', 'bueti@gmail.com', 'Petahunan ', 'Guru Mapel', 'S1', 'aiony-haust-3TLl_97HNJo-unsplash.jpg'),
 (6, 'rizka', '81dc9bdb52d04dc20036dbd8313ed055', 110112783, 'Rizka, S.Pd', 'Lesung Batu Muda', '1995-06-13', 'Perempuan', '+622279696131', 'rizka@mail.com', 'Jalan Parangtritis, KM 9,7', 'Guru Mapel', 'S1 ', '22.jpg'),
 (9, '5190411039', '81dc9bdb52d04dc20036dbd8313ed055', 8493759, 'yusuf sep', 'semarang', '2023-02-21', 'Laki-laki', '+62894738593', 'soepsep@gmail.com', 'me,dej,ma', 'guru', 's1', 'avatar.png');
 
@@ -60,22 +60,23 @@ INSERT INTO `guru` (`id_guru`, `username`, `password`, `nip`, `nama`, `tempat_la
 --
 
 CREATE TABLE `jadwal` (
-  `jadwal_id` int NOT NULL,
-  `mapel_id` int NOT NULL,
-  `guru_id` int NOT NULL,
-  `kelas_id` int NOT NULL,
+  `jadwal_id` int(11) NOT NULL,
+  `mapel_id` int(11) NOT NULL,
+  `guru_id` int(11) NOT NULL,
+  `kelas_id` int(11) NOT NULL,
+  `wali_kelas_id` int(11) DEFAULT NULL,
   `hari` enum('Senin','Selasa','Rabu','Kamis','Jumat') NOT NULL,
   `jam_mengajar` varchar(20) NOT NULL,
-  `tahun_ajaran` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `tahun_ajaran` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `jadwal`
 --
 
-INSERT INTO `jadwal` (`jadwal_id`, `mapel_id`, `guru_id`, `kelas_id`, `hari`, `jam_mengajar`, `tahun_ajaran`) VALUES
-(8, 8, 9, 4, 'Senin', '1', 8),
-(9, 9, 6, 2, 'Selasa', '2', 8);
+INSERT INTO `jadwal` (`jadwal_id`, `mapel_id`, `guru_id`, `kelas_id`, `wali_kelas_id`, `hari`, `jam_mengajar`, `tahun_ajaran`) VALUES
+(8, 8, 9, 2, 9, 'Senin', '2', 8),
+(9, 9, 6, 2, 9, 'Selasa', '2', 8);
 
 -- --------------------------------------------------------
 
@@ -84,27 +85,31 @@ INSERT INTO `jadwal` (`jadwal_id`, `mapel_id`, `guru_id`, `kelas_id`, `hari`, `j
 --
 
 CREATE TABLE `kategori_tugas` (
-  `kt_id` int NOT NULL,
+  `kt_id` int(11) NOT NULL,
   `kt_nama` varchar(50) NOT NULL,
-  `kt_deskripsi` text,
+  `kt_jenis` enum('pengetahuan','keterampilan') NOT NULL,
+  `kt_deskripsi` text DEFAULT NULL,
   `kt_tanggal` date NOT NULL,
   `kt_kkm` float NOT NULL,
   `kt_bobot` float NOT NULL,
-  `kt_jadwal_id` int NOT NULL,
+  `kt_jadwal_id` int(11) NOT NULL,
+  `kt_semester_id` int(11) NOT NULL,
   `kt_created_at` datetime NOT NULL,
   `kt_edited_at` datetime DEFAULT NULL,
   `kt_deleted_at` datetime DEFAULT NULL,
   `kt_assessed_at` datetime DEFAULT NULL,
   `kt_value_changed_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `kategori_tugas`
 --
 
-INSERT INTO `kategori_tugas` (`kt_id`, `kt_nama`, `kt_deskripsi`, `kt_tanggal`, `kt_kkm`, `kt_bobot`, `kt_jadwal_id`, `kt_created_at`, `kt_edited_at`, `kt_deleted_at`, `kt_assessed_at`, `kt_value_changed_at`) VALUES
-(1, 'Tugas Harian', 'Mencari berita terkait pengamalan sila-sila pancasila dalam kehidupan sehari-hari.', '2023-04-26', 75, 5, 9, '2023-04-27 14:28:32', '2023-04-30 12:18:23', NULL, '2023-04-23 15:11:35', '2023-04-29 15:12:18'),
-(2, 'UTS', 'Ujian tengah semester', '2023-04-28', 80, 20, 9, '2023-04-27 15:32:40', '2023-04-29 19:19:27', NULL, '2023-04-29 19:19:27', NULL);
+INSERT INTO `kategori_tugas` (`kt_id`, `kt_nama`, `kt_jenis`, `kt_deskripsi`, `kt_tanggal`, `kt_kkm`, `kt_bobot`, `kt_jadwal_id`, `kt_semester_id`, `kt_created_at`, `kt_edited_at`, `kt_deleted_at`, `kt_assessed_at`, `kt_value_changed_at`) VALUES
+(1, 'Tugas Harian', 'pengetahuan', 'Mencari berita terkait pengamalan sila-sila pancasila dalam kehidupan sehari-hari.', '2023-04-26', 75, 10, 9, 7, '2023-04-27 14:28:32', '2023-05-13 15:59:59', NULL, '2023-04-23 15:11:35', '2023-04-29 15:12:18'),
+(2, 'UTS', 'pengetahuan', 'Ujian tengah semester', '2023-04-28', 80, 25, 9, 7, '2023-04-27 15:32:40', '2023-05-12 18:11:03', NULL, '2023-04-29 19:19:27', NULL),
+(3, 'Tugas harian 2', 'pengetahuan', 'Mencari berita', '2023-05-14', 70, 12, 9, 7, '2023-05-12 13:40:28', '2023-05-12 18:10:49', NULL, NULL, NULL),
+(4, 'UAS', 'pengetahuan', 'ujian', '2023-05-18', 75, 30, 9, 7, '2023-05-12 18:02:40', '2023-05-12 18:03:39', NULL, '2023-05-12 18:03:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -113,22 +118,23 @@ INSERT INTO `kategori_tugas` (`kt_id`, `kt_nama`, `kt_deskripsi`, `kt_tanggal`, 
 --
 
 CREATE TABLE `kelas` (
-  `id_kelas` int NOT NULL,
+  `id_kelas` int(11) NOT NULL,
   `kode_kelas` varchar(3) NOT NULL,
   `nama_kelas` varchar(25) NOT NULL,
-  `id_ta` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_ta` int(11) DEFAULT NULL,
+  `wali_kelas_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `kelas`
 --
 
-INSERT INTO `kelas` (`id_kelas`, `kode_kelas`, `nama_kelas`, `id_ta`) VALUES
-(2, '7B', 'VII B', 1),
-(4, '7C', 'VII C', 1),
-(5, '7A', 'VII A', 1),
-(7, '8A', 'VIII A', 3),
-(11, 'k01', '11', 8);
+INSERT INTO `kelas` (`id_kelas`, `kode_kelas`, `nama_kelas`, `id_ta`, `wali_kelas_id`) VALUES
+(2, '7B', 'VII B', 1, 9),
+(4, '7C', 'VII C', 1, 6),
+(5, '7A', 'VII A', 1, NULL),
+(7, '8A', 'VIII A', 3, NULL),
+(11, 'k01', '11', 8, NULL);
 
 -- --------------------------------------------------------
 
@@ -137,12 +143,12 @@ INSERT INTO `kelas` (`id_kelas`, `kode_kelas`, `nama_kelas`, `id_ta`) VALUES
 --
 
 CREATE TABLE `matapelajaran` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `kode_matapelajaran` varchar(10) NOT NULL,
   `nama_matapelajaran` varchar(100) NOT NULL,
   `kategori_mapel` enum('Kelompok A (Umum)','Kelompok B (Umum)','Kelompok C (Peminatan)') NOT NULL,
   `jurusan_mapel` enum('IPA','IPS') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `matapelajaran`
@@ -167,11 +173,11 @@ INSERT INTO `matapelajaran` (`id`, `kode_matapelajaran`, `nama_matapelajaran`, `
 --
 
 CREATE TABLE `nilai_akademik` (
-  `na_id` int NOT NULL,
-  `na_kategori_id` int NOT NULL,
-  `na_siswa_id` int NOT NULL,
+  `na_id` int(11) NOT NULL,
+  `na_kategori_id` int(11) NOT NULL,
+  `na_siswa_id` int(11) NOT NULL,
   `na_nilai` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `nilai_akademik`
@@ -185,7 +191,53 @@ INSERT INTO `nilai_akademik` (`na_id`, `na_kategori_id`, `na_siswa_id`, `na_nila
 (5, 2, 1, 100),
 (6, 2, 3, 100),
 (7, 2, 4, 100),
-(8, 2, 5, 100);
+(8, 2, 5, 100),
+(9, 4, 1, 90),
+(10, 4, 3, 80),
+(11, 4, 4, 75),
+(12, 4, 5, 80);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `nilai_non_akademik`
+--
+
+CREATE TABLE `nilai_non_akademik` (
+  `non_id` int(11) NOT NULL,
+  `non_kelas_id` int(11) NOT NULL,
+  `non_wali_kelas_id` int(11) NOT NULL,
+  `non_th_id` int(11) NOT NULL,
+  `non_created_by` int(11) NOT NULL,
+  `non_created_at` datetime NOT NULL,
+  `non_edited_by` int(11) NOT NULL,
+  `non_edited_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `nilai_non_akademik_detail`
+--
+
+CREATE TABLE `nilai_non_akademik_detail` (
+  `nond_id` int(11) NOT NULL,
+  `nond_non_id` int(11) NOT NULL,
+  `nond_siswa_id` int(11) NOT NULL,
+  `nond_spiritual_predikat` enum('Baik','Cukup','Sedang') NOT NULL,
+  `nond_spiritual_deskripsi` text NOT NULL,
+  `nond_sosial_predikat` enum('Baik','Cukup','Sedang') NOT NULL,
+  `nond_sosial_deskripsi` text NOT NULL,
+  `nond_sakit` int(10) UNSIGNED NOT NULL,
+  `nond_izin` int(10) UNSIGNED NOT NULL,
+  `nond_tanpa_keterangan` int(10) UNSIGNED NOT NULL,
+  `nond_catatan_wali_kelas` text NOT NULL,
+  `nond_catatan_ortu` text NOT NULL,
+  `nond_created_by` int(11) NOT NULL,
+  `nond_created_at` datetime NOT NULL,
+  `nond_edited_by` int(11) NOT NULL,
+  `nond_edited_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -194,7 +246,7 @@ INSERT INTO `nilai_akademik` (`na_id`, `na_kategori_id`, `na_siswa_id`, `na_nila
 --
 
 CREATE TABLE `orangtua` (
-  `id_orangtua` int NOT NULL,
+  `id_orangtua` int(11) NOT NULL,
   `username` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
   `nama` varchar(50) NOT NULL,
@@ -202,7 +254,7 @@ CREATE TABLE `orangtua` (
   `pekerjaan` varchar(50) NOT NULL,
   `nis_siswa` varchar(10) NOT NULL,
   `alamat` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `orangtua`
@@ -218,12 +270,12 @@ INSERT INTO `orangtua` (`id_orangtua`, `username`, `password`, `nama`, `no_hp`, 
 --
 
 CREATE TABLE `pengumuman` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `judul` varchar(50) NOT NULL,
   `pengumuman` varchar(255) NOT NULL,
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `pengumuman`
@@ -242,12 +294,12 @@ INSERT INTO `pengumuman` (`id`, `judul`, `pengumuman`, `created_at`, `updated_at
 --
 
 CREATE TABLE `semester` (
-  `id_semester` int NOT NULL,
-  `id_ta` int DEFAULT NULL,
+  `id_semester` int(11) NOT NULL,
+  `id_ta` int(11) DEFAULT NULL,
   `semester` enum('ganjil','genap') NOT NULL,
   `mulai` datetime DEFAULT NULL,
   `selesai` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `semester`
@@ -264,19 +316,19 @@ INSERT INTO `semester` (`id_semester`, `id_ta`, `semester`, `mulai`, `selesai`) 
 --
 
 CREATE TABLE `siswa` (
-  `id` int NOT NULL,
-  `nis` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
   `username` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
   `nama` varchar(150) NOT NULL,
   `tempat_lahir` varchar(50) NOT NULL,
   `tgl_lahir` date NOT NULL,
   `gender` enum('Laki-laki','Perempuan') NOT NULL,
-  `id_kelas` int DEFAULT NULL,
+  `id_kelas` int(11) DEFAULT NULL,
   `alamat` varchar(150) NOT NULL,
   `no_hp` varchar(20) NOT NULL,
   `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `siswa`
@@ -295,9 +347,9 @@ INSERT INTO `siswa` (`id`, `nis`, `username`, `password`, `nama`, `tempat_lahir`
 --
 
 CREATE TABLE `tahun_ajaran` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `tahun_ajaran` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tahun_ajaran`
@@ -313,14 +365,14 @@ INSERT INTO `tahun_ajaran` (`id`, `tahun_ajaran`) VALUES
 --
 
 CREATE TABLE `user` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `level` enum('admin','guru','siswa','orangtua') NOT NULL,
   `blokir` enum('N','Y') NOT NULL,
   `id_sessions` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `user`
@@ -378,6 +430,18 @@ ALTER TABLE `nilai_akademik`
   ADD KEY `na_siswa_id` (`na_siswa_id`);
 
 --
+-- Indeks untuk tabel `nilai_non_akademik`
+--
+ALTER TABLE `nilai_non_akademik`
+  ADD PRIMARY KEY (`non_id`);
+
+--
+-- Indeks untuk tabel `nilai_non_akademik_detail`
+--
+ALTER TABLE `nilai_non_akademik_detail`
+  ADD PRIMARY KEY (`nond_id`);
+
+--
 -- Indeks untuk tabel `orangtua`
 --
 ALTER TABLE `orangtua`
@@ -423,73 +487,85 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `guru`
 --
 ALTER TABLE `guru`
-  MODIFY `id_guru` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `jadwal_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `jadwal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori_tugas`
 --
 ALTER TABLE `kategori_tugas`
-  MODIFY `kt_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `matapelajaran`
 --
 ALTER TABLE `matapelajaran`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `nilai_akademik`
 --
 ALTER TABLE `nilai_akademik`
-  MODIFY `na_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `na_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT untuk tabel `nilai_non_akademik`
+--
+ALTER TABLE `nilai_non_akademik`
+  MODIFY `non_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `nilai_non_akademik_detail`
+--
+ALTER TABLE `nilai_non_akademik_detail`
+  MODIFY `nond_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `orangtua`
 --
 ALTER TABLE `orangtua`
-  MODIFY `id_orangtua` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_orangtua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengumuman`
 --
 ALTER TABLE `pengumuman`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `semester`
 --
 ALTER TABLE `semester`
-  MODIFY `id_semester` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_semester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tahun_ajaran`
 --
 ALTER TABLE `tahun_ajaran`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -499,34 +575,34 @@ ALTER TABLE `user`
 -- Ketidakleluasaan untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
-  ADD CONSTRAINT `jadwal_ibfk_1` FOREIGN KEY (`guru_id`) REFERENCES `guru` (`id_guru`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `jadwal_ibfk_2` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id_kelas`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `jadwal_ibfk_3` FOREIGN KEY (`mapel_id`) REFERENCES `matapelajaran` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `jadwal_ibfk_1` FOREIGN KEY (`guru_id`) REFERENCES `guru` (`id_guru`),
+  ADD CONSTRAINT `jadwal_ibfk_2` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id_kelas`),
+  ADD CONSTRAINT `jadwal_ibfk_3` FOREIGN KEY (`mapel_id`) REFERENCES `matapelajaran` (`id`);
 
 --
 -- Ketidakleluasaan untuk tabel `kategori_tugas`
 --
 ALTER TABLE `kategori_tugas`
-  ADD CONSTRAINT `kategori_tugas_ibfk_1` FOREIGN KEY (`kt_jadwal_id`) REFERENCES `jadwal` (`jadwal_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `kategori_tugas_ibfk_1` FOREIGN KEY (`kt_jadwal_id`) REFERENCES `jadwal` (`jadwal_id`);
 
 --
 -- Ketidakleluasaan untuk tabel `nilai_akademik`
 --
 ALTER TABLE `nilai_akademik`
-  ADD CONSTRAINT `nilai_akademik_ibfk_1` FOREIGN KEY (`na_kategori_id`) REFERENCES `kategori_tugas` (`kt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `nilai_akademik_ibfk_2` FOREIGN KEY (`na_siswa_id`) REFERENCES `siswa` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `nilai_akademik_ibfk_1` FOREIGN KEY (`na_kategori_id`) REFERENCES `kategori_tugas` (`kt_id`),
+  ADD CONSTRAINT `nilai_akademik_ibfk_2` FOREIGN KEY (`na_siswa_id`) REFERENCES `siswa` (`id`);
 
 --
 -- Ketidakleluasaan untuk tabel `semester`
 --
 ALTER TABLE `semester`
-  ADD CONSTRAINT `semester_ibfk_1` FOREIGN KEY (`id_ta`) REFERENCES `tahun_ajaran` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `semester_ibfk_1` FOREIGN KEY (`id_ta`) REFERENCES `tahun_ajaran` (`id`);
 
 --
 -- Ketidakleluasaan untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
-  ADD CONSTRAINT `siswa_ibfk_1` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `siswa_ibfk_1` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

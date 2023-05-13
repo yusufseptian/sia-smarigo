@@ -89,22 +89,34 @@ class PenilaianAkademik extends BaseController
             'title' => 'Siasmarigo',
             'sub_title' => 'Pengumuman',
             'dtJadwal' => $dtJadwal,
-            'mapelID' => $idMapel
+            'mapelID' => $idMapel,
+            'dtSemester' => $this->ModelSemester->getActiveSemester()
         ];
         return view('guru/penilaian/pilih_kelas', $data);
     }
 
-    public function kategori($idMapel, $idKelas)
+    public function kategori($kat, $idMapel, $idKelas, $idSemester = 0)
     {
+        if (!(strtolower($kat) == 'pengetahuan' || strtolower($kat) == 'keterampilan')) {
+            session()->setFlashdata('danger', 'Keterangan kategori tidak sesuai');
+            return $this->redirectBack();
+        }
         $dtTA = $this->ModelTahunAjar->getTANow();
         if (empty($dtTA)) {
             session()->setFlashdata('danger', 'Data tahun ajaran belum ditentukan');
             return $this->redirectBack();
         }
-        $dtSmt = $this->ModelSemester->getActiveSemester();
-        if (is_null($dtSmt)) {
-            session()->setFlashdata('danger', 'Mohon aktifkan semester tahun ajaran sakarang terlebih dahulu');
-            return $this->redirectBack();
+        if ($idSemester == 0) {
+            $dtSmt = $this->ModelSemester->getActiveSemester();
+        } else {
+            $dtSmt = $this->ModelSemester->where('id_semester', $idSemester)->where('id_ta', $dtTA['id'])->first();
+            if (empty($dtSmt)) {
+                session()->setFlashdata('danger', 'Data semester tidak ditemukan');
+                return $this->redirectBack();
+            }
+        }
+        if (empty($dtSmt)) {
+            $dtSmt = $this->ModelSemester->where('id_ta', $dtTA['id'])->first();
         }
         $dtMapel = $this->ModelMapel->find($idMapel);
         if (empty($dtMapel)) {
@@ -135,20 +147,31 @@ class PenilaianAkademik extends BaseController
             'dtJadwal' => $dtJadwal,
             'mapelID' => $idMapel,
             'kelasID' => $idKelas,
-            'dtKategori' => $this->ModelKategori->where('kt_jadwal_id', $dtJadwal['jadwal_id'])->findAll(),
+            'dtKategori' => $this->ModelKategori->where('kt_jadwal_id', $dtJadwal['jadwal_id'])->where('kt_semester_id', $dtSmt['id_semester'])->where('kt_jenis', $kat)->findAll(),
             'dtMapel' => $dtMapel,
             'dtKelas' => $dtKelas,
             'dtSmt' => $dtSmt,
-            'dtTA' => $dtTA
+            'dtTA' => $dtTA,
+            'listSemester' => $this->ModelSemester->where('id_ta', $dtTA['id'])->findAll(),
+            'keteranganKategori' => $kat
         ];
         return view('guru/penilaian/kategori_tugas', $data);
     }
 
-    public function addKategori($idMapel, $idKelas)
+    public function addKategori($kat, $idMapel, $idKelas, $idSemester)
     {
+        if (!(strtolower($kat) == 'pengetahuan' || strtolower($kat) == 'keterampilan')) {
+            session()->setFlashdata('danger', 'Keterangan kategori tidak sesuai');
+            return $this->redirectBack();
+        }
         $dtTA = $this->ModelTahunAjar->getTANow();
         if (empty($dtTA)) {
             session()->setFlashdata('danger', 'Data tahun ajaran belum ditentukan');
+            return $this->redirectBack();
+        }
+        $dtSmt = $this->ModelSemester->where('id_semester', $idSemester)->where('id_ta', $dtTA['id'])->first();
+        if (empty($dtSmt)) {
+            session()->setFlashdata('danger', 'Data semester tidak ditemukan');
             return $this->redirectBack();
         }
         $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->first();
@@ -179,14 +202,16 @@ class PenilaianAkademik extends BaseController
             'kt_tanggal' => $this->request->getPost('txtTanggal'),
             'kt_kkm' => $this->request->getPost('txtKKM'),
             'kt_bobot' => $this->request->getPost('txtBobot'),
-            'kt_jadwal_id' => $dtJadwal['jadwal_id']
+            'kt_jadwal_id' => $dtJadwal['jadwal_id'],
+            'kt_jenis' => $kat,
+            'kt_semester_id' => $idSemester
         ];
         if ($this->ModelKategori->insert($data)) {
             session()->setFlashdata('success', 'Data berhasil ditambahkan');
         } else {
             session()->setFlashdata('danger', 'Data gagal ditambahkan');
         }
-        return redirect()->to(base_url('penilaianakademik/kategori/' . $idMapel . '/' . $idKelas));
+        return redirect()->to(base_url("penilaianakademik/kategori/$kat/$idMapel/$idKelas/$idSemester"));
     }
 
     public function editKategori($idMapel, $idKelas, $idKategori)
@@ -235,7 +260,7 @@ class PenilaianAkademik extends BaseController
         } else {
             session()->setFlashdata('danger', 'Data gagal diedit');
         }
-        return redirect()->to(base_url('penilaianakademik/kategori/' . $idMapel . '/' . $idKelas));
+        return redirect()->to(base_url("penilaianakademik/kategori/" . $dtKategori['kt_jenis'] . "/$idMapel/$idKelas/" . $dtKategori['kt_semester_id']));
     }
 
     public function nilai($idMapel, $idKelas, $idKategori)

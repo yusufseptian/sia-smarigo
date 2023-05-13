@@ -3,10 +3,22 @@
 <div class="col">
     <div class="card">
         <div class="card-header d-flex justify-content-between">
-            <span class="my-auto">Pilih Mapel yg Diampu</span>
+            <div>
+                <label for="cmbSemester">Semester: </label>
+                <select name="cmbSemester" id="cmbSemester" class="form-control form-control-sm" style="width: fit-content; display: inline;" onchange="changeSemester(this.value)">
+                    <?php foreach ($listSemester as $dt) : ?>
+                        <?php if (is_null($dtSmt)) : ?>
+                            <option value="<?= $dt['id_semester'] ?>"><?= ucfirst($dt['semester']) ?></option>
+                        <?php else : ?>
+                            <option value="<?= $dt['id_semester'] ?>" <?= ($dtSmt['id_semester'] == $dt['id_semester']) ? 'selected' : '' ?>><?= ucfirst($dt['semester']) ?></option>
+                        <?php endif ?>
+                    <?php endforeach ?>
+                </select>
+            </div>
             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalAddKategori">Tambah</button>
         </div>
         <div class="card-body">
+            <h3><b>Nilai <?= ucfirst($keteranganKategori) ?></b></h3>
             <div class="mb-3 border-bottom d-flex justify-content-between">
                 <table>
                     <tr>
@@ -75,7 +87,7 @@
 </div>
 <!-- Modal Add Kategori -->
 <div class="modal fade" id="modalAddKategori" tabindex="-1" aria-labelledby="modalAddKategoriLabel" aria-hidden="true">
-    <form action="<?= base_url('penilaianakademik/addkategori/' . $mapelID . '/' . $kelasID) ?>" method="post">
+    <form action="<?= base_url("penilaianakademik/addkategori/$keteranganKategori/$mapelID/$kelasID/" . $dtSmt['id_semester']) ?>" method="post">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -174,7 +186,7 @@
         $("#txtKKM_Edit").val(dtKategori[id]['kt_kkm']);
         $("#txtBobot_Edit").val(dtKategori[id]['kt_bobot']);
         $("#txtDeskripsi_Edit").html(dtKategori[id]['kt_deskripsi']);
-        $("#formEditKategori").attr('action', "<?= base_url('penilaianakademik/editKategori/' . $mapelID . '/' . $kelasID) ?>/" + id);
+        $("#formEditKategori").attr('action', "<?= base_url("penilaianakademik/editKategori/$mapelID/$kelasID") ?>/" + id);
         bobotEdit = Number(bobot);
     }
 
@@ -190,6 +202,7 @@
             $("#maxBobotInfo_Edit").html(rest);
             $("#alertEdit").addClass('alert-info');
             $("#alertEdit").removeClass('alert-danger');
+            $("#txtBobot_Edit").attr('max', rest);
         }
     }
 
@@ -200,5 +213,9 @@
         $("#maxBobotInfo_Edit").html((100 - Number(<?= $bobot ?>)));
         $("#maxBobotInfo").html((100 - Number(<?= $bobot ?>)));
     });
+
+    function changeSemester(semester) {
+        window.location.href = '<?= base_url("penilaianakademik/kategori/$keteranganKategori/$mapelID/$kelasID") ?>/' + semester;
+    }
 </script>
 <?= $this->endSection() ?>

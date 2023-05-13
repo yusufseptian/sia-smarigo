@@ -11,14 +11,26 @@
                     <tr>
                         <th>NO</th>
                         <th>KELAS</th>
+                        <th class="cellFit">NILAI PENGETAHUAN</th>
+                        <th class="cellFit">NILAI KETERAMPILAN</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $no = 1;
                     foreach ($dtJadwal as $key => $value) { ?>
-                        <tr style="cursor:  pointer;" onclick="window.location.href='<?= base_url('penilaianakademik/kategori/' . $mapelID . '/' . $value['kelas_id']) ?>'">
+                        <tr style="cursor:  pointer;">
                             <td class="cellFit"><?= $no++ ?></td>
                             <td><?= $value['nama_kelas'] ?></td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-success btn-sm" onclick="window.location.href='<?= base_url('penilaianakademik/kategori/pengetahuan/' . $mapelID . '/' . $value['kelas_id']) ?>'">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='<?= base_url('penilaianakademik/kategori/keterampilan/' . $mapelID . '/' . $value['kelas_id']) ?>'">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>
