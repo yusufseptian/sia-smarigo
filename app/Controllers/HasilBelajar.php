@@ -74,7 +74,7 @@ class HasilBelajar extends BaseController
         return view('guru/hasilbelajar/index', $data);
     }
 
-    public function mapel($idTahunAjaran)
+    public function mapel($idTahunAjaran, $idKelas = 0)
     {
         $dtTA = $this->ModelTahunAjar->find($idTahunAjaran);
         if (empty($dtTA)) {
@@ -82,18 +82,16 @@ class HasilBelajar extends BaseController
             return $this->redirectBack();
         }
         if (session('log_auth')['role'] == "GURU") {
-            if (!$this->validate([
-                'rdClass' => 'required|is_natural_no_zero'
-            ])) {
+            if ($idKelas == 0) {
                 session()->setFlashdata('danger', 'Mohon pilih kelas terlebih dahulu');
                 return $this->redirectBack();
             }
             $dtMapel = $this->ModelJadwal->join('matapelajaran', 'mapel_id=matapelajaran.id')
                 ->where('guru_id', session('log_auth')['akunID'])
                 ->where('tahun_ajaran', $idTahunAjaran)
-                ->where('kelas_id', $this->request->getPost('rdClass'))
+                ->where('kelas_id', $idKelas)
                 ->groupBy('mapel_id')->findAll();
-            session()->set('idKelasForHasil', $this->request->getPost('rdClass'));
+            session()->set('idKelasForHasil', $idKelas);
         } elseif (session('log_auth')['role'] == "SISWA") {
             $dtMapel = $this->ModelNilaiAkademik->join('kategori_tugas', 'na_kategori_id=kt_id')
                 ->join('jadwal', 'kt_jadwal_id=jadwal_id')

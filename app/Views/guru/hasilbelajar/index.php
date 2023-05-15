@@ -45,36 +45,34 @@
         </div>
     </div>
 </div>
-<!-- Modal Add Kategori -->
+<!-- Modal Pilih Kelas -->
 <div class="modal fade" id="selectClassModel" tabindex="-1" aria-labelledby="selectClassModelLabel" aria-hidden="true">
-    <form action="" id="formDataKelas" method="post">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="selectClassModelLabel">Pilih Kelas</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th class="cellFit">#</th>
-                                <th>Kelas</th>
-                            </tr>
-                        </thead>
-                        <tbody id="dataKelas">
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="selectClassModelLabel">Pilih Kelas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="cellFit">#</th>
+                            <th>Kelas</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataKelas">
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="hyperlink()">Lihat</button>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 <?= $this->endSection() ?>
 <?= $this->section('bottomScript') ?>
@@ -99,7 +97,19 @@
                     $("#dataKelas").append($("<tr></tr>").append(tdRadio, tdLabel));
                 }
             });
-            $("#formDataKelas").attr('action', "<?= base_url('hasilbelajar/mapel') ?>/" + id);
+        }
+
+        function hyperlink() {
+            let kelas = $("input[name='rdClass']:checked");
+            if (kelas.length == 0) {
+                Swal.fire(
+                    'Gagal!',
+                    'Mohon pilih kelas terlebih dahulu!',
+                    'error'
+                );
+            } else {
+                window.location.href = '<?= base_url("hasilbelajar/mapel") ?>/' + idTahunAjaran + '/' + kelas.val();
+            }
         }
     <?php endif ?>
 </script>
