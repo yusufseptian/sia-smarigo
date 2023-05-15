@@ -2,7 +2,25 @@
 <?= $this->section('content') ?>
 <div class="col">
     <div class="card">
+        <div class="card-header d-flex justify-content-between">
+            <div>
+                <label for="cmbSemester">Semester</label>
+                <select name="cmbSemester" id="cmbSemester" class="form-control" style="width: fit-content; display: inline;" onchange="setSemester(this.value)">
+                    <?php foreach ($listSemester as $semester) : ?>
+                        <option value="<?= $semester['id_semester'] ?>" <?= ($semester['id_semester'] == $dtSmt['id_semester']) ? 'selected' : '' ?>><?= ucfirst($semester['semester']) ?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+            <div>
+                <label for="cmbKategori">Kategori</label>
+                <select name="cmbKategori" id="cmbKategori" class="form-control" style="width: fit-content; display: inline;" onchange="setKeterangan(this.value)">
+                    <option value="pengetahuan" <?= ($jenisKategori == "pengetahuan") ? 'selected' : '' ?>>Pengetahuan</option>
+                    <option value="keterampilan" <?= ($jenisKategori == "keterampilan") ? 'selected' : '' ?>>Keterampilan</option>
+                </select>
+            </div>
+        </div>
         <div class="card-body">
+            <h3><b>Nilai <?= ucfirst($jenisKategori) ?></b></h3>
             <div class="border-bottom border-top p-2 d-flex justify-content-between">
                 <?php if (session('log_auth')['role'] == "SISWA" || session('log_auth')['role'] == "ORTU") : ?>
                     <div>
@@ -48,7 +66,7 @@
                         <tr>
                             <td>Tahun Ajaran</td>
                             <td class="px-3">:</td>
-                            <td><?= $dtTA['tahun_ajaran'] ?></td>
+                            <td><?= $dtTA['tahun_ajaran'] ?> (<?= ucfirst($dtSmt['semester']) ?>)</td>
                         </tr>
                     </table>
                 <?php endif ?>
@@ -74,6 +92,12 @@
 <?= $this->endSection() ?>
 <?= $this->section('bottomScript') ?>
 <script>
+    function setSemester(semester) {
+        window.location.href = "<?= base_url("hasilbelajar/hasil/$jenisKategori/$tahunAjaranID/$mapelID") ?>/" + semester;
+    }
 
+    function setKeterangan(keterangan) {
+        window.location.href = "<?= base_url("hasilbelajar/hasil") ?>/" + keterangan + "<?= "/$tahunAjaranID/$mapelID/$semesterID" ?>";
+    }
 </script>
 <?= $this->endSection() ?>

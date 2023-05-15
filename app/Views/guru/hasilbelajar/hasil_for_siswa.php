@@ -1,4 +1,9 @@
 <div class="tab-pane fade show active py-1" id="hasil-akhir" role="tabpanel" aria-labelledby="hasil-akhir-tab">
+    <?php if (count($dtNilai) == 0) : ?>
+        <div class="alert alert-warning" role="alert">
+            <b><i class="fas fa-exclamation-triangle"></i></b> Belum ada data kategori tugas
+        </div>
+    <?php endif ?>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -28,6 +33,11 @@
     </table>
 </div>
 <div class="tab-pane fade py-1" id="detail-nilai" role="tabpanel" aria-labelledby="detail-nilai-tab">
+    <?php if (count($dtNilai) == 0) : ?>
+        <div class="alert alert-warning" role="alert">
+            <b><i class="fas fa-exclamation-triangle"></i></b> Belum ada data kategori tugas
+        </div>
+    <?php endif ?>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>

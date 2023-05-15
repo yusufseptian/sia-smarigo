@@ -7,6 +7,7 @@ use App\Models\ModelJadwal;
 use App\Models\ModelKategoriTugas;
 use App\Models\ModelNilaiAkademik;
 use App\Models\ModelOrtu;
+use App\Models\ModelSemester;
 use App\Models\ModelSiswa;
 use App\Models\ModelTahunAjar;
 
@@ -19,6 +20,7 @@ class HasilBelajar extends BaseController
     private $ModelOrtu = null;
     private $ModelSiswa = null;
     private $ModelKategori = null;
+    private $ModelSemester = null;
 
     public function __construct()
     {
@@ -28,6 +30,7 @@ class HasilBelajar extends BaseController
         $this->ModelTahunAjar = new ModelTahunAjar();
         $this->ModelSiswa = new ModelSiswa();
         $this->ModelKategori = new ModelKategoriTugas();
+        $this->ModelSemester = new ModelSemester();
     }
 
     public function index()
@@ -126,12 +129,30 @@ class HasilBelajar extends BaseController
         return view('guru/hasilbelajar/pilih_mapel', $data);
     }
 
-    public function hasil($idTahunAjaran, $idMapel)
+    public function hasil($keterangan = null, $idTahunAjaran, $idMapel, $semester = 0)
     {
         $dtTA = $this->ModelTahunAjar->find($idTahunAjaran);
         if (empty($dtTA)) {
             session()->setFlashdata('danger', 'Data tahun ajaran tidak ditemukan');
             return $this->redirectBack();
+        }
+        if ($semester == 0) {
+            $dtSmt = $this->ModelSemester->where('id_ta', $dtTA['id'])->first();
+        } else {
+            $dtSmt = $this->ModelSemester->where('id_ta', $dtTA['id'])->where('id_semester', $semester)->first();
+            if (empty($dtSmt)) {
+                session()->setFlashdata('danger', 'Data semester tidak ditemukan');
+                return $this->redirectBack();
+            }
+        }
+        $keterangan = strtoupper($keterangan);
+        if (is_null($keterangan)) {
+            $keterangan = 'pengetahuan';
+        } else {
+            if ($keterangan == 'pengetahuan' || $keterangan == 'keterampilan') {
+                session()->setFlashdata('danger', 'Data keterangan kategori tidak sesuai');
+                return $this->redirectBack();
+            }
         }
         $dtMapel = $this->ModelJadwal->join('matapelajaran', 'id = mapel_id')
             ->join('kelas', 'kelas_id=id_kelas')
@@ -151,11 +172,10 @@ class HasilBelajar extends BaseController
             session()->setFlashdata('danger', 'Data mapel tidak ditemukan');
             return $this->redirectBack();
         }
-        $dtKategori = $this->ModelKategori->where('kt_jadwal_id', $dtMapel['jadwal_id'])->findAll();
-        if (count($dtKategori) == 0) {
-            session()->setFlashdata('danger', 'Belum ada tugas sama sekali pada mapel ini');
-            return $this->redirectBack();
+        if (is_null($keterangan)) {
+            $keterangan = 'pengetahuan';
         }
+        $dtKategori = $this->ModelKategori->where('kt_jadwal_id', $dtMapel['jadwal_id'])->where('kt_semester_id', $dtSmt['id_semester'])->where('kt_jenis', $keterangan)->findAll();
         if (session('log_auth')['role'] == "GURU") {
             $dtNilai = [];
             $dtSiswa = $this->ModelSiswa->select('id,nis,nama')->where('id_kelas', $dtMapel['kelas_id'])->findAll();
@@ -202,7 +222,12 @@ class HasilBelajar extends BaseController
             'dtNilai' => $dtNilai,
             'dtKategori' => $dtKategori,
             'tahunAjaranID' => $idTahunAjaran,
-            'dtTA' => $dtTA
+            'mapelID' => $idMapel,
+            'dtTA' => $dtTA,
+            'jenisKategori' => strtolower($keterangan),
+            'listSemester' => $this->ModelSemester->where('id_ta', $dtTA['id'])->findAll(),
+            'dtSmt' => $dtSmt,
+            'semesterID' => $dtSmt['id_semester']
         ];
         if (isset($dtSiswa)) {
             $data['dtSiswa'] = $dtSiswa;

@@ -1,4 +1,9 @@
-<div class="tab-pane fade show active table-responsive py-3" id="hasil-akhir" role="tabpanel" aria-labelledby="hasil-akhir-tab">
+<div class="tab-pane fade show active table-responsive py-1" id="hasil-akhir" role="tabpanel" aria-labelledby="hasil-akhir-tab">
+    <?php if (count($dtNilai[0]) == 3) : ?>
+        <div class="alert alert-warning" role="alert">
+            <b><i class="fas fa-exclamation-triangle"></i></b> Belum ada data kategori tugas
+        </div>
+    <?php endif ?>
     <table class="table table-striped table-bordered w-auto">
         <thead>
             <tr>
@@ -31,7 +36,12 @@
         </tbody>
     </table>
 </div>
-<div class="tab-pane fade table-responsive py-1" id="detail-nilai" role="tabpanel" aria-labelledby="detail-nilai-tab">.
+<div class="tab-pane fade table-responsive py-1" id="detail-nilai" role="tabpanel" aria-labelledby="detail-nilai-tab">
+    <?php if (count($dtNilai[0]) == 3) : ?>
+        <div class="alert alert-warning" role="alert">
+            <b><i class="fas fa-exclamation-triangle"></i></b> Belum ada data kategori tugas
+        </div>
+    <?php endif ?>
     <table class="table table-striped table-bordered w-auto">
         <thead>
             <tr>
