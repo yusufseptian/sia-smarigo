@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Bulan Mei 2023 pada 11.05
+-- Waktu pembuatan: 19 Bulan Mei 2023 pada 23.04
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.12
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `siapegrisa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ekstrakulikuler`
+--
+
+CREATE TABLE `ekstrakulikuler` (
+  `ekskul_id` int(11) NOT NULL,
+  `ekskul_nama` varchar(50) NOT NULL,
+  `ekskul_predikat` enum('A','B','C') NOT NULL,
+  `ekskul_deskripsi` text NOT NULL,
+  `ekskul_nond_id` int(11) NOT NULL,
+  `ekskul_created_at` datetime NOT NULL,
+  `ekskul_created_by` int(11) NOT NULL,
+  `ekskul_edited_at` datetime NOT NULL,
+  `ekskul_edited_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `ekstrakulikuler`
+--
+
+INSERT INTO `ekstrakulikuler` (`ekskul_id`, `ekskul_nama`, `ekskul_predikat`, `ekskul_deskripsi`, `ekskul_nond_id`, `ekskul_created_at`, `ekskul_created_by`, `ekskul_edited_at`, `ekskul_edited_by`) VALUES
+(17, 'Osis', 'A', 'a', 3, '2023-05-19 00:01:20', 9, '2023-05-19 01:06:23', 9),
+(19, 'Futsal', 'A', 'a', 3, '2023-05-19 01:01:15', 9, '2023-05-19 01:06:23', 9);
 
 -- --------------------------------------------------------
 
@@ -207,12 +233,19 @@ CREATE TABLE `nilai_non_akademik` (
   `non_id` int(11) NOT NULL,
   `non_kelas_id` int(11) NOT NULL,
   `non_wali_kelas_id` int(11) NOT NULL,
-  `non_th_id` int(11) NOT NULL,
+  `non_semester_id` int(11) NOT NULL,
   `non_created_by` int(11) NOT NULL,
   `non_created_at` datetime NOT NULL,
-  `non_edited_by` int(11) NOT NULL,
-  `non_edited_at` datetime NOT NULL
+  `non_edited_by` int(11) DEFAULT NULL,
+  `non_edited_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `nilai_non_akademik`
+--
+
+INSERT INTO `nilai_non_akademik` (`non_id`, `non_kelas_id`, `non_wali_kelas_id`, `non_semester_id`, `non_created_by`, `non_created_at`, `non_edited_by`, `non_edited_at`) VALUES
+(1, 2, 9, 7, 9, '2023-05-18 04:12:05', NULL, '2023-05-18 04:12:05');
 
 -- --------------------------------------------------------
 
@@ -232,12 +265,20 @@ CREATE TABLE `nilai_non_akademik_detail` (
   `nond_izin` int(10) UNSIGNED NOT NULL,
   `nond_tanpa_keterangan` int(10) UNSIGNED NOT NULL,
   `nond_catatan_wali_kelas` text NOT NULL,
-  `nond_catatan_ortu` text NOT NULL,
+  `nond_catatan_ortu` text DEFAULT NULL,
   `nond_created_by` int(11) NOT NULL,
   `nond_created_at` datetime NOT NULL,
-  `nond_edited_by` int(11) NOT NULL,
-  `nond_edited_at` datetime NOT NULL
+  `nond_edited_by` int(11) DEFAULT NULL,
+  `nond_edited_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `nilai_non_akademik_detail`
+--
+
+INSERT INTO `nilai_non_akademik_detail` (`nond_id`, `nond_non_id`, `nond_siswa_id`, `nond_spiritual_predikat`, `nond_spiritual_deskripsi`, `nond_sosial_predikat`, `nond_sosial_deskripsi`, `nond_sakit`, `nond_izin`, `nond_tanpa_keterangan`, `nond_catatan_wali_kelas`, `nond_catatan_ortu`, `nond_created_by`, `nond_created_at`, `nond_edited_by`, `nond_edited_at`) VALUES
+(3, 1, 1, 'Baik', 'Memiliki sikap spiritual yang sangat baik, rajin beribadah serta toleran pada agama yang berbeda', 'Baik', 'Memiliki sikap sosial yang baik seperti sopan, disiplin, bertanggung jawab dan aktif dalam hidup bersosial', 2, 1, 0, 'Tingkatkan prestasimu dan diiringi dengan do\'a supaya prestasimu lebih baik', NULL, 9, '2023-05-18 04:20:32', 9, '2023-05-19 01:06:23'),
+(4, 1, 3, 'Baik', 'Bagus', 'Baik', 'Sip', 2, 1, 0, 'Mantap', NULL, 9, '2023-05-19 01:07:02', NULL, '2023-05-19 01:07:02');
 
 -- --------------------------------------------------------
 
@@ -286,6 +327,31 @@ INSERT INTO `pengumuman` (`id`, `judul`, `pengumuman`, `created_at`, `updated_at
 (2, 'Pramuka', 'Hari Jumat harap membawa perlengkapan pramuka untuk kelas 8!', '2023-01-29', '2023-02-10'),
 (4, 'PENGUMUMAN UAS', 'ini pengumuman', '2023-02-04', '0000-00-00'),
 (5, 'Lomba Agustusan', 'Tanggal 15-17 diadakan pentas seni!', '2023-02-10', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `prestasi`
+--
+
+CREATE TABLE `prestasi` (
+  `prestasi_id` int(11) NOT NULL,
+  `prestasi_nama` varchar(50) NOT NULL,
+  `prestasi_deskripsi` text NOT NULL,
+  `prestasi_nond_id` int(11) NOT NULL,
+  `prestasi_created_at` datetime NOT NULL,
+  `prestasi_created_by` int(11) NOT NULL,
+  `prestasi_edited_at` datetime NOT NULL,
+  `prestasi_edited_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `prestasi`
+--
+
+INSERT INTO `prestasi` (`prestasi_id`, `prestasi_nama`, `prestasi_deskripsi`, `prestasi_nond_id`, `prestasi_created_at`, `prestasi_created_by`, `prestasi_edited_at`, `prestasi_edited_by`) VALUES
+(1, 'Juara membuat sistem', 'ok', 3, '2023-05-18 04:20:32', 9, '2023-05-19 01:06:23', 9),
+(3, 'Juara tarik tambang hitam', 'ok', 3, '2023-05-19 01:01:15', 9, '2023-05-19 01:06:23', 9);
 
 -- --------------------------------------------------------
 
@@ -388,6 +454,12 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `level`, `blokir`, `i
 --
 
 --
+-- Indeks untuk tabel `ekstrakulikuler`
+--
+ALTER TABLE `ekstrakulikuler`
+  ADD PRIMARY KEY (`ekskul_id`);
+
+--
 -- Indeks untuk tabel `guru`
 --
 ALTER TABLE `guru`
@@ -454,6 +526,12 @@ ALTER TABLE `pengumuman`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `prestasi`
+--
+ALTER TABLE `prestasi`
+  ADD PRIMARY KEY (`prestasi_id`);
+
+--
 -- Indeks untuk tabel `semester`
 --
 ALTER TABLE `semester`
@@ -482,6 +560,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
+
+--
+-- AUTO_INCREMENT untuk tabel `ekstrakulikuler`
+--
+ALTER TABLE `ekstrakulikuler`
+  MODIFY `ekskul_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `guru`
@@ -523,13 +607,13 @@ ALTER TABLE `nilai_akademik`
 -- AUTO_INCREMENT untuk tabel `nilai_non_akademik`
 --
 ALTER TABLE `nilai_non_akademik`
-  MODIFY `non_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `non_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `nilai_non_akademik_detail`
 --
 ALTER TABLE `nilai_non_akademik_detail`
-  MODIFY `nond_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `nond_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `orangtua`
@@ -542,6 +626,12 @@ ALTER TABLE `orangtua`
 --
 ALTER TABLE `pengumuman`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT untuk tabel `prestasi`
+--
+ALTER TABLE `prestasi`
+  MODIFY `prestasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `semester`

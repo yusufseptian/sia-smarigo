@@ -47,7 +47,7 @@
             <div id="menuWaliKelas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Sub-Menu</h6>
-                    <a class="collapse-item" href="<?= base_url('') ?>">Penilaian Non Akademik</a>
+                    <a class="collapse-item" href="<?= base_url('penilaiannonakademik') ?>">Penilaian Non Akademik</a>
                     <a class="collapse-item" href="<?= base_url('') ?>">E-Raport</a>
                 </div>
             </div>
