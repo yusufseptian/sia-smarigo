@@ -7,12 +7,14 @@ use App\Models\ModelGuru;
 use App\Models\ModelJadwal;
 use App\Models\ModelMapel;
 use App\Models\ModelSemester;
+use App\Models\ModelTahunAjar;
 
 class Mapel extends BaseController
 {
     private $ModelMapel = null;
     private $ModelGuru = null;
     private $ModelSemester = null;
+    private $ModelTahunAjaran = null;
     private $ModelJadwal = null;
 
     public function __construct()
@@ -20,6 +22,7 @@ class Mapel extends BaseController
         $this->ModelMapel = new ModelMapel();
         $this->ModelSemester = new ModelSemester();
         $this->ModelJadwal = new ModelJadwal();
+        $this->ModelTahunAjaran = new ModelTahunAjar();
         helper('form');
     }
     public function index()
@@ -87,11 +90,14 @@ class Mapel extends BaseController
             'jurusan_mapel' => $this->request->getPost('jurusan_mapel'),
         ];
         $this->ModelMapel->update($id, $data);
-        $data = [
-            'mapel_kkm' => $this->request->getPost('kkm_mapel')
-        ];
-        foreach ($this->ModelJadwal->where('mapel_id', $dtMapel['id'])->findAll() as $dt) {
-            $this->ModelJadwal->update($dt['jadwal_id'], $data);
+        $dtTA = $this->ModelTahunAjaran->getTANow();
+        if (!empty($dtTA)) {
+            $data = [
+                'mapel_kkm' => $this->request->getPost('kkm_mapel')
+            ];
+            foreach ($this->ModelJadwal->where('mapel_id', $dtMapel['id'])->where('tahun_ajaran', $dtTA['id'])->findAll() as $dt) {
+                $this->ModelJadwal->update($dt['jadwal_id'], $data);
+            }
         }
         return redirect()->to('mapel')->with('warning', 'Data berhasil diubah');
     }
