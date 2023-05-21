@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Bulan Mei 2023 pada 23.04
+-- Waktu pembuatan: 21 Bulan Mei 2023 pada 11.17
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.12
 
@@ -88,6 +88,7 @@ INSERT INTO `guru` (`id_guru`, `username`, `password`, `nip`, `nama`, `tempat_la
 CREATE TABLE `jadwal` (
   `jadwal_id` int(11) NOT NULL,
   `mapel_id` int(11) NOT NULL,
+  `mapel_kkm` tinyint(3) UNSIGNED NOT NULL,
   `guru_id` int(11) NOT NULL,
   `kelas_id` int(11) NOT NULL,
   `wali_kelas_id` int(11) DEFAULT NULL,
@@ -100,9 +101,9 @@ CREATE TABLE `jadwal` (
 -- Dumping data untuk tabel `jadwal`
 --
 
-INSERT INTO `jadwal` (`jadwal_id`, `mapel_id`, `guru_id`, `kelas_id`, `wali_kelas_id`, `hari`, `jam_mengajar`, `tahun_ajaran`) VALUES
-(8, 8, 9, 2, 9, 'Senin', '2', 8),
-(9, 9, 6, 2, 9, 'Selasa', '2', 8);
+INSERT INTO `jadwal` (`jadwal_id`, `mapel_id`, `mapel_kkm`, `guru_id`, `kelas_id`, `wali_kelas_id`, `hari`, `jam_mengajar`, `tahun_ajaran`) VALUES
+(8, 8, 70, 9, 2, 9, 'Senin', '2', 8),
+(9, 9, 0, 6, 2, 9, 'Selasa', '2', 8);
 
 -- --------------------------------------------------------
 
@@ -172,6 +173,7 @@ CREATE TABLE `matapelajaran` (
   `id` int(11) NOT NULL,
   `kode_matapelajaran` varchar(10) NOT NULL,
   `nama_matapelajaran` varchar(100) NOT NULL,
+  `kkm_mapel` tinyint(3) UNSIGNED NOT NULL,
   `kategori_mapel` enum('Kelompok A (Umum)','Kelompok B (Umum)','Kelompok C (Peminatan)') NOT NULL,
   `jurusan_mapel` enum('IPA','IPS') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -180,17 +182,17 @@ CREATE TABLE `matapelajaran` (
 -- Dumping data untuk tabel `matapelajaran`
 --
 
-INSERT INTO `matapelajaran` (`id`, `kode_matapelajaran`, `nama_matapelajaran`, `kategori_mapel`, `jurusan_mapel`) VALUES
-(8, 'mp01', 'Pendidikan Agama dan Budi Pekerti', 'Kelompok A (Umum)', 'IPA'),
-(9, 'mp02', 'Pendidikan Pancasila dan Kewarganegaraan', 'Kelompok A (Umum)', 'IPA'),
-(10, 'mp03', 'Bahasa Indonesia', 'Kelompok A (Umum)', 'IPA'),
-(11, 'mp04 ', 'Matematika', 'Kelompok A (Umum)', 'IPA'),
-(12, 'mp05', 'Sejarah Indonesia', 'Kelompok A (Umum)', 'IPA'),
-(13, 'mp06', 'Bahasa Inggris', 'Kelompok A (Umum)', 'IPA'),
-(14, 'mp07', 'Seni Budaya', 'Kelompok B (Umum)', 'IPA'),
-(15, 'mp08', 'Pendidikan Jasmani, Olahraga dan Kesehatan', 'Kelompok B (Umum)', 'IPA'),
-(16, 'mp09', 'Prakarya dan Kewirausahaan', 'Kelompok B (Umum)', 'IPA'),
-(17, 'mp10', 'Muatan Lokal : Bahasa Jawa', 'Kelompok B (Umum)', 'IPA');
+INSERT INTO `matapelajaran` (`id`, `kode_matapelajaran`, `nama_matapelajaran`, `kkm_mapel`, `kategori_mapel`, `jurusan_mapel`) VALUES
+(8, 'mp01', 'Pendidikan Agama dan Budi Pekerti', 70, 'Kelompok A (Umum)', 'IPA'),
+(9, 'mp02', 'Pendidikan Pancasila dan Kewarganegaraan', 0, 'Kelompok A (Umum)', 'IPA'),
+(10, 'mp03', 'Bahasa Indonesia', 0, 'Kelompok A (Umum)', 'IPA'),
+(11, 'mp04 ', 'Matematika', 0, 'Kelompok A (Umum)', 'IPA'),
+(12, 'mp05', 'Sejarah Indonesia', 0, 'Kelompok A (Umum)', 'IPA'),
+(13, 'mp06', 'Bahasa Inggris', 0, 'Kelompok A (Umum)', 'IPA'),
+(14, 'mp07', 'Seni Budaya', 0, 'Kelompok B (Umum)', 'IPA'),
+(15, 'mp08', 'Pendidikan Jasmani, Olahraga dan Kesehatan', 0, 'Kelompok B (Umum)', 'IPA'),
+(16, 'mp09', 'Prakarya dan Kewirausahaan', 0, 'Kelompok B (Umum)', 'IPA'),
+(17, 'mp10', 'Muatan Lokal : Bahasa Jawa', 0, 'Kelompok B (Umum)', 'IPA');
 
 -- --------------------------------------------------------
 
@@ -595,7 +597,7 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT untuk tabel `matapelajaran`
 --
 ALTER TABLE `matapelajaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `nilai_akademik`

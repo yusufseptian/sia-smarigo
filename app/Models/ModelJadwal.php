@@ -14,6 +14,7 @@ class ModelJadwal extends Model
     protected $allowedFields    = [
         'jadwal_id',
         'mapel_id',
+        'mapel_kkm',
         'guru_id',
         'kelas_id',
         'hari',

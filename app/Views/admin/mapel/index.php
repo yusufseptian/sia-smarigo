@@ -16,6 +16,7 @@
                         <th>NO</th>
                         <th>KODE MATA PELAJARAN</th>
                         <th>NAMA</th>
+                        <th>KKM</th>
                         <th>KATEGORI</th>
                         <th>JURUSAN</th>
                         <th>AKSI</th>
@@ -28,6 +29,7 @@
                             <td><?= $no++ ?></td>
                             <td><?= $value['kode_matapelajaran'] ?></td>
                             <td><?= $value['nama_matapelajaran'] ?></td>
+                            <td class="text-center"><?= $value['kkm_mapel'] ?></td>
                             <td><?= $value['kategori_mapel'] ?></td>
                             <td><?= $value['jurusan_mapel'] ?></td>
                             <td>
@@ -65,6 +67,11 @@
                 <div class="form-group">
                     <label>Nama Mata Pelajaran</label>
                     <input name="nama_matapelajaran" class="form-control" placeholder="Nama Mata Pelajaran" required>
+                </div>
+                <div class="form-group">
+                    <label>KKM</label>
+                    <input type="number" name="kkm_mapel" class="form-control" placeholder="KKM Mata Pelajaran" min="0" max="100" aria-describedby="kkmHelp" required>
+                    <small id="emailHelp" class="form-text text-info">KKM ini akan digunakan selama tahun ajaran saat ini.</small>
                 </div>
                 <div class="form-group">
                     <label>Kategori Mata Pelajaran</label>
@@ -117,20 +124,25 @@
                         <input name="nama_matapelajaran" class="form-control" value="<?= $value['nama_matapelajaran'] ?>" placeholder="Nama Mata Pelajaran" required>
                     </div>
                     <div class="form-group">
+                        <label>KKM</label>
+                        <input type="number" name="kkm_mapel" class="form-control" value="<?= $value['kkm_mapel'] ?>" placeholder="KKM Mata Pelajaran" min="0" max="100" aria-describedby="kkmHelp" required>
+                        <small id="emailHelp" class="form-text text-info">KKM ini akan digunakan selama tahun ajaran saat ini.</small>
+                    </div>
+                    <div class="form-group">
                         <label>Kategori Mata Pelajaran</label>
                         <select name="kategori_mapel" class="form-control">
                             <option value="">--Pilih Kategori--</option>
-                            <option value="Kelompok A (Umum)">Kelompok A (Umum)</option>
-                            <option value="Kelompok B (Umum)">Kelompok B (Umum)</option>
-                            <option value="Kelompok C (Peminatan)">Kelompok C (Peminatan)</option>
+                            <option value="Kelompok A (Umum)" <?= ($value['kategori_mapel'] == 'Kelompok A (Umum)') ? 'selected' : '' ?>>Kelompok A (Umum)</option>
+                            <option value="Kelompok B (Umum)" <?= ($value['kategori_mapel'] == 'Kelompok B (Umum)') ? 'selected' : '' ?>>Kelompok B (Umum)</option>
+                            <option value="Kelompok C (Peminatan)" <?= ($value['kategori_mapel'] == 'Kelompok C (Peminatan)') ? 'selected' : '' ?>>Kelompok C (Peminatan)</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Jurusan</label>
                         <select name="jurusan_mapel" class="form-control">
                             <option value="">--Pilih Jurusan--</option>
-                            <option value="IPA">IPA</option>
-                            <option value="IPS">IPS</option>
+                            <option value="IPA" <?= ($value['jurusan_mapel'] == 'IPA') ? 'selected' : '' ?>>IPA</option>
+                            <option value="IPS" <?= ($value['jurusan_mapel'] == 'IPS') ? 'selected' : '' ?>>IPS</option>
                         </select>
                     </div>
 

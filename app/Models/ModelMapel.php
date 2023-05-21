@@ -15,6 +15,7 @@ class ModelMapel extends Model
         'id',
         'kode_matapelajaran',
         'nama_matapelajaran',
+        'kkm_mapel',
         'kategori_mapel',
         'jurusan_mapel',
     ];
