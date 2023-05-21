@@ -51,7 +51,7 @@ class PenilaianNonAkademik extends BaseController
         }
         $data = [
             'title' => 'Siasmarigo',
-            'sub_title' => 'Pengumuman',
+            'sub_title' => 'Penilaian Non Akademik',
             'dtSiswa' => $dtSiswa,
             'dtKelas' => $dtKelas,
             'dtTA' => $dtTA,
@@ -89,7 +89,7 @@ class PenilaianNonAkademik extends BaseController
         }
         $data = [
             'title' => 'Siasmarigo',
-            'sub_title' => 'Pengumuman',
+            'sub_title' => 'Penilaian Non Akademik',
             'dtSiswa' => $dtSiswa,
             'dtTA' => $dtTA,
             'dtSmt' => $this->modelSemester->getActiveSemester(),

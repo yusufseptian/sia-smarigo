@@ -68,7 +68,7 @@ class HasilBelajar extends BaseController
         }
         $data = [
             'title' => 'Siasmarigo',
-            'sub_title' => 'Pengumuman',
+            'sub_title' => 'Hasil Belajar',
             'dtTahunAjaran' => $dtTahun
         ];
         if (isset($dtKelas)) {

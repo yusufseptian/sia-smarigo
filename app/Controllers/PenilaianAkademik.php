@@ -51,7 +51,7 @@ class PenilaianAkademik extends BaseController
             ->findAll();
         $data = [
             'title' => 'Siasmarigo',
-            'sub_title' => 'Pengumuman',
+            'sub_title' => 'Penilaian Akademik',
             'dtJadwal' => $dtJadwal
         ];
         return view('guru/penilaian/index', $data);
