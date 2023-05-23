@@ -14,7 +14,7 @@ class ModelTahunAjar extends Model
     protected $allowedFields    = [
         'id',
         'tahun_ajaran',
-        'status',
+        'kkm',
         'created_at',
         'created_by',
         'edited_at',

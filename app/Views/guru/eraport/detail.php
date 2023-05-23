@@ -60,7 +60,7 @@
                 <?= $this->include('guru/eraport/partial/header'); ?>
             </div>
             <p class="font-weight-bold mt-3 text-uppercase">b. pengetahuan</p>
-            <p class="text-capitalize font-weight-bold mt-3">kriteria ketuntasan minimal : 70</p>
+            <p class="text-capitalize font-weight-bold mt-3">kriteria ketuntasan minimal : <?= $dtTA['kkm'] ?></p>
             <div class="mt-3 p-0">
                 <table class="w-100" border="1">
                     <thead class="font-weight-bold">
@@ -84,7 +84,7 @@
                                     <td class="text-left px-3"><?= $jadwal['nama_matapelajaran'] ?></td>
                                     <td><?= $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan'] ?></td>
                                     <td class="text-center py-2">
-                                        <p><?= getGrade($jadwal['mapel_kkm'], $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan']) ?></p>
+                                        <p><?= getGrade($dtTA['kkm'], $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan']) ?></p>
                                     </td>
                                     <td class="px-3 py-2 text-left">
                                         <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
@@ -102,7 +102,7 @@
                                     <td class="text-left px-3"><?= $jadwal['nama_matapelajaran'] ?></td>
                                     <td><?= $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan'] ?></td>
                                     <td class="text-center py-2">
-                                        <p><?= getGrade($jadwal['mapel_kkm'], $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan']) ?></p>
+                                        <p><?= getGrade($dtTA['kkm'], $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan']) ?></p>
                                     </td>
                                     <td class="px-3 py-2 text-left">
                                         <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
@@ -120,7 +120,7 @@
                                     <td class="text-left px-3"><?= $jadwal['nama_matapelajaran'] ?></td>
                                     <td><?= $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan'] ?></td>
                                     <td class="text-center py-2">
-                                        <p><?= getGrade($jadwal['mapel_kkm'], $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan']) ?></p>
+                                        <p><?= getGrade($dtTA['kkm'], $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan']) ?></p>
                                     </td>
                                     <td class="px-3 py-2 text-left">
                                         <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
@@ -141,7 +141,7 @@
                 <?= $this->include('guru/eraport/partial/header'); ?>
             </div>
             <p class="font-weight-bold mt-3 text-uppercase">b. keterampilan</p>
-            <p class="text-capitalize font-weight-bold mt-3">kriteria ketuntasan minimal : 70</p>
+            <p class="text-capitalize font-weight-bold mt-3">kriteria ketuntasan minimal : <?= $dtTA['kkm'] ?></p>
             <div class="mt-3 p-0">
                 <table class="w-100" border="1">
                     <thead class="font-weight-bold">
@@ -165,7 +165,7 @@
                                     <td class="text-left px-3"><?= $jadwal['nama_matapelajaran'] ?></td>
                                     <td><?= $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan'] ?></td>
                                     <td class="text-center py-2">
-                                        <p><?= getGrade($jadwal['mapel_kkm'], $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan']) ?></p>
+                                        <p><?= getGrade($dtTA['kkm'], $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan']) ?></p>
                                     </td>
                                     <td class="px-3 py-2 text-left">
                                         <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
@@ -183,7 +183,7 @@
                                     <td class="text-left px-3"><?= $jadwal['nama_matapelajaran'] ?></td>
                                     <td><?= $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan'] ?></td>
                                     <td class="text-center py-2">
-                                        <p><?= getGrade($jadwal['mapel_kkm'], $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan']) ?></p>
+                                        <p><?= getGrade($dtTA['kkm'], $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan']) ?></p>
                                     </td>
                                     <td class="px-3 py-2 text-left">
                                         <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
@@ -201,7 +201,7 @@
                                     <td class="text-left px-3"><?= $jadwal['nama_matapelajaran'] ?></td>
                                     <td><?= $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan'] ?></td>
                                     <td class="text-center py-2">
-                                        <p><?= getGrade($jadwal['mapel_kkm'], $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan']) ?></p>
+                                        <p><?= getGrade($dtTA['kkm'], $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan']) ?></p>
                                     </td>
                                     <td class="px-3 py-2 text-left">
                                         <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
@@ -228,19 +228,22 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>70</td>
-                        <td>Nilai < 70</td>
-                        <td>70 ≤ Nilai ≤ 79</td>
-                        <td>80 ≤ Nilai ≤ 89</td>
-                        <td>Nilai ≥ 90</td>
+                        <td><?= $dtTA['kkm'] ?></td>
+                        <td>Nilai < <?= is_int(100 - getInterval($dtTA['kkm']) * 3) ? 100 - getInterval($dtTA['kkm']) * 3 : round(100 - getInterval($dtTA['kkm']) * 3, 2) ?></td>
+                        <td>
+                            <?= is_int(100 - getInterval($dtTA['kkm']) * 3) ? 100 - getInterval($dtTA['kkm']) * 3 : round(100 - getInterval($dtTA['kkm']) * 3, 2) ?>
+                            ≤ Nilai ≤
+                            <?= is_int(100 - getInterval($dtTA['kkm']) * 2 - 1) ? 100 - getInterval($dtTA['kkm']) * 2 - 1 : round(100 - getInterval($dtTA['kkm']) * 2 - 1, 2) ?></td>
+                        <td>
+                            <?= is_int(100 - getInterval($dtTA['kkm']) * 2) ? 100 - getInterval($dtTA['kkm']) * 2 : round(100 - getInterval($dtTA['kkm']) * 2, 2) ?>
+                            ≤ Nilai ≤
+                            <?= is_int(100 - getInterval($dtTA['kkm']) - 1) ? 100 - getInterval($dtTA['kkm']) - 1 : round(100 - getInterval($dtTA['kkm']) - 1, 2) ?>
+                        </td>
+                        <td>Nilai ≥ <?= is_int(100 - getInterval($dtTA['kkm'])) ? 100 - getInterval($dtTA['kkm']) : round(100 - getInterval($dtTA['kkm']), 2) ?></td>
                     </tr>
                 </tbody>
             </table>
-            <div class="float-right" style="margin-top: 200px;">
-                <p>Kebumen, 21 Juni 2023</p>
-                <p class="text-center">Wali Kelas</p>
-                <p class="font-weight-bold text-center" style="margin-top: 150px;">Wahyudistira, S.Pd</p>
-            </div>
+            <?= $this->include('guru/eraport/partial/ttd'); ?>
         </div>
     </div>
 </div>

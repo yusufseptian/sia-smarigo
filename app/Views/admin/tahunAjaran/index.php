@@ -15,6 +15,7 @@
                     <tr>
                         <th>NO</th>
                         <th>TAHUN AJARAN</th>
+                        <th>KKM</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>
@@ -24,6 +25,7 @@
                         <tr>
                             <td><?= $no++ ?></td>
                             <td><?= $value['tahun_ajaran'] ?></td>
+                            <td class="text-center"><?= $value['kkm'] ?></td>
                             <td align="center">
                                 <?php if ($no == 2 && !$isFinished) : ?>
                                     <button class="btn btn-sm btn-flat btn-warning" data-toggle="modal" data-target="#edit<?= $value['id'] ?>">
@@ -88,6 +90,10 @@
                     <label>Tahun Ajaran</label>
                     <input name="tahun_ajaran" class="form-control" placeholder="Masukkan Tahun Ajaran" required>
                 </div>
+                <div class="form-group">
+                    <label>Tahun Ajaran</label>
+                    <input type="number" name="kkm" class="form-control" min="0" max="100" placeholder="Masukkan KKM pada tahun ini" required>
+                </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
@@ -116,6 +122,10 @@
                     <div class="form-group">
                         <label>Tahun Ajaran</label>
                         <input name="tahun_ajaran" class="form-control" value="<?= $first_tahun_ajar['tahun_ajaran'] ?>" placeholder="tahun ajaran" required>
+                    </div>
+                    <div class="form-group">
+                        <label>KKM Tahun Ini</label>
+                        <input type="number" name="kkm" min="0" max="100" class="form-control" value="<?= $first_tahun_ajar['kkm'] ?>" placeholder="Masukkan KKM pada tahun ini" required>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">

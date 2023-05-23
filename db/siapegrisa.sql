@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Bulan Mei 2023 pada 11.17
+-- Waktu pembuatan: 23 Bulan Mei 2023 pada 10.53
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.12
 
@@ -103,7 +103,7 @@ CREATE TABLE `jadwal` (
 
 INSERT INTO `jadwal` (`jadwal_id`, `mapel_id`, `mapel_kkm`, `guru_id`, `kelas_id`, `wali_kelas_id`, `hari`, `jam_mengajar`, `tahun_ajaran`) VALUES
 (8, 8, 70, 9, 2, 9, 'Senin', '2', 8),
-(9, 9, 0, 6, 2, 9, 'Selasa', '2', 8);
+(9, 9, 75, 6, 2, 9, 'Selasa', '2', 8);
 
 -- --------------------------------------------------------
 
@@ -184,7 +184,7 @@ CREATE TABLE `matapelajaran` (
 
 INSERT INTO `matapelajaran` (`id`, `kode_matapelajaran`, `nama_matapelajaran`, `kkm_mapel`, `kategori_mapel`, `jurusan_mapel`) VALUES
 (8, 'mp01', 'Pendidikan Agama dan Budi Pekerti', 70, 'Kelompok A (Umum)', 'IPA'),
-(9, 'mp02', 'Pendidikan Pancasila dan Kewarganegaraan', 0, 'Kelompok A (Umum)', 'IPA'),
+(9, 'mp02', 'Pendidikan Pancasila dan Kewarganegaraan', 75, 'Kelompok A (Umum)', 'IPA'),
 (10, 'mp03', 'Bahasa Indonesia', 0, 'Kelompok A (Umum)', 'IPA'),
 (11, 'mp04 ', 'Matematika', 0, 'Kelompok A (Umum)', 'IPA'),
 (12, 'mp05', 'Sejarah Indonesia', 0, 'Kelompok A (Umum)', 'IPA'),
@@ -416,15 +416,20 @@ INSERT INTO `siswa` (`id`, `nis`, `username`, `password`, `nama`, `tempat_lahir`
 
 CREATE TABLE `tahun_ajaran` (
   `id` int(11) NOT NULL,
-  `tahun_ajaran` varchar(20) NOT NULL
+  `tahun_ajaran` varchar(20) NOT NULL,
+  `kkm` tinyint(3) UNSIGNED NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `edited_by` int(11) NOT NULL,
+  `edited_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tahun_ajaran`
 --
 
-INSERT INTO `tahun_ajaran` (`id`, `tahun_ajaran`) VALUES
-(8, '2019/2020');
+INSERT INTO `tahun_ajaran` (`id`, `tahun_ajaran`, `kkm`, `created_by`, `created_at`, `edited_by`, `edited_at`) VALUES
+(8, '2019/2020', 75, 0, NULL, 2, '2023-05-23 15:38:15');
 
 -- --------------------------------------------------------
 

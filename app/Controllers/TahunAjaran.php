@@ -34,7 +34,8 @@ class TahunAjaran extends BaseController
     public function insertData()
     {
         if (!$this->validate([
-            'tahun_ajaran' => 'required|is_unique[tahun_ajaran.tahun_ajaran]'
+            'tahun_ajaran' => 'required|is_unique[tahun_ajaran.tahun_ajaran]',
+            'kkm' => 'required|is_natural_no_zero|less_than_equal_to[100]'
         ])) {
             return redirect()->to(base_url('tahunajaran'))->with('danger', 'Tahun ajaran harus diisi dan tidak boleh sama. (Unique value)');
         }
@@ -59,6 +60,7 @@ class TahunAjaran extends BaseController
         }
         $data = [
             'tahun_ajaran' => $this->request->getPost('tahun_ajaran'),
+            'kkm' => $this->request->getPost('kkm'),
             'created_at' => date("Y-m-d H:i:s"),
             'created_by' => session('log_auth')['akunID']
         ];
@@ -178,13 +180,19 @@ class TahunAjaran extends BaseController
         if ($id != $this->ModelTahunAjar->getTANow()['id']) {
             return redirect()->to(base_url('tahunajaran'))->with('danger', 'Anda hanya dapat mengedit tahun ajaran saat ini saja');
         }
-        if (!$this->validate([
-            'tahun_ajaran' => 'required|is_unique[tahun_ajaran.tahun_ajaran]'
-        ])) {
+        $valid = [
+            'tahun_ajaran' => 'required',
+            'kkm' => 'required|is_natural_no_zero|less_than_equal_to[100]'
+        ];
+        if (strtolower(trim((string)$dtTA['tahun_ajaran'])) != strtolower(trim((string)$this->request->getPost('tahun_ajaran')))) {
+            $valid['tahun_ajaran'] = 'required|is_unique[tahun_ajaran . tahun_ajaran]';
+        }
+        if (!$this->validate($valid)) {
             return redirect()->to(base_url('tahunajaran'))->with('danger', 'Tahun ajaran harus diisi dan tidak boleh sama. (Unique value)');
         }
         $data = [
             'tahun_ajaran' => $this->request->getPost('tahun_ajaran'),
+            'kkm' => $this->request->getPost('kkm'),
             'edited_at' => date('Y-m-d H:i:s'),
             'edited_by' => session('log_auth')['akunID']
         ];
