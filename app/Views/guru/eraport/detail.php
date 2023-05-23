@@ -1,58 +1,13 @@
 <?= $this->extend('templates/index') ?>
 <?= $this->section('content') ?>
+<?= $this->include('guru/eraport/partial/kkm'); ?>
 <div class="col">
     <div class="card">
         <div class="card-body text-gray-900 p-0" id="formContainer" style="margin-left: 150px; margin-right: 110px; margin-top: 150px; margin-bottom: 110px;">
             <div class="mb-3 pb-2 d-flex justify-content-between" style="border-bottom: solid black 3px !important;">
-                <div class="row w-100 mx-1">
-                    <div class="col-8">
-                        <table>
-                            <tr>
-                                <td>Nama Sekolah</td>
-                                <td class="px-3">:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Alamat Sekolah</td>
-                                <td class="px-3">:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Nama Peserta Didik</td>
-                                <td class="px-3">:</td>
-                                <td><?= $dtSiswa['nama'] ?></td>
-                            </tr>
-                            <tr>
-                                <td>No.Induk / NISN</td>
-                                <td class="px-3">:</td>
-                                <td><?= $dtSiswa['nis'] ?> / <?= $dtSiswa['nis'] ?></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="col-4">
-                        <table>
-                            <tr>
-                                <td>Kelas</td>
-                                <td class="px-3">:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Semester</td>
-                                <td class="px-3">:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Tahun Ajaran</td>
-                                <td class="px-3">:</td>
-                                <td><?= $dtTA['tahun_ajaran'] ?> (<?= ucfirst($dtSmt['semester']) ?>)</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                <?= $this->include('guru/eraport/partial/header'); ?>
             </div>
-
             <p class="font-weight-bold text-center">CAPAIAN HASIL BELAJAR</p>
-
             <p class="font-weight-bold mt-3 text-uppercase">a. sikap</p>
             <div class="my-3 ml-4 p-0">
                 <p class="font-weight-bold w-100 text-capitalize">1. sikap spiritual</p>
@@ -66,16 +21,15 @@
                     <tbody>
                         <tr>
                             <td class="text-center py-2">
-                                <p>Baik</p>
+                                <p><?= $dtNond['nond_spiritual_predikat'] ?></p>
                             </td>
                             <td class="px-3 py-2">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                <p><?= $dtNond['nond_spiritual_deskripsi'] ?></p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
             <div class="mt-3 ml-4 p-0">
                 <p class="font-weight-bold w-100 text-capitalize">2. sikap sosial</p>
                 <table class="w-100" border="1">
@@ -88,72 +42,22 @@
                     <tbody>
                         <tr>
                             <td class="text-center py-2">
-                                <p>Baik</p>
+                                <p><?= $dtNond['nond_sosial_predikat'] ?></p>
                             </td>
                             <td class="px-3 py-2">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                <p><?= $dtNond['nond_sosial_deskripsi'] ?></p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-            <div class="float-right" style="margin-top: 200px;">
-                <p>Kebumen, 21 Juni 2023</p>
-                <p class="text-center">Wali Kelas</p>
-                <p class="font-weight-bold text-center" style="margin-top: 150px;">Wahyudistira, S.Pd</p>
-            </div>
+            <?= $this->include('guru/eraport/partial/ttd'); ?>
         </div>
     </div>
-
     <div class="card">
         <div class="card-body text-gray-900 p-0" id="formContainer" style="margin-left: 150px; margin-right: 110px; margin-top: 150px; margin-bottom: 110px;">
             <div class="mb-3 pb-2 d-flex justify-content-between" style="border-bottom: solid black 3px !important;">
-                <div class="row w-100 mx-1">
-                    <div class="col-8">
-                        <table>
-                            <tr>
-                                <td>Nama Sekolah</td>
-                                <td class="px-3">:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Alamat Sekolah</td>
-                                <td class="px-3">:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Nama Peserta Didik</td>
-                                <td class="px-3">:</td>
-                                <td><?= $dtSiswa['nama'] ?></td>
-                            </tr>
-                            <tr>
-                                <td>No.Induk / NISN</td>
-                                <td class="px-3">:</td>
-                                <td><?= $dtSiswa['nis'] ?> / <?= $dtSiswa['nis'] ?></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="col-4">
-                        <table>
-                            <tr>
-                                <td>Kelas</td>
-                                <td class="px-3">:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Semester</td>
-                                <td class="px-3">:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Tahun Ajaran</td>
-                                <td class="px-3">:</td>
-                                <td><?= $dtTA['tahun_ajaran'] ?> (<?= ucfirst($dtSmt['semester']) ?>)</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                <?= $this->include('guru/eraport/partial/header'); ?>
             </div>
             <p class="font-weight-bold mt-3 text-uppercase">b. pengetahuan</p>
             <p class="text-capitalize font-weight-bold mt-3">kriteria ketuntasan minimal : 70</p>
@@ -172,164 +76,69 @@
                         <tr>
                             <td colspan="5" class="p-2 font-weight-bold">Kelompok A (Umum)</td>
                         </tr>
-                        <tr class="text-center">
-                            <td>1</td>
-                            <td class="text-left px-3">Pendidikan Agama dan Budi Pekerti</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>2</td>
-                            <td class="text-left px-3">Pendidikan Pancasila dan Kewarganegaraan</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>3</td>
-                            <td class="text-left px-3">Bahasa Indonesia</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>4</td>
-                            <td class="text-left px-3">Matematika</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>5</td>
-                            <td class="text-left px-3">Sejarah Indonesia</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>6</td>
-                            <td class="text-left px-3">Bahasa Inggris</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-
-
+                        <?php $no = 1; ?>
+                        <?php foreach ($dtJadwal as $jadwal) : ?>
+                            <?php if ($jadwal['kategori_mapel'] == 'Kelompok A (Umum)') : ?>
+                                <tr class="text-center">
+                                    <td><?= $no++ ?></td>
+                                    <td class="text-left px-3"><?= $jadwal['nama_matapelajaran'] ?></td>
+                                    <td><?= $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan'] ?></td>
+                                    <td class="text-center py-2">
+                                        <p><?= getGrade($jadwal['mapel_kkm'], $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan']) ?></p>
+                                    </td>
+                                    <td class="px-3 py-2 text-left">
+                                        <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                    </td>
+                                </tr>
+                            <?php endif ?>
+                        <?php endforeach ?>
                         <tr>
                             <td colspan="5" class="p-2 font-weight-bold">Kelompok B (Umum)</td>
                         </tr>
-                        <tr class="text-center">
-                            <td>1</td>
-                            <td class="text-left px-3">Seni Budaya</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-
-
+                        <?php foreach ($dtJadwal as $jadwal) : ?>
+                            <?php if ($jadwal['kategori_mapel'] == 'Kelompok B (Umum)') : ?>
+                                <tr class="text-center">
+                                    <td><?= $no++ ?></td>
+                                    <td class="text-left px-3"><?= $jadwal['nama_matapelajaran'] ?></td>
+                                    <td><?= $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan'] ?></td>
+                                    <td class="text-center py-2">
+                                        <p><?= getGrade($jadwal['mapel_kkm'], $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan']) ?></p>
+                                    </td>
+                                    <td class="px-3 py-2 text-left">
+                                        <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                    </td>
+                                </tr>
+                            <?php endif ?>
+                        <?php endforeach ?>
                         <tr>
                             <td colspan="5" class="p-2 font-weight-bold">Kelompok C (Peminatan)</td>
                         </tr>
-                        <tr class="text-center">
-                            <td>1</td>
-                            <td class="text-left px-3">Matematika</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
+                        <?php foreach ($dtJadwal as $jadwal) : ?>
+                            <?php if ($jadwal['kategori_mapel'] == 'Kelompok C (Peminatan)') : ?>
+                                <tr class="text-center">
+                                    <td><?= $no++ ?></td>
+                                    <td class="text-left px-3"><?= $jadwal['nama_matapelajaran'] ?></td>
+                                    <td><?= $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan'] ?></td>
+                                    <td class="text-center py-2">
+                                        <p><?= getGrade($jadwal['mapel_kkm'], $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan']) ?></p>
+                                    </td>
+                                    <td class="px-3 py-2 text-left">
+                                        <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                    </td>
+                                </tr>
+                            <?php endif ?>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
-
-            <div class="float-right" style="margin-top: 200px;">
-                <p>Kebumen, 21 Juni 2023</p>
-                <p class="text-center">Wali Kelas</p>
-                <p class="font-weight-bold text-center" style="margin-top: 150px;">Wahyudistira, S.Pd</p>
-            </div>
+            <?= $this->include('guru/eraport/partial/ttd'); ?>
         </div>
     </div>
 
     <div class="card">
         <div class="card-body text-gray-900 p-0" id="formContainer" style="margin-left: 150px; margin-right: 110px; margin-top: 150px; margin-bottom: 110px;">
             <div class="mb-3 pb-2 d-flex justify-content-between" style="border-bottom: solid black 3px !important;">
-                <div class="row w-100 mx-1">
-                    <div class="col-8">
-                        <table>
-                            <tr>
-                                <td>Nama Sekolah</td>
-                                <td class="px-3">:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Alamat Sekolah</td>
-                                <td class="px-3">:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Nama Peserta Didik</td>
-                                <td class="px-3">:</td>
-                                <td><?= $dtSiswa['nama'] ?></td>
-                            </tr>
-                            <tr>
-                                <td>No.Induk / NISN</td>
-                                <td class="px-3">:</td>
-                                <td><?= $dtSiswa['nis'] ?> / <?= $dtSiswa['nis'] ?></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="col-4">
-                        <table>
-                            <tr>
-                                <td>Kelas</td>
-                                <td class="px-3">:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Semester</td>
-                                <td class="px-3">:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Tahun Ajaran</td>
-                                <td class="px-3">:</td>
-                                <td><?= $dtTA['tahun_ajaran'] ?> (<?= ucfirst($dtSmt['semester']) ?>)</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                <?= $this->include('guru/eraport/partial/header'); ?>
             </div>
             <p class="font-weight-bold mt-3 text-uppercase">b. keterampilan</p>
             <p class="text-capitalize font-weight-bold mt-3">kriteria ketuntasan minimal : 70</p>
@@ -348,104 +157,58 @@
                         <tr>
                             <td colspan="5" class="p-2 font-weight-bold">Kelompok A (Umum)</td>
                         </tr>
-                        <tr class="text-center">
-                            <td>1</td>
-                            <td class="text-left px-3">Pendidikan Agama dan Budi Pekerti</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>2</td>
-                            <td class="text-left px-3">Pendidikan Pancasila dan Kewarganegaraan</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>3</td>
-                            <td class="text-left px-3">Bahasa Indonesia</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>4</td>
-                            <td class="text-left px-3">Matematika</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>5</td>
-                            <td class="text-left px-3">Sejarah Indonesia</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>6</td>
-                            <td class="text-left px-3">Bahasa Inggris</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-
-
+                        <?php $no = 1; ?>
+                        <?php foreach ($dtJadwal as $jadwal) : ?>
+                            <?php if ($jadwal['kategori_mapel'] == 'Kelompok A (Umum)') : ?>
+                                <tr class="text-center">
+                                    <td><?= $no++ ?></td>
+                                    <td class="text-left px-3"><?= $jadwal['nama_matapelajaran'] ?></td>
+                                    <td><?= $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan'] ?></td>
+                                    <td class="text-center py-2">
+                                        <p><?= getGrade($jadwal['mapel_kkm'], $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan']) ?></p>
+                                    </td>
+                                    <td class="px-3 py-2 text-left">
+                                        <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                    </td>
+                                </tr>
+                            <?php endif ?>
+                        <?php endforeach ?>
                         <tr>
                             <td colspan="5" class="p-2 font-weight-bold">Kelompok B (Umum)</td>
                         </tr>
-                        <tr class="text-center">
-                            <td>1</td>
-                            <td class="text-left px-3">Seni Budaya</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
-
-
+                        <?php foreach ($dtJadwal as $jadwal) : ?>
+                            <?php if ($jadwal['kategori_mapel'] == 'Kelompok B (Umum)') : ?>
+                                <tr class="text-center">
+                                    <td><?= $no++ ?></td>
+                                    <td class="text-left px-3"><?= $jadwal['nama_matapelajaran'] ?></td>
+                                    <td><?= $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan'] ?></td>
+                                    <td class="text-center py-2">
+                                        <p><?= getGrade($jadwal['mapel_kkm'], $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan']) ?></p>
+                                    </td>
+                                    <td class="px-3 py-2 text-left">
+                                        <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                    </td>
+                                </tr>
+                            <?php endif ?>
+                        <?php endforeach ?>
                         <tr>
                             <td colspan="5" class="p-2 font-weight-bold">Kelompok C (Peminatan)</td>
                         </tr>
-                        <tr class="text-center">
-                            <td>1</td>
-                            <td class="text-left px-3">Matematika</td>
-                            <td>89</td>
-                            <td class="text-center py-2">
-                                <p>A</p>
-                            </td>
-                            <td class="px-3 py-2 text-left">
-                                <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
-                            </td>
-                        </tr>
+                        <?php foreach ($dtJadwal as $jadwal) : ?>
+                            <?php if ($jadwal['kategori_mapel'] == 'Kelompok C (Peminatan)') : ?>
+                                <tr class="text-center">
+                                    <td><?= $no++ ?></td>
+                                    <td class="text-left px-3"><?= $jadwal['nama_matapelajaran'] ?></td>
+                                    <td><?= $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan'] ?></td>
+                                    <td class="text-center py-2">
+                                        <p><?= getGrade($jadwal['mapel_kkm'], $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan']) ?></p>
+                                    </td>
+                                    <td class="px-3 py-2 text-left">
+                                        <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                    </td>
+                                </tr>
+                            <?php endif ?>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
