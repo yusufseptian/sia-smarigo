@@ -34,7 +34,7 @@ class Jadwal extends BaseController
         }
         $data = [
             'title' => 'Siasmarigo',
-            'sub_title' => 'Jadwal',
+            'sub_title' => 'Jadwal Guru',
             'dt_jadwal' => $this->ModelJadwal->getDataJadwal(),
             'dt_mapel'  => $this->ModelMapel->findAll(),
             'dt_guru'   => $this->ModelGuru->findAll(),

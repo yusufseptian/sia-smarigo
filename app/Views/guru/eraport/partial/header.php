@@ -4,7 +4,7 @@
             <tr>
                 <td>Nama Sekolah</td>
                 <td class="px-3">:</td>
-                <td></td>
+                <td>SMA PGRI 1 GOMBONG</td>
             </tr>
             <tr>
                 <td>Alamat Sekolah</td>

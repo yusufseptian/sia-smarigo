@@ -87,7 +87,7 @@ class PenilaianAkademik extends BaseController
         }
         $data = [
             'title' => 'Siasmarigo',
-            'sub_title' => 'Pengumuman',
+            'sub_title' => 'Penilaian Akademik',
             'dtJadwal' => $dtJadwal,
             'mapelID' => $idMapel,
             'dtSemester' => $this->ModelSemester->getActiveSemester()

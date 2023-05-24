@@ -119,7 +119,7 @@ class HasilBelajar extends BaseController
         }
         $data = [
             'title' => 'Siasmarigo',
-            'sub_title' => 'Pengumuman',
+            'sub_title' => 'Hasil Belajar',
             'dtMapel' => $dtMapel,
             'tahunAjaranID' => $idTahunAjaran
         ];
@@ -217,7 +217,7 @@ class HasilBelajar extends BaseController
         }
         $data = [
             'title' => 'Siasmarigo',
-            'sub_title' => 'Pengumuman',
+            'sub_title' => 'Hasil Belajar',
             'dtMapel' => $dtMapel,
             'dtNilai' => $dtNilai,
             'dtKategori' => $dtKategori,
