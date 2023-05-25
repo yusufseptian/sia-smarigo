@@ -68,8 +68,10 @@
                 <div class="container-fluid">
 
                     <!-- Content Row -->
-                    <div class="alert alert-success mb-3" role="alert">
-                        <i class="fas fa-university"></i> <?= $sub_title ?>
+                    <div class="alert alert-success mb-3 d-flex justify-content-between" role="alert">
+                        <div class=""> <i class="fas fa-university"></i> <?= $sub_title ?>
+                        </div>
+                        <div id="addInfo"></div>
                     </div>
 
                     <div class="row">

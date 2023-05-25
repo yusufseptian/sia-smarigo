@@ -248,3 +248,15 @@
     </div>
 </div>
 <?= $this->endSection() ?>
+<?= $this->section("bottomScript") ?>
+<script>
+    let btnPrint = $("<a class='btn btn-success ml-auto'></a>");
+    btnPrint.html("Cetak");
+    <?php if (session('log_auth')['role'] == 'GURU') : ?>
+        btnPrint.attr("href", "<?= base_url('eraport/print/' . $dtSiswa['nis']) ?>");
+    <?php else : ?>
+        btnPrint.attr("href", "<?= base_url("eraport/print/" . $dtSiswa['nis'] . "/$taID/$smtID") ?>");
+    <?php endif ?>
+    $("#addInfo").append(btnPrint);
+</script>
+<?= $this->endSection() ?>

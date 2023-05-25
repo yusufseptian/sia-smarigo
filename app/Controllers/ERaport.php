@@ -73,7 +73,7 @@ class ERaport extends BaseController
         ];
         return view('guru/eraport/index', $data);
     }
-    public function nilai($nis, $idTA = 0, $semester = 0)
+    public function nilai($nis, $idTA = 0, $semester = 0, $print = false)
     {
         $dtTA = $this->modelTahunAjar->getTANow();
         if (empty($dtTA)) {
@@ -191,8 +191,13 @@ class ERaport extends BaseController
             'listBulan' => $this->listBulan,
             'dtJadwal' => $dtJadwal,
             'dtDNAK' => $dtDNAK,
-            'dtDNAP' => $dtDNAP
+            'dtDNAP' => $dtDNAP,
+            'taID' => $idTA,
+            'smtID' => $semester
         ];
+        if ($print) {
+            return view('guru/eraport/print_eraport', $data);
+        }
         return view('guru/eraport/detail', $data);
     }
 

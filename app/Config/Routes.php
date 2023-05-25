@@ -31,6 +31,8 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('eraport/print/(:num)', 'eraport::nilai/$1/0/0/true');
+$routes->get('eraport/print/(:num)/(:num)/(:num)', 'eraport::nilai/$1/$2/$3/true');
 
 /*
  * --------------------------------------------------------------------
