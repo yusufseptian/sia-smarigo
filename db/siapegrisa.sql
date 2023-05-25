@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Bulan Mei 2023 pada 10.53
+-- Waktu pembuatan: 25 Bulan Mei 2023 pada 14.11
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.12
 
@@ -20,6 +20,39 @@ SET time_zone = "+00:00";
 --
 -- Database: `siapegrisa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `deskripsi_nilai_akhir`
+--
+
+CREATE TABLE `deskripsi_nilai_akhir` (
+  `dna_id` int(11) NOT NULL,
+  `dna_jadwal_id` int(11) NOT NULL,
+  `dna_siswa_id` int(11) NOT NULL,
+  `dna_kategori` enum('pengetahuan','keterampilan') NOT NULL,
+  `dna_deskripsi` text DEFAULT NULL,
+  `dna_semester_id` tinyint(3) UNSIGNED NOT NULL,
+  `dna_created_at` datetime NOT NULL,
+  `dna_created_by` int(11) NOT NULL,
+  `dna_edited_at` datetime DEFAULT NULL,
+  `dna_edited_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `deskripsi_nilai_akhir`
+--
+
+INSERT INTO `deskripsi_nilai_akhir` (`dna_id`, `dna_jadwal_id`, `dna_siswa_id`, `dna_kategori`, `dna_deskripsi`, `dna_semester_id`, `dna_created_at`, `dna_created_by`, `dna_edited_at`, `dna_edited_by`) VALUES
+(1, 9, 1, 'pengetahuan', 'Oke', 7, '2023-05-25 18:27:56', 6, '2023-05-25 19:10:13', 6),
+(2, 9, 3, 'pengetahuan', 'Bagus', 7, '2023-05-25 18:27:56', 6, '2023-05-25 19:10:13', 6),
+(3, 9, 4, 'pengetahuan', 'Sip', 7, '2023-05-25 18:27:56', 6, '2023-05-25 19:10:13', 6),
+(4, 9, 5, 'pengetahuan', 'Iya', 7, '2023-05-25 18:27:56', 6, '2023-05-25 19:10:13', 6),
+(5, 9, 1, 'keterampilan', 'Bagus..', 7, '2023-05-25 19:10:36', 6, '2023-05-25 19:10:36', NULL),
+(6, 9, 3, 'keterampilan', 'Bagus..', 7, '2023-05-25 19:10:36', 6, '2023-05-25 19:10:36', NULL),
+(7, 9, 4, 'keterampilan', 'Bagus..', 7, '2023-05-25 19:10:36', 6, '2023-05-25 19:10:36', NULL),
+(8, 9, 5, 'keterampilan', 'Bagus..', 7, '2023-05-25 19:10:36', 6, '2023-05-25 19:10:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -304,7 +337,7 @@ CREATE TABLE `orangtua` (
 --
 
 INSERT INTO `orangtua` (`id_orangtua`, `username`, `password`, `nama`, `no_hp`, `pekerjaan`, `nis_siswa`, `alamat`) VALUES
-(5, 'ncipp', '098f6bcd4621d373cade4e832627b4f6', 'sipaa', '819381', 'tidur', '', 'sewonderlan');
+(5, 'ncipp', '81dc9bdb52d04dc20036dbd8313ed055', 'sipaa', '819381', 'tidur', '5191', 'sewonderlan');
 
 -- --------------------------------------------------------
 
@@ -461,6 +494,12 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `level`, `blokir`, `i
 --
 
 --
+-- Indeks untuk tabel `deskripsi_nilai_akhir`
+--
+ALTER TABLE `deskripsi_nilai_akhir`
+  ADD PRIMARY KEY (`dna_id`);
+
+--
 -- Indeks untuk tabel `ekstrakulikuler`
 --
 ALTER TABLE `ekstrakulikuler`
@@ -567,6 +606,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
+
+--
+-- AUTO_INCREMENT untuk tabel `deskripsi_nilai_akhir`
+--
+ALTER TABLE `deskripsi_nilai_akhir`
+  MODIFY `dna_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `ekstrakulikuler`

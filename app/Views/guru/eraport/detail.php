@@ -87,7 +87,7 @@
                                         <p><?= getGrade($dtTA['kkm'], $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan']) ?></p>
                                     </td>
                                     <td class="px-3 py-2 text-left">
-                                        <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                        <p><?= $dtDNAP[$jadwal['jadwal_id']] ?></p>
                                     </td>
                                 </tr>
                             <?php endif ?>
@@ -105,7 +105,7 @@
                                         <p><?= getGrade($dtTA['kkm'], $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan']) ?></p>
                                     </td>
                                     <td class="px-3 py-2 text-left">
-                                        <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                        <p><?= $dtDNAP[$jadwal['jadwal_id']] ?></p>
                                     </td>
                                 </tr>
                             <?php endif ?>
@@ -123,7 +123,7 @@
                                         <p><?= getGrade($dtTA['kkm'], $dtNA[$jadwal['mapel_id']]['nilaiPengetahuan']) ?></p>
                                     </td>
                                     <td class="px-3 py-2 text-left">
-                                        <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                        <p><?= $dtDNAP[$jadwal['jadwal_id']] ?></p>
                                     </td>
                                 </tr>
                             <?php endif ?>
@@ -168,7 +168,7 @@
                                         <p><?= getGrade($dtTA['kkm'], $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan']) ?></p>
                                     </td>
                                     <td class="px-3 py-2 text-left">
-                                        <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                        <p><?= $dtDNAK[$jadwal['jadwal_id']] ?></p>
                                     </td>
                                 </tr>
                             <?php endif ?>
@@ -186,7 +186,7 @@
                                         <p><?= getGrade($dtTA['kkm'], $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan']) ?></p>
                                     </td>
                                     <td class="px-3 py-2 text-left">
-                                        <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                        <p><?= $dtDNAK[$jadwal['jadwal_id']] ?></p>
                                     </td>
                                 </tr>
                             <?php endif ?>
@@ -204,7 +204,7 @@
                                         <p><?= getGrade($dtTA['kkm'], $dtNA[$jadwal['mapel_id']]['nilaiKeterampilan']) ?></p>
                                     </td>
                                     <td class="px-3 py-2 text-left">
-                                        <p>Memiliki sikap spiritual yang Baik, antara lain konsisten dalam berdoa, toleran pada agama yang berbeda, taat beribadah, dan mensyukuri nikmat.</p>
+                                        <p><?= $dtDNAK[$jadwal['jadwal_id']] ?></p>
                                     </td>
                                 </tr>
                             <?php endif ?>

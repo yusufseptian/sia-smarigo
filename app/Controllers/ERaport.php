@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ModelDeskripsiNilaiAkhir;
 use App\Models\ModelEkstrakulikuler;
 use App\Models\ModelJadwal;
 use App\Models\ModelKategoriTugas;
@@ -30,6 +31,7 @@ class ERaport extends BaseController
     private $modelNilaiAkademikDetail = null;
     private $modelJadwal = null;
     private $modelOrtu = null;
+    private $modelDeskripsiNA = null;
 
     public function __construct()
     {
@@ -45,6 +47,7 @@ class ERaport extends BaseController
         $this->modelNilaiAkademikDetail = new ModelNilaiAkademik();
         $this->modelJadwal = new ModelJadwal();
         $this->modelOrtu = new ModelOrtu();
+        $this->modelDeskripsiNA = new ModelDeskripsiNilaiAkhir();
         helper('form');
     }
     public function index()
@@ -77,10 +80,12 @@ class ERaport extends BaseController
             session()->setFlashdata('danger', 'Data tahun ajar masih kosong');
             return $this->redirectBack();
         }
-        $dtSmt = $this->modelSemester->getActiveSemester();
-        if (empty($dtSmt)) {
-            session()->setFlashdata('danger', 'Belum ada semester yang dimulai pada tahun ajaran ini. Silahkan hubungi admin');
-            return $this->redirectBack();
+        if (session('log_auth')['role'] == "GURU") {
+            $dtSmt = $this->modelSemester->getActiveSemester();
+            if (empty($dtSmt)) {
+                session()->setFlashdata('danger', 'Belum ada semester yang dimulai pada tahun ajaran ini. Silahkan hubungi admin');
+                return $this->redirectBack();
+            }
         }
         if (session('log_auth')['role'] == "SISWA" || session('log_auth')['role'] == "ORTU") {
             $dtSiswa = $this->modelSiswa->where('nis', $nis)->first();
@@ -146,6 +151,8 @@ class ERaport extends BaseController
         $dtNA = [];
         $dtJadwal = $this->modelJadwal->join('matapelajaran', 'id=mapel_id')
             ->where('kelas_id', $dtSiswa['id_kelas'])->where('tahun_ajaran', $dtTA['id'])->findAll();
+        $dtDNAK = [];
+        $dtDNAP = [];
         foreach ($dtJadwal as $dt) {
             $tmpNAP = 0;
             $tmpNAK = 0;
@@ -164,6 +171,10 @@ class ERaport extends BaseController
                 'nilaiPengetahuan' => $tmpNAP,
                 'nilaiKeterampilan' => $tmpNAK
             ];
+            $dnaPengetahuan = $this->modelDeskripsiNA->where('dna_jadwal_id', $dt['jadwal_id'])->where('dna_kategori', 'pengetahuan')->where('dna_siswa_id', $dtSiswa['id'])->where('dna_semester_id', $dtSmt['id_semester'])->first();
+            $dnaKeterampilan = $this->modelDeskripsiNA->where('dna_jadwal_id', $dt['jadwal_id'])->where('dna_kategori', 'keterampilan')->where('dna_siswa_id', $dtSiswa['id'])->where('dna_semester_id', $dtSmt['id_semester'])->first();
+            $dtDNAK[$dt['jadwal_id']] = (is_null($dnaKeterampilan)) ? '' : $dnaKeterampilan['dna_deskripsi'];
+            $dtDNAP[$dt['jadwal_id']] = (is_null($dnaPengetahuan)) ? '' : $dnaPengetahuan['dna_deskripsi'];
         }
         $data = [
             'title' => 'Siasmarigo',
@@ -178,7 +189,9 @@ class ERaport extends BaseController
             'dtNA' => $dtNA,
             'dtKelas' => $dtKelas,
             'listBulan' => $this->listBulan,
-            'dtJadwal' => $dtJadwal
+            'dtJadwal' => $dtJadwal,
+            'dtDNAK' => $dtDNAK,
+            'dtDNAP' => $dtDNAP
         ];
         return view('guru/eraport/detail', $data);
     }
