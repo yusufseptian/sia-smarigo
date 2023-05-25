@@ -21,10 +21,10 @@
                     <tbody>
                         <tr>
                             <td class="text-center py-2">
-                                <p><?= $dtNond['nond_spiritual_predikat'] ?></p>
+                                <p><?= (is_null($dtNond)) ? '<span class="text-warning">Belum Dinilai</span>' : $dtNond['nond_spiritual_predikat'] ?></p>
                             </td>
                             <td class="px-3 py-2">
-                                <p><?= $dtNond['nond_spiritual_deskripsi'] ?></p>
+                                <p><?= (is_null($dtNond)) ? '<span class="text-warning">Belum Dinilai</span>' : $dtNond['nond_spiritual_deskripsi'] ?></p>
                             </td>
                         </tr>
                     </tbody>
@@ -42,10 +42,10 @@
                     <tbody>
                         <tr>
                             <td class="text-center py-2">
-                                <p><?= $dtNond['nond_sosial_predikat'] ?></p>
+                                <p><?= (is_null($dtNond)) ? '<span class="text-warning">Belum Dinilai</span>' : $dtNond['nond_sosial_predikat'] ?></p>
                             </td>
                             <td class="px-3 py-2">
-                                <p><?= $dtNond['nond_sosial_deskripsi'] ?></p>
+                                <p><?= (is_null($dtNond)) ? '<span class="text-warning">Belum Dinilai</span>' : $dtNond['nond_sosial_deskripsi'] ?></p>
                             </td>
                         </tr>
                     </tbody>
