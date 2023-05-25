@@ -198,7 +198,14 @@ class ERaport extends BaseController
 
     public function tahun_ajaran()
     {
-        $dtSiswa = $this->modelSiswa->find(session('log_auth')['akunID']);
+        if (session('log_auth')['role'] == 'SISWA') {
+            $dtSiswa = $this->modelSiswa->find(session('log_auth')['akunID']);
+        } elseif (session('log_auth')['role'] == 'ORTU') {
+            $dtOrtu = $this->modelOrtu->find(session('log_auth')['akunID']);
+            $dtSiswa = $this->modelSiswa->where('nis', $dtOrtu['nis_siswa'])->first();
+        } else {
+            return 'Access Dennied';
+        }
         $dtTahun = $this->modelNilaiNonAkademikDetail
             ->join('nilai_non_akademik', 'nond_non_id=non_id')
             ->join('kelas', 'id_kelas=non_kelas_id')
