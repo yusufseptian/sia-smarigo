@@ -46,16 +46,20 @@ class Guru extends BaseController
 
         return redirect()->to('guru')->with('success', 'Data berhasil ditambahkan');
     }
-    public function editData($id_guru)
+    public function editData($nip)
     {
+        $dtGuru = $this->ModelGuru->where('nip', $nip)->first();
+        if (empty($dtGuru)) {
+            session()->setFlashdata('danger', 'Data guru tidak ditemukan');
+            return $this->redirectBack();
+        }
+        $id_guru = $dtGuru['id_guru'];
         // jika photo tidak diganti
         $file = $this->request->getFile('photo');
         if ($file->getError() == 4) {
             $data = [
                 'id_guru' => $id_guru,
                 'nip' => $this->request->getPost('nip'),
-                'username' => $this->request->getPost('username'),
-                'password' => md5((string)$this->request->getPost('password')),
                 'nama' => $this->request->getPost('nama'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tgl_lahir' => $this->request->getPost('tgl_lahir'),
@@ -77,8 +81,6 @@ class Guru extends BaseController
             $data = [
                 'id_guru' => $id_guru,
                 'nip' => $this->request->getPost('nip'),
-                'username' => $this->request->getPost('username'),
-                'password' => md5((string)$this->request->getPost('password')),
                 'nama' => $this->request->getPost('nama'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tgl_lahir' => $this->request->getPost('tgl_lahir'),

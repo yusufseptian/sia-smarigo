@@ -203,19 +203,19 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="" id="formEditGuru" method="post">
+            <form action="" id="formEditGuru" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Username</label>
-                                <input name="username" class="form-control" id="txtEditUsername" placeholder="username" required>
+                                <input name="username" class="form-control" id="txtEditUsername" placeholder="username" disabled>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" name="password" class="form-control" placeholder="password" required>
+                                <input type="password" name="password" class="form-control" placeholder="password" disabled>
                             </div>
                         </div>
                     </div>
@@ -283,7 +283,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Jabatan</label>
-                                <input name="jabatan" class="form-control" id="txtEditJabatan" disabled placeholder="Jabatan" required>
+                                <input name="jabatan" class="form-control" id="txtEditJabatan" placeholder="Masukkan Jabatan" required>
                             </div>
                         </div>
                         <div class="col-6">
@@ -297,7 +297,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Foto Guru</label>
-                                <input id="foto" type="file" accept="image/*" name="photo" class="form-control" onchange="editFotoGuru(event)" required>
+                                <input id="foto" type="file" accept="image/*" name="photo" class="form-control" onchange="editFotoGuru(event)">
                             </div>
                             <div class="form-group">
                                 <label>Preview</label><br>
@@ -361,6 +361,7 @@
                 $("#txtEditJabatan").val(element.jabatan);
                 $("#txtEditPendidikanTerakhir").val(element.pendidikanTerakhir);
                 $("#cmbGender_" + element.gender).attr("selected", "");
+                $("#formEditGuru").attr("action", "<?= base_url('guru/editdata') ?>/" + nip);
                 $("#gambar_load_edit").attr('src', '<?= base_url('foto_guru') ?>/' + element.photo);
                 return false;
             }
