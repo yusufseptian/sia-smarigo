@@ -39,9 +39,9 @@ class Siswa extends BaseController
             'nama' => $this->request->getPost('nama'),
             'tempat_lahir' => $this->request->getPost('tempat_lahir'),
             'tgl_lahir' => $this->request->getPost('tgl_lahir'),
+            'id_kelas' => $this->request->getPost('id_kelas'),
             'gender' => $this->request->getPost('gender'),
             'no_hp' => $this->request->getPost('no_hp'),
-            'email' => $this->request->getPost('email'),
             'alamat' => $this->request->getPost('alamat'),
             'photo' => $nama_file,
         ];
@@ -71,9 +71,9 @@ class Siswa extends BaseController
             $this->ModelSiswa->update($id, $data);
         } else {
             // jika logo diganti
-            $guru = $this->ModelSiswa->where('id', $id)->get()->getRowArray();
-            if ($guru['guru_foto'] != "") {
-                unlink('./foto_siswa/' . $guru['guru_foto']);
+            $siswa = $this->ModelSiswa->where('id', $id)->get()->getRowArray();
+            if ($siswa['photo'] != "") {
+                unlink('./foto_siswa/' . $siswa['photo']);
             }
             $nama_file = $file->getRandomName();
             $data = [
@@ -85,11 +85,10 @@ class Siswa extends BaseController
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tgl_lahir' => $this->request->getPost('tgl_lahir'),
                 'gender' => $this->request->getPost('gender'),
+                'id_kelas' => $this->request->getPost('id_kelas'),
                 'no_hp' => $this->request->getPost('no_hp'),
-                'email' => $this->request->getPost('email'),
                 'alamat' => $this->request->getPost('alamat'),
                 'jabatan' => $this->request->getPost('jabatan'),
-                'pendidikan_terakhir' => $this->request->getPost('pendidikan_terakhir'),
                 'photo' => $nama_file,
             ];
             $file->move('foto_siswa/', $nama_file);

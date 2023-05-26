@@ -156,6 +156,14 @@
             }
         }
 
+        function editGambar(input, target) {
+            try {
+                $(target).attr('src', URL.createObjectURL(input.target.files[0]));
+            } catch (error) {
+
+            }
+        }
+
         function tampilPreview() {
             if ($('#foto').val() == '') {
                 $('#pre').addClass('d-none');
