@@ -38,7 +38,7 @@ CREATE TABLE `deskripsi_nilai_akhir` (
   `dna_created_by` int NOT NULL,
   `dna_edited_at` datetime DEFAULT NULL,
   `dna_edited_by` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `deskripsi_nilai_akhir`
@@ -70,7 +70,7 @@ CREATE TABLE `ekstrakulikuler` (
   `ekskul_created_by` int NOT NULL,
   `ekskul_edited_at` datetime NOT NULL,
   `ekskul_edited_by` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `ekstrakulikuler`
@@ -101,7 +101,7 @@ CREATE TABLE `guru` (
   `jabatan` varchar(30) NOT NULL,
   `pendidikan_terakhir` varchar(30) NOT NULL,
   `photo` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `guru`
@@ -128,7 +128,7 @@ CREATE TABLE `jadwal` (
   `hari` enum('Senin','Selasa','Rabu','Kamis','Jumat') NOT NULL,
   `jam_mengajar` varchar(20) NOT NULL,
   `tahun_ajaran` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `jadwal`
@@ -159,7 +159,7 @@ CREATE TABLE `kategori_tugas` (
   `kt_deleted_at` datetime DEFAULT NULL,
   `kt_assessed_at` datetime DEFAULT NULL,
   `kt_value_changed_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `kategori_tugas`
@@ -183,7 +183,7 @@ CREATE TABLE `kelas` (
   `nama_kelas` varchar(25) NOT NULL,
   `id_ta` int DEFAULT NULL,
   `wali_kelas_id` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `kelas`
@@ -209,7 +209,7 @@ CREATE TABLE `matapelajaran` (
   `kkm_mapel` tinyint UNSIGNED NOT NULL,
   `kategori_mapel` enum('Kelompok A (Umum)','Kelompok B (Umum)','Kelompok C (Peminatan)') NOT NULL,
   `jurusan_mapel` enum('IPA','IPS') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `matapelajaran`
@@ -238,7 +238,7 @@ CREATE TABLE `nilai_akademik` (
   `na_kategori_id` int NOT NULL,
   `na_siswa_id` int NOT NULL,
   `na_nilai` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `nilai_akademik`
@@ -273,7 +273,7 @@ CREATE TABLE `nilai_non_akademik` (
   `non_created_at` datetime NOT NULL,
   `non_edited_by` int DEFAULT NULL,
   `non_edited_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `nilai_non_akademik`
@@ -305,7 +305,7 @@ CREATE TABLE `nilai_non_akademik_detail` (
   `nond_created_at` datetime NOT NULL,
   `nond_edited_by` int DEFAULT NULL,
   `nond_edited_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `nilai_non_akademik_detail`
@@ -378,7 +378,7 @@ CREATE TABLE `prestasi` (
   `prestasi_created_by` int NOT NULL,
   `prestasi_edited_at` datetime NOT NULL,
   `prestasi_edited_by` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `prestasi`
@@ -429,7 +429,7 @@ CREATE TABLE `siswa` (
   `alamat` varchar(150) NOT NULL,
   `no_hp` varchar(20) NOT NULL,
   `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `siswa`
@@ -456,7 +456,7 @@ CREATE TABLE `tahun_ajaran` (
   `created_at` datetime DEFAULT NULL,
   `edited_by` int NOT NULL,
   `edited_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `tahun_ajaran`
@@ -479,7 +479,7 @@ CREATE TABLE `user` (
   `level` enum('admin','guru','siswa','orangtua') NOT NULL,
   `blokir` enum('N','Y') NOT NULL,
   `id_sessions` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `user`
