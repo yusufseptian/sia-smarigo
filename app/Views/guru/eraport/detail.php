@@ -54,6 +54,7 @@
             <?= $this->include('guru/eraport/partial/ttd'); ?>
         </div>
     </div>
+
     <div class="card">
         <div class="card-body text-gray-900 p-0" id="formContainer" style="margin-left: 150px; margin-right: 110px; margin-top: 150px; margin-bottom: 110px;">
             <div class="mb-3 pb-2 d-flex justify-content-between" style="border-bottom: solid black 3px !important;">
