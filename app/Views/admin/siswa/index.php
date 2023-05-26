@@ -50,7 +50,7 @@
                             'tempatLahir' => $value['tempat_lahir'],
                             'tglLahir' => $value['tgl_lahir'],
                             'gender' => $value['gender'],
-                            'kelas' => null,
+                            'kelas' => $value['nama_kelas'],
                             'alamat' => $value['alamat'],
                             'noHp' => $value['no_hp'],
                             'foto' => $value['photo']
@@ -187,7 +187,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="siswa/editData" method="post" enctype="multipart/form-data">
+            <form action="siswa/editData" method="post" id="formEditSiswa" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-6">
@@ -199,7 +199,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Username</label>
-                                <input name="Username" class="form-control" placeholder="Username" id="txtEditUsername" required>
+                                <input name="Username" class="form-control" placeholder="Username" id="txtEditUsername" required disabled>
                             </div>
                         </div>
                     </div>
@@ -207,7 +207,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" name="password" class="form-control" placeholder="password" required>
+                                <input type="password" name="password" class="form-control" placeholder="password" required disabled>
                             </div>
                         </div>
                         <div class="col-6">
@@ -245,12 +245,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Kelas</label>
-                                <select name="id_ta" class="form-control">
-                                    <option value="id_kelas">--Pilih Kelas--</option>
-                                    <?php foreach ($kelas as $dt) : ?>
-                                        <option value="<?= $dt['id_kelas'] ?>"><?= $dt['nama_kelas'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                <input type="text" name="" id="txtKelas" class="form-control" disabled>
                             </div>
                         </div>
                     </div>
@@ -269,16 +264,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label>Ganti Foto Siswa</label>
-                                <input id="foto" type="file" accept="image/*" name="photo" onchange="editGambar(event)" class="form-control">
-                            </div>
+                        <div class="form-group mb-3">
+                            <label class="font-weight-bold">Foto</label>
+                            <input id="foto" type="file" accept="image/*" name="photo" class="form-control" onchange="editGambar(event)">
                         </div>
-
-                        <div class="form-group">
-                            <label>Preview</label><br>
-                            <img id="gambar_load_edit" src="" width="200px">
+                        <div class="form-group mb-3" id="pre">
+                            <label for="gbr" class="font-weight-bold">Preview</label><br>
+                            <img src="" id="gambar_load_edit" name="gbr" width="200px">
                         </div>
                     </div>
                 </div>
@@ -316,6 +308,8 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+<?= $this->endSection() ?>
+<?= $this->section('bottomScript'); ?>
 <script>
     const dtaSiswa = <?= json_encode($dataSiswa) ?>;
 
@@ -330,8 +324,10 @@
                 $("#txtEditTglLahir").val(element.tglLahir);
                 $("#txtEditAlamat").val(element.alamat);
                 $("#txtEditNoHp").val(element.noHp);
+                $("#txtKelas").val(element.kelas);
                 $("#optGender" + element.gender).attr("selected", "");
                 $("#gambar_load_edit").attr("src", "<?= base_url() ?>/foto_siswa/" + element.foto);
+                $("#formEditSiswa").attr('action', '<?= base_url('siswa/editdata') ?>/' + nis)
                 return false;
             }
         });

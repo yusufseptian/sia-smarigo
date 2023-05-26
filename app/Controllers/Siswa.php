@@ -7,6 +7,7 @@ use App\Models\ModelSiswa;
 
 use App\Controllers\BaseController;
 use App\Models\ModelKelas;
+use Exception;
 
 class Siswa extends BaseController
 {
@@ -23,7 +24,7 @@ class Siswa extends BaseController
         $data = [
             'title' => 'Siasmarigo',
             'sub_title' => 'Siswa',
-            'siswa' => $this->ModelSiswa->findAll(),
+            'siswa' => $this->ModelSiswa->join('kelas', 'siswa.id_kelas=kelas.id_kelas', 'left')->findAll(),
             'kelas' => $this->ModelKelas->findAll(),
         ];
         return view('admin/siswa/index', $data);
@@ -50,16 +51,19 @@ class Siswa extends BaseController
 
         return redirect()->to('siswa')->with('success', 'Data berhasil ditambahkan');
     }
-    public function editData($id)
+    public function editData($nis)
     {
+        $dtSiswa = $this->ModelSiswa->where('nis', $nis)->first();
+        if (empty($dtSiswa)) {
+            session()->setFlashdata('danger', 'Data siswa tidak ditemukan');
+        }
+        $id = $dtSiswa['id'];
         // jika logo tidak diganti
         $file = $this->request->getFile('photo');
         if ($file->getError() == 4) {
             $data = [
                 'id' => $id,
                 'nis' => $this->request->getPost('nis'),
-                'username' => $this->request->getPost('username'),
-                'password' => md5((string)$this->request->getPost('password')),
                 'nama' => $this->request->getPost('nama'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tgl_lahir' => $this->request->getPost('tgl_lahir'),
@@ -73,19 +77,19 @@ class Siswa extends BaseController
             // jika logo diganti
             $siswa = $this->ModelSiswa->where('id', $id)->get()->getRowArray();
             if ($siswa['photo'] != "") {
-                unlink('./foto_siswa/' . $siswa['photo']);
+                try {
+                    unlink('./foto_siswa/' . $siswa['photo']);
+                } catch (Exception $e) {
+                }
             }
             $nama_file = $file->getRandomName();
             $data = [
                 'id' => $id,
                 'nis' => $this->request->getPost('nis'),
-                'username' => $this->request->getPost('username'),
-                'password' => md5((string)$this->request->getPost('password')),
                 'nama' => $this->request->getPost('nama'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tgl_lahir' => $this->request->getPost('tgl_lahir'),
                 'gender' => $this->request->getPost('gender'),
-                'id_kelas' => $this->request->getPost('id_kelas'),
                 'no_hp' => $this->request->getPost('no_hp'),
                 'alamat' => $this->request->getPost('alamat'),
                 'jabatan' => $this->request->getPost('jabatan'),
