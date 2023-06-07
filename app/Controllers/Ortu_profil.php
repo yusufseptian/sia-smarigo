@@ -24,7 +24,7 @@ class Ortu_profil extends BaseController
         ];
         return view('ortu/profil/index', $data);
     }
-    public function editData()
+    public function editdata()
     {
         $id_ortu = session('log_auth')['akunID'];
 
