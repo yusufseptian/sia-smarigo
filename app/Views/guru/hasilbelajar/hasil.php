@@ -93,11 +93,11 @@
 <?= $this->section('bottomScript') ?>
 <script>
     function setSemester(semester) {
-        window.location.href = "<?= base_url("HasilBelajar/hasil/$jenisKategori/$tahunAjaranID/$mapelID") ?>/" + semester;
+        window.location.href = "<?= base_url("HasilBelajar/hasil/$tahunAjaranID/$mapelID") ?>/" + semester + "/<?= $jenisKategori ?>";
     }
 
     function setKeterangan(keterangan) {
-        window.location.href = "<?= base_url("HasilBelajar/hasil") ?>/" + keterangan + "<?= "/$tahunAjaranID/$mapelID/$semesterID" ?>";
+        window.location.href = "<?= base_url("HasilBelajar/hasil/$tahunAjaranID/$mapelID/$semesterID") ?>/" + keterangan;
     }
 </script>
 <?= $this->endSection() ?>

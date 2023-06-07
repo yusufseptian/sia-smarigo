@@ -129,7 +129,7 @@ class HasilBelajar extends BaseController
         return view('guru/hasilbelajar/pilih_mapel', $data);
     }
 
-    public function hasil($idTahunAjaran, $idMapel, $semester = 0,$keterangan = null)
+    public function hasil($idTahunAjaran, $idMapel, $semester = 0, $keterangan = null)
     {
         $dtTA = $this->ModelTahunAjar->find($idTahunAjaran);
         if (empty($dtTA)) {
