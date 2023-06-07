@@ -37,7 +37,7 @@
                     <?php endif ?>
                 </div>
             </div>
-            <form action="<?= ($isFinished) ? '' : base_url("deskripsinilaiakhir/save/$kategori/$mapelID/$kelasID") ?>" method="post" id="formDeskripsiNA">
+            <form action="<?= ($isFinished) ? '' : base_url("DeskripsiNilaiAkhir/save/$kategori/$mapelID/$kelasID") ?>" method="post" id="formDeskripsiNA">
                 <table id="tbSiswa" class="table table-bordered table-striped">
                     <thead>
                         <tr>

@@ -7,7 +7,7 @@
             <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalAddKategori">Info</button>
         </div>
         <div class="card-body">
-            <form action="<?= base_url("penilaianakademik/insertnilai/$mapelID/$kelasID/$kategoriID") ?>" method="post" id="formNilai">
+            <form action="<?= base_url("PenilaianAkademik/insertnilai/$mapelID/$kelasID/$kategoriID") ?>" method="post" id="formNilai">
                 <div class="mb-3 border-bottom d-flex justify-content-between">
                     <table>
                         <tr>

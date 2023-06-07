@@ -75,12 +75,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h4 class="modal-title">Tambah Kelas</h4>
+                <h4 class="modal-title">Tambah Tahun Ajaran</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?= form_open('tahunajaran/insertdata') ?>
+            <?= form_open('TahunAjaran/insertdata') ?>
             <div class="modal-body">
                 <div class="alert alert-warning my-3" role="alert">
                     <div><i class="fas fa-exclamation-triangle"></i> <b>Perhatian</b></div>
@@ -91,7 +91,7 @@
                     <input name="tahun_ajaran" class="form-control" placeholder="Masukkan Tahun Ajaran" required>
                 </div>
                 <div class="form-group">
-                    <label>Tahun Ajaran</label>
+                    <label>KKM Tahun Ini</label>
                     <input type="number" name="kkm" class="form-control" min="0" max="100" placeholder="Masukkan KKM pada tahun ini" required>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -112,12 +112,12 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-warning">
-                    <h4 class="modal-title">Edit kelas</h4>
+                    <h4 class="modal-title">Edit Tahun Ajaran</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <?= form_open(base_url('tahunajaran/editdata/' . $first_tahun_ajar['id'])) ?>
+                <?= form_open(base_url('TahunAjaran/editdata/' . $first_tahun_ajar['id'])) ?>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tahun Ajaran</label>
@@ -154,7 +154,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
-                    <a href="<?= base_url('tahunajaran/deleteData/' . $first_tahun_ajar['id']) ?>" class="btn btn-danger btn-sm">Hapus</a>
+                    <a href="<?= base_url('TahunAjaran/deleteData/' . $first_tahun_ajar['id']) ?>" class="btn btn-danger btn-sm">Hapus</a>
                 </div>
             </div>
             <!-- /.modal-content -->

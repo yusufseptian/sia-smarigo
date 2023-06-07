@@ -36,9 +36,8 @@
                 <a class="collapse-item" href="<?= base_url('kelas') ?>">Kelas</a>
                 <a class="collapse-item" href="<?= base_url('mapel') ?>">Mata Pelajaran</a>
                 <a class="collapse-item" href="<?= base_url('jadwal') ?>">Jadwal Guru</a>
-                <a class="collapse-item" href="<?= base_url('hasilbelajar') ?>">Hasil Belajar</a>
                 <a class="collapse-item" href="<?= base_url('semester') ?>">Semester</a>
-                <a class="collapse-item" href="<?= base_url('tahunajaran') ?>">Tahun Ajaran</a>
+                <a class="collapse-item" href="<?= base_url('TahunAjaran') ?>">Tahun Ajaran</a>
             </div>
         </div>
     </li>

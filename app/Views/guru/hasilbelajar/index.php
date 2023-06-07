@@ -15,7 +15,7 @@
                     <tbody>
                         <?php $no = 1;
                         foreach ($dtTahunAjaran as $key => $value) { ?>
-                            <tr style="cursor: pointer;" onclick="window.location.href='<?= base_url('hasilbelajar/mapel/' . $value['id']) ?>'">
+                            <tr style="cursor: pointer;" onclick="window.location.href='<?= base_url('HasilBelajar/mapel/' . $value['id']) ?>'">
                                 <td><?= $no++ ?></td>
                                 <td><?= $value['nama_kelas'] ?></td>
                                 <td><?= $value['tahun_ajaran'] ?></td>
@@ -108,7 +108,7 @@
                     'error'
                 );
             } else {
-                window.location.href = '<?= base_url("hasilbelajar/mapel") ?>/' + idTahunAjaran + '/' + kelas.val();
+                window.location.href = '<?= base_url("HasilBelajar/mapel") ?>/' + idTahunAjaran + '/' + kelas.val();
             }
         }
     <?php endif ?>

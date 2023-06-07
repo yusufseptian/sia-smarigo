@@ -24,12 +24,24 @@ class Ortu_profil extends BaseController
         ];
         return view('ortu/profil/index', $data);
     }
-    public function editData()
+    public function editdata()
     {
+        dd($this->request->getPost('username'));
         $id_ortu = session('log_auth')['akunID'];
-
         $data = [
-            'id_orangtua' => $id_ortu,
+            'username'  => $this->request->getPost('username'),
+            'password' => md5((string)$this->request->getPost('password')),
+            'nama'      => $this->request->getPost('nama'),
+            'no_hp'     => $this->request->getPost('no_hp'),
+            'pekerjaan' => $this->request->getPost('pekerjaan'),
+            'alamat'    => $this->request->getPost('alamat'),
+        ];
+        $this->ModelOrtu->update($id_ortu, $data);
+        return redirect()->to('ortu_profil')->with('warning', 'Data berhasil diubah');
+    }
+    public function update(){
+        $id_ortu = session('log_auth')['akunID'];
+        $data = [
             'username'  => $this->request->getPost('username'),
             'password' => md5((string)$this->request->getPost('password')),
             'nama'      => $this->request->getPost('nama'),

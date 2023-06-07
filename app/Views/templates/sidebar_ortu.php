@@ -30,9 +30,9 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Sub-Menu</h6>
-                <a class="collapse-item" href="<?= base_url('hasilbelajar') ?>">Rekap Nilai</a>
+                <a class="collapse-item" href="<?= base_url('HasilBelajar') ?>">Rekap Nilai</a>
                 <a class="collapse-item" href="<?= base_url('ortu_profil') ?>">Profil</a>
-                <a class="collapse-item" href="<?= base_url('eraport/tahun_ajaran') ?>">Cetak Transkrip</a>
+                <a class="collapse-item" href="<?= base_url('ERaport/tahun_ajaran') ?>">Cetak Transkrip</a>
             </div>
         </div>
     </li>

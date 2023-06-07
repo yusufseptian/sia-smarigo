@@ -71,7 +71,7 @@
                             <td class="text-center"><?= $value['kt_bobot'] ?></td>
                             <td class="text-center cellFit">
                                 <button type="button" class="btn btn-warning btn-sm" onclick="setEdit('<?= $value['kt_id'] ?>', '<?= $value['kt_bobot'] ?>')" data-toggle="modal" data-target="#modalEditKategori"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='<?= base_url('penilaianakademik/nilai/' . $mapelID . '/' . $kelasID . '/' . $value['kt_id']) ?>'"><i class="fas fa-list-alt"></i></button>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='<?= base_url('PenilaianAkademik/nilai/' . $mapelID . '/' . $kelasID . '/' . $value['kt_id']) ?>'"><i class="fas fa-list-alt"></i></button>
                             </td>
                         </tr>
 
@@ -87,7 +87,7 @@
 </div>
 <!-- Modal Add Kategori -->
 <div class="modal fade" id="modalAddKategori" tabindex="-1" aria-labelledby="modalAddKategoriLabel" aria-hidden="true">
-    <form action="<?= base_url("penilaianakademik/addkategori/$keteranganKategori/$mapelID/$kelasID/" . $dtSmt['id_semester']) ?>" method="post">
+    <form action="<?= base_url("PenilaianAkademik/addkategori/$keteranganKategori/$mapelID/$kelasID/" . $dtSmt['id_semester']) ?>" method="post">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

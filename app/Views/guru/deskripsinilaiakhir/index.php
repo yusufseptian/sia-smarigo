@@ -16,7 +16,7 @@
                 <tbody>
                     <?php $no = 1;
                     foreach ($dtJadwal as $key => $value) { ?>
-                        <tr style="cursor:  pointer;" onclick="window.location.href='<?= base_url('deskripsinilaiakhir/kelas/' . $value['mapel_id']) ?>'">
+                        <tr style="cursor:  pointer;" onclick="window.location.href='<?= base_url('DeskripsiNilaiAkhir/kelas/' . $value['mapel_id']) ?>'">
                             <td class="cellFit"><?= $no++ ?></td>
                             <td><?= $value['nama_matapelajaran'] ?></td>
                         </tr>

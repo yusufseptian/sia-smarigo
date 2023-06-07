@@ -39,7 +39,7 @@
                             <td><?= $dt['nis'] ?></td>
                             <td><?= $dt['nama'] ?></td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='<?= base_url('eraport/nilai/' . $dt['nis']) ?>'">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='<?= base_url('ERaport/nilai/' . $dt['nis']) ?>'">
                                     <i class="fas fa-eye"></i>
                                 </button>
                             </td>

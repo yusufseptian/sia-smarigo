@@ -28,7 +28,7 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
-                    <?= form_open_multipart(base_url('guru_profil/editdata/')) ?>
+                    <?= form_open_multipart(base_url('Guru_profil/update')) ?>
                     <div class="card-title h3 font-weight-bold text-gray-900">Profil Guru</div>
                     <div class="row">
                         <div class="col-6">

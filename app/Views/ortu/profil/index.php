@@ -6,7 +6,7 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
-                    <?= form_open(base_url('ortu_profil/editdata/')) ?>
+                    <?= form_open(base_url('Ortu_profil/update')) ?>
                     <div class="card-title h3 font-weight-bold text-gray-900">Profil Orang Tua</div>
                     <div class="row">
                         <div class="col-6">

@@ -13,7 +13,7 @@
                 <tbody>
                     <?php $no = 1;
                     foreach ($dtMapel as $key => $value) { ?>
-                        <tr style="cursor: pointer;" onclick="window.location.href='<?= base_url('hasilbelajar/hasil/pengetahuan/' . $tahunAjaranID . '/' . $value['mapel_id']) ?>'">
+                        <tr style="cursor: pointer;" onclick="window.location.href='<?= base_url('HasilBelajar/hasil/pengetahuan/' . $tahunAjaranID . '/' . $value['mapel_id']) ?>'">
                             <td><?= $no++ ?></td>
                             <td><?= $value['nama_matapelajaran'] ?></td>
                         </tr>

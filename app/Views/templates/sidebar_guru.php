@@ -31,9 +31,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Sub-Menu</h6>
                 <a class="collapse-item" href="<?= base_url('guru_jadwal') ?>">Mata Pelajaran</a>
-                <a class="collapse-item" href="<?= base_url('penilaianakademik') ?>">Input Nilai</a>
-                <a class="collapse-item" href="<?= base_url('deskripsinilaiakhir') ?>">Deskripsi Nilai Akhir</a>
-                <a class="collapse-item" href="<?= base_url('hasilbelajar') ?>">Hasil Belajar</a>
+                <a class="collapse-item" href="<?= base_url('PenilaianAkademik') ?>">Input Nilai</a>
+                <a class="collapse-item" href="<?= base_url('DeskripsiNilaiAkhir') ?>">Deskripsi Nilai Akhir</a>
+                <a class="collapse-item" href="<?= base_url('HasilBelajar') ?>">Hasil Belajar</a>
                 <a class="collapse-item" href="<?= base_url('guru_profil') ?>">Profil</a>
             </div>
         </div>
@@ -47,8 +47,8 @@
             <div id="menuWaliKelas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Sub-Menu</h6>
-                    <a class="collapse-item" href="<?= base_url('penilaiannonakademik') ?>">Penilaian Non Akademik</a>
-                    <a class="collapse-item" href="<?= base_url('eraport') ?>">E-Raport</a>
+                    <a class="collapse-item" href="<?= base_url('PenilaianNonAkademik') ?>">Penilaian Non Akademik</a>
+                    <a class="collapse-item" href="<?= base_url('ERaport') ?>">E-Raport</a>
                 </div>
             </div>
         </li>

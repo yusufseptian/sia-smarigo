@@ -22,12 +22,12 @@
                             <td class="cellFit"><?= $no++ ?></td>
                             <td><?= $value['nama_kelas'] ?></td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-success btn-sm" onclick="window.location.href='<?= base_url('deskripsinilaiakhir/nilai/pengetahuan/' . $mapelID . '/' . $value['kelas_id']) ?>'">
+                                <button type="button" class="btn btn-success btn-sm" onclick="window.location.href='<?= base_url('DeskripsiNilaiAkhir/nilai/pengetahuan/' . $mapelID . '/' . $value['kelas_id']) ?>'">
                                     <i class="fas fa-edit"></i>
                                 </button>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='<?= base_url('deskripsinilaiakhir/nilai/keterampilan/' . $mapelID . '/' . $value['kelas_id']) ?>'">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='<?= base_url('DeskripsiNilaiAkhir/nilai/keterampilan/' . $mapelID . '/' . $value['kelas_id']) ?>'">
                                     <i class="fas fa-edit"></i>
                                 </button>
                             </td>

@@ -24,8 +24,8 @@
                         <div class="card-body">
                             <h5 class="card-title">E-Raport</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Tahun Ajaran <?= $dt['tahun_ajaran'] ?></h6>
-                            <a href="<?= base_url("eraport/nilai/" . $dtSiswa['nis'] . "/" . $dt['id'] . "/1") ?>" class="card-link">Semester 1</a>
-                            <a href="<?= base_url("eraport/nilai/" . $dtSiswa['nis'] . "/" . $dt['id'] . "/2") ?>" class="card-link">Semester 2</a>
+                            <a href="<?= base_url("ERaport/nilai/" . $dtSiswa['nis'] . "/" . $dt['id'] . "/1") ?>" class="card-link">Semester 1</a>
+                            <a href="<?= base_url("ERaport/nilai/" . $dtSiswa['nis'] . "/" . $dt['id'] . "/2") ?>" class="card-link">Semester 2</a>
                         </div>
                     </div>
                 </div>
