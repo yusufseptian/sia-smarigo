@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 26 Bulan Mei 2023 pada 08.51
+-- Waktu pembuatan: 30 Bulan Mei 2023 pada 15.33
 -- Versi server: 8.0.30
 -- Versi PHP: 8.1.10
 
@@ -31,9 +31,9 @@ CREATE TABLE `deskripsi_nilai_akhir` (
   `dna_id` int NOT NULL,
   `dna_jadwal_id` int NOT NULL,
   `dna_siswa_id` int NOT NULL,
-  `dna_kategori` enum('pengetahuan','keterampilan') NOT NULL,
-  `dna_deskripsi` text,
-  `dna_semester_id` tinyint UNSIGNED NOT NULL,
+  `dna_kategori` enum('pengetahuan','keterampilan') COLLATE utf8mb4_general_ci NOT NULL,
+  `dna_deskripsi` text COLLATE utf8mb4_general_ci,
+  `dna_semester_id` int NOT NULL,
   `dna_created_at` datetime NOT NULL,
   `dna_created_by` int NOT NULL,
   `dna_edited_at` datetime DEFAULT NULL,
@@ -62,9 +62,9 @@ INSERT INTO `deskripsi_nilai_akhir` (`dna_id`, `dna_jadwal_id`, `dna_siswa_id`, 
 
 CREATE TABLE `ekstrakulikuler` (
   `ekskul_id` int NOT NULL,
-  `ekskul_nama` varchar(50) NOT NULL,
-  `ekskul_predikat` enum('A','B','C') NOT NULL,
-  `ekskul_deskripsi` text NOT NULL,
+  `ekskul_nama` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `ekskul_predikat` enum('A','B','C') COLLATE utf8mb4_general_ci NOT NULL,
+  `ekskul_deskripsi` text COLLATE utf8mb4_general_ci NOT NULL,
   `ekskul_nond_id` int NOT NULL,
   `ekskul_created_at` datetime NOT NULL,
   `ekskul_created_by` int NOT NULL,
@@ -88,19 +88,19 @@ INSERT INTO `ekstrakulikuler` (`ekskul_id`, `ekskul_nama`, `ekskul_predikat`, `e
 
 CREATE TABLE `guru` (
   `id_guru` int NOT NULL,
-  `username` varchar(250) NOT NULL,
-  `password` varchar(250) NOT NULL,
+  `username` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
   `nip` int NOT NULL,
-  `nama` varchar(150) NOT NULL,
-  `tempat_lahir` varchar(50) NOT NULL,
+  `nama` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `tempat_lahir` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `tgl_lahir` date NOT NULL,
-  `gender` enum('Laki-laki','Perempuan') NOT NULL,
-  `no_hp` varchar(20) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `alamat` varchar(200) NOT NULL,
-  `jabatan` varchar(30) NOT NULL,
-  `pendidikan_terakhir` varchar(30) NOT NULL,
-  `photo` varchar(100) NOT NULL
+  `gender` enum('Laki-laki','Perempuan') COLLATE utf8mb4_general_ci NOT NULL,
+  `no_hp` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `alamat` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `jabatan` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `pendidikan_terakhir` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `photo` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -108,9 +108,9 @@ CREATE TABLE `guru` (
 --
 
 INSERT INTO `guru` (`id_guru`, `username`, `password`, `nip`, `nama`, `tempat_lahir`, `tgl_lahir`, `gender`, `no_hp`, `email`, `alamat`, `jabatan`, `pendidikan_terakhir`, `photo`) VALUES
-(1, 'sudarmiyati', '098f6bcd4621d373cade4e832627b4f6', 1413123331, 'Sudarmiyati, S.Pd', 'Kebumen', '1969-11-04', 'Perempuan', '+62892813181', 'bueti@gmail.com', 'Petahunan ', 'Guru Mapel', 'S1', 'aiony-haust-3TLl_97HNJo-unsplash.jpg'),
+(1, 'sudarmiyati', '098f6bcd4621d373cade4e832627b4f6', 1413123331, 'Sudarmiyati, S.Pd', 'Kebumen', '1969-11-04', 'Perempuan', '+62892813181', 'bueti@gmail.com', 'Petahunan ', 'Guru', 'S1', '1685111378_7be80d7b3f16cd9d9351.jpg'),
 (6, 'rizka', '81dc9bdb52d04dc20036dbd8313ed055', 110112783, 'Rizka, S.Pd', 'Lesung Batu Muda', '1995-06-13', 'Perempuan', '+622279696131', 'rizka@mail.com', 'Jalan Parangtritis, KM 9,7', 'Guru Mapel', 'S1 ', '22.jpg'),
-(9, '5190411039', 'd41d8cd98f00b204e9800998ecf8427e', 12345, 'yusuf sep', 'semarang', '2023-02-21', 'Laki-laki', '+62894738593', 'yos@gmail.com', 'muntilan', 'guru', 'nganu', '1685087380_105ea947b5f3bd610be9.jpg');
+(9, '5190411039', '81dc9bdb52d04dc20036dbd8313ed055', 12345, 'yusuf sep', 'semarang', '2023-02-21', 'Laki-laki', '+62894738593', 'yos@gmail.com', 'muntilan', 'guru', 'nganu', '1685087380_105ea947b5f3bd610be9.jpg');
 
 -- --------------------------------------------------------
 
@@ -125,8 +125,8 @@ CREATE TABLE `jadwal` (
   `guru_id` int NOT NULL,
   `kelas_id` int NOT NULL,
   `wali_kelas_id` int DEFAULT NULL,
-  `hari` enum('Senin','Selasa','Rabu','Kamis','Jumat') NOT NULL,
-  `jam_mengajar` varchar(20) NOT NULL,
+  `hari` enum('Senin','Selasa','Rabu','Kamis','Jumat') COLLATE utf8mb4_general_ci NOT NULL,
+  `jam_mengajar` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `tahun_ajaran` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -146,9 +146,9 @@ INSERT INTO `jadwal` (`jadwal_id`, `mapel_id`, `mapel_kkm`, `guru_id`, `kelas_id
 
 CREATE TABLE `kategori_tugas` (
   `kt_id` int NOT NULL,
-  `kt_nama` varchar(50) NOT NULL,
-  `kt_jenis` enum('pengetahuan','keterampilan') NOT NULL,
-  `kt_deskripsi` text,
+  `kt_nama` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `kt_jenis` enum('pengetahuan','keterampilan') COLLATE utf8mb4_general_ci NOT NULL,
+  `kt_deskripsi` text COLLATE utf8mb4_general_ci,
   `kt_tanggal` date NOT NULL,
   `kt_kkm` float NOT NULL,
   `kt_bobot` float NOT NULL,
@@ -179,8 +179,8 @@ INSERT INTO `kategori_tugas` (`kt_id`, `kt_nama`, `kt_jenis`, `kt_deskripsi`, `k
 
 CREATE TABLE `kelas` (
   `id_kelas` int NOT NULL,
-  `kode_kelas` varchar(3) NOT NULL,
-  `nama_kelas` varchar(25) NOT NULL,
+  `kode_kelas` varchar(3) COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_kelas` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
   `id_ta` int DEFAULT NULL,
   `wali_kelas_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -204,11 +204,11 @@ INSERT INTO `kelas` (`id_kelas`, `kode_kelas`, `nama_kelas`, `id_ta`, `wali_kela
 
 CREATE TABLE `matapelajaran` (
   `id` int NOT NULL,
-  `kode_matapelajaran` varchar(10) NOT NULL,
-  `nama_matapelajaran` varchar(100) NOT NULL,
+  `kode_matapelajaran` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_matapelajaran` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `kkm_mapel` tinyint UNSIGNED NOT NULL,
-  `kategori_mapel` enum('Kelompok A (Umum)','Kelompok B (Umum)','Kelompok C (Peminatan)') NOT NULL,
-  `jurusan_mapel` enum('IPA','IPS') NOT NULL
+  `kategori_mapel` enum('Kelompok A (Umum)','Kelompok B (Umum)','Kelompok C (Peminatan)') COLLATE utf8mb4_general_ci NOT NULL,
+  `jurusan_mapel` enum('IPA','IPS') COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -292,15 +292,15 @@ CREATE TABLE `nilai_non_akademik_detail` (
   `nond_id` int NOT NULL,
   `nond_non_id` int NOT NULL,
   `nond_siswa_id` int NOT NULL,
-  `nond_spiritual_predikat` enum('Baik','Cukup','Sedang') NOT NULL,
-  `nond_spiritual_deskripsi` text NOT NULL,
-  `nond_sosial_predikat` enum('Baik','Cukup','Sedang') NOT NULL,
-  `nond_sosial_deskripsi` text NOT NULL,
+  `nond_spiritual_predikat` enum('Baik','Cukup','Sedang') COLLATE utf8mb4_general_ci NOT NULL,
+  `nond_spiritual_deskripsi` text COLLATE utf8mb4_general_ci NOT NULL,
+  `nond_sosial_predikat` enum('Baik','Cukup','Sedang') COLLATE utf8mb4_general_ci NOT NULL,
+  `nond_sosial_deskripsi` text COLLATE utf8mb4_general_ci NOT NULL,
   `nond_sakit` int UNSIGNED NOT NULL,
   `nond_izin` int UNSIGNED NOT NULL,
   `nond_tanpa_keterangan` int UNSIGNED NOT NULL,
-  `nond_catatan_wali_kelas` text NOT NULL,
-  `nond_catatan_ortu` text,
+  `nond_catatan_wali_kelas` text COLLATE utf8mb4_general_ci NOT NULL,
+  `nond_catatan_ortu` text COLLATE utf8mb4_general_ci,
   `nond_created_by` int NOT NULL,
   `nond_created_at` datetime NOT NULL,
   `nond_edited_by` int DEFAULT NULL,
@@ -328,7 +328,7 @@ CREATE TABLE `orangtua` (
   `nama` varchar(50) NOT NULL,
   `no_hp` varchar(20) NOT NULL,
   `pekerjaan` varchar(50) NOT NULL,
-  `nis_siswa` varchar(10) NOT NULL,
+  `nis_siswa` int NOT NULL,
   `alamat` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -337,7 +337,7 @@ CREATE TABLE `orangtua` (
 --
 
 INSERT INTO `orangtua` (`id_orangtua`, `username`, `password`, `nama`, `no_hp`, `pekerjaan`, `nis_siswa`, `alamat`) VALUES
-(6, 'hans', 'd41d8cd98f00b204e9800998ecf8427e', 'handoko to', '8943843', '', '5191', 'muntilan');
+(6, 'hans', 'd41d8cd98f00b204e9800998ecf8427e', 'handoko to', '8943843', '', 5191, 'muntilan');
 
 -- --------------------------------------------------------
 
@@ -371,8 +371,8 @@ INSERT INTO `pengumuman` (`id`, `judul`, `pengumuman`, `created_at`, `updated_at
 
 CREATE TABLE `prestasi` (
   `prestasi_id` int NOT NULL,
-  `prestasi_nama` varchar(50) NOT NULL,
-  `prestasi_deskripsi` text NOT NULL,
+  `prestasi_nama` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `prestasi_deskripsi` text COLLATE utf8mb4_general_ci NOT NULL,
   `prestasi_nond_id` int NOT NULL,
   `prestasi_created_at` datetime NOT NULL,
   `prestasi_created_by` int NOT NULL,
@@ -419,16 +419,16 @@ INSERT INTO `semester` (`id_semester`, `id_ta`, `semester`, `mulai`, `selesai`) 
 CREATE TABLE `siswa` (
   `id` int NOT NULL,
   `nis` int NOT NULL,
-  `username` varchar(250) NOT NULL,
-  `password` varchar(250) NOT NULL,
-  `nama` varchar(150) NOT NULL,
-  `tempat_lahir` varchar(50) NOT NULL,
+  `username` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
+  `nama` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `tempat_lahir` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `tgl_lahir` date NOT NULL,
-  `gender` enum('Laki-laki','Perempuan') NOT NULL,
+  `gender` enum('Laki-laki','Perempuan') COLLATE utf8mb4_general_ci NOT NULL,
   `id_kelas` int DEFAULT NULL,
-  `alamat` varchar(150) NOT NULL,
-  `no_hp` varchar(20) NOT NULL,
-  `photo` varchar(255) NOT NULL
+  `alamat` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `no_hp` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -436,8 +436,8 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id`, `nis`, `username`, `password`, `nama`, `tempat_lahir`, `tgl_lahir`, `gender`, `id_kelas`, `alamat`, `no_hp`, `photo`) VALUES
-(1, 5191, '5191', 'd41d8cd98f00b204e9800998ecf8427e', 'Assabilla Cut Kusumaa', 'Jakarta', '2008-12-04', 'Perempuan', 2, 'Petahunan Sempor RT 04/01, Ds. Sempor', '+62892813182', '1685090587_dd0bae4362f909092de9.jpg'),
-(3, 5181, '5181', '81dc9bdb52d04dc20036dbd8313ed055', 'Desya', 'Lesung Batu Muda', '2023-01-12', 'Perempuan', 2, 'Jalan Parangtritis, KM 9,7', '082279696793', 'istockphoto-1304361511-612x6123.jpg'),
+(1, 5191, '5191', 'd41d8cd98f00b204e9800998ecf8427e', 'Assabilla Cut Kusumaa', 'Jakarta', '2008-12-04', 'Perempuan', 2, 'Petahunan Sempor RT 04/01, Ds. Sempor', '+62892813182', '1685109947_5f7ba7d9e98e5edb8d0d.jpg'),
+(3, 5181, '5181', '81dc9bdb52d04dc20036dbd8313ed055', 'Desya', 'Lesung Batu Muda', '2023-01-12', 'Perempuan', 2, 'Jalan Parangtritis, KM 9,7', '082279696793', '1685109930_12449a44f84caeee6634.jpg'),
 (4, 5172, '5199', '81dc9bdb52d04dc20036dbd8313ed055', 'Wahdah', 'Jakarta', '2003-09-28', 'Perempuan', 2, 'Desa Jatinegara RT 10, RW 02 Kec. Sempor, Kab. Kebumen, Jawa Tengah', '+622279696131', 'teacher_(1).png'),
 (5, 1234, '1234', '81dc9bdb52d04dc20036dbd8313ed055', 'Gading Saptono', 'Klaten', '2003-09-28', '', 2, 'Gg. Bakau No. 288, Prambanan 59317, Klaten', '0827725272', '1680679935_e4a5118624d5ded30106.webp'),
 (7, 849312, 'yuda', '81dc9bdb52d04dc20036dbd8313ed055', 'yudhaa', 'magelang', '0000-00-00', 'Laki-laki', NULL, 'hfdjf', '843943', '1685089671_250b88e7f2b06c6d991c.jpg');
@@ -450,7 +450,7 @@ INSERT INTO `siswa` (`id`, `nis`, `username`, `password`, `nama`, `tempat_lahir`
 
 CREATE TABLE `tahun_ajaran` (
   `id` int NOT NULL,
-  `tahun_ajaran` varchar(20) NOT NULL,
+  `tahun_ajaran` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `kkm` tinyint UNSIGNED NOT NULL,
   `created_by` int NOT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -473,12 +473,12 @@ INSERT INTO `tahun_ajaran` (`id`, `tahun_ajaran`, `kkm`, `created_by`, `created_
 
 CREATE TABLE `user` (
   `id` int NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `level` enum('admin','guru','siswa','orangtua') NOT NULL,
-  `blokir` enum('N','Y') NOT NULL,
-  `id_sessions` varchar(255) NOT NULL
+  `username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `level` enum('admin','guru','siswa','orangtua') COLLATE utf8mb4_general_ci NOT NULL,
+  `blokir` enum('N','Y') COLLATE utf8mb4_general_ci NOT NULL,
+  `id_sessions` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -498,13 +498,17 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `level`, `blokir`, `i
 -- Indeks untuk tabel `deskripsi_nilai_akhir`
 --
 ALTER TABLE `deskripsi_nilai_akhir`
-  ADD PRIMARY KEY (`dna_id`);
+  ADD PRIMARY KEY (`dna_id`),
+  ADD KEY `dna_jadwal_id` (`dna_jadwal_id`),
+  ADD KEY `dna_siswa_id` (`dna_siswa_id`),
+  ADD KEY `dna_semester_id` (`dna_semester_id`);
 
 --
 -- Indeks untuk tabel `ekstrakulikuler`
 --
 ALTER TABLE `ekstrakulikuler`
-  ADD PRIMARY KEY (`ekskul_id`);
+  ADD PRIMARY KEY (`ekskul_id`),
+  ADD KEY `ekstrakulikuler_ibfk_1` (`ekskul_nond_id`);
 
 --
 -- Indeks untuk tabel `guru`
@@ -519,20 +523,23 @@ ALTER TABLE `jadwal`
   ADD PRIMARY KEY (`jadwal_id`),
   ADD KEY `guru_id` (`guru_id`),
   ADD KEY `kelas_id` (`kelas_id`),
-  ADD KEY `mapel_id` (`mapel_id`);
+  ADD KEY `mapel_id` (`mapel_id`),
+  ADD KEY `wali_kelas_id` (`wali_kelas_id`);
 
 --
 -- Indeks untuk tabel `kategori_tugas`
 --
 ALTER TABLE `kategori_tugas`
   ADD PRIMARY KEY (`kt_id`),
-  ADD KEY `kt_jadwal_id` (`kt_jadwal_id`);
+  ADD KEY `kt_jadwal_id` (`kt_jadwal_id`),
+  ADD KEY `kt_semester_id` (`kt_semester_id`);
 
 --
 -- Indeks untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
-  ADD PRIMARY KEY (`id_kelas`);
+  ADD PRIMARY KEY (`id_kelas`),
+  ADD KEY `wali_kelas_id` (`wali_kelas_id`);
 
 --
 -- Indeks untuk tabel `matapelajaran`
@@ -552,13 +559,18 @@ ALTER TABLE `nilai_akademik`
 -- Indeks untuk tabel `nilai_non_akademik`
 --
 ALTER TABLE `nilai_non_akademik`
-  ADD PRIMARY KEY (`non_id`);
+  ADD PRIMARY KEY (`non_id`),
+  ADD KEY `nilai_non_akademik_ibfk_1` (`non_kelas_id`),
+  ADD KEY `nilai_non_akademik_ibfk_2` (`non_semester_id`),
+  ADD KEY `nilai_non_akademik_ibfk_3` (`non_wali_kelas_id`);
 
 --
 -- Indeks untuk tabel `nilai_non_akademik_detail`
 --
 ALTER TABLE `nilai_non_akademik_detail`
-  ADD PRIMARY KEY (`nond_id`);
+  ADD PRIMARY KEY (`nond_id`),
+  ADD KEY `nond_siswa_id` (`nond_siswa_id`),
+  ADD KEY `nilai_non_akademik_detail_ibfk_2` (`nond_non_id`);
 
 --
 -- Indeks untuk tabel `orangtua`
@@ -576,7 +588,8 @@ ALTER TABLE `pengumuman`
 -- Indeks untuk tabel `prestasi`
 --
 ALTER TABLE `prestasi`
-  ADD PRIMARY KEY (`prestasi_id`);
+  ADD PRIMARY KEY (`prestasi_id`),
+  ADD KEY `prestasi_ibfk_1` (`prestasi_nond_id`);
 
 --
 -- Indeks untuk tabel `semester`
@@ -715,18 +728,41 @@ ALTER TABLE `user`
 --
 
 --
+-- Ketidakleluasaan untuk tabel `deskripsi_nilai_akhir`
+--
+ALTER TABLE `deskripsi_nilai_akhir`
+  ADD CONSTRAINT `deskripsi_nilai_akhir_ibfk_1` FOREIGN KEY (`dna_jadwal_id`) REFERENCES `jadwal` (`jadwal_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  ADD CONSTRAINT `deskripsi_nilai_akhir_ibfk_2` FOREIGN KEY (`dna_siswa_id`) REFERENCES `siswa` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  ADD CONSTRAINT `deskripsi_nilai_akhir_ibfk_3` FOREIGN KEY (`dna_semester_id`) REFERENCES `semester` (`id_semester`) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+--
+-- Ketidakleluasaan untuk tabel `ekstrakulikuler`
+--
+ALTER TABLE `ekstrakulikuler`
+  ADD CONSTRAINT `ekstrakulikuler_ibfk_1` FOREIGN KEY (`ekskul_nond_id`) REFERENCES `nilai_non_akademik_detail` (`nond_id`) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+--
 -- Ketidakleluasaan untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
   ADD CONSTRAINT `jadwal_ibfk_1` FOREIGN KEY (`guru_id`) REFERENCES `guru` (`id_guru`),
   ADD CONSTRAINT `jadwal_ibfk_2` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id_kelas`),
-  ADD CONSTRAINT `jadwal_ibfk_3` FOREIGN KEY (`mapel_id`) REFERENCES `matapelajaran` (`id`);
+  ADD CONSTRAINT `jadwal_ibfk_3` FOREIGN KEY (`mapel_id`) REFERENCES `matapelajaran` (`id`),
+  ADD CONSTRAINT `jadwal_ibfk_4` FOREIGN KEY (`wali_kelas_id`) REFERENCES `guru` (`id_guru`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Ketidakleluasaan untuk tabel `kategori_tugas`
 --
 ALTER TABLE `kategori_tugas`
-  ADD CONSTRAINT `kategori_tugas_ibfk_1` FOREIGN KEY (`kt_jadwal_id`) REFERENCES `jadwal` (`jadwal_id`);
+  ADD CONSTRAINT `kategori_tugas_ibfk_1` FOREIGN KEY (`kt_jadwal_id`) REFERENCES `jadwal` (`jadwal_id`),
+  ADD CONSTRAINT `kategori_tugas_ibfk_2` FOREIGN KEY (`kt_jadwal_id`) REFERENCES `jadwal` (`jadwal_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `kategori_tugas_ibfk_3` FOREIGN KEY (`kt_semester_id`) REFERENCES `semester` (`id_semester`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Ketidakleluasaan untuk tabel `kelas`
+--
+ALTER TABLE `kelas`
+  ADD CONSTRAINT `kelas_ibfk_1` FOREIGN KEY (`wali_kelas_id`) REFERENCES `guru` (`id_guru`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Ketidakleluasaan untuk tabel `nilai_akademik`
@@ -734,6 +770,27 @@ ALTER TABLE `kategori_tugas`
 ALTER TABLE `nilai_akademik`
   ADD CONSTRAINT `nilai_akademik_ibfk_1` FOREIGN KEY (`na_kategori_id`) REFERENCES `kategori_tugas` (`kt_id`),
   ADD CONSTRAINT `nilai_akademik_ibfk_2` FOREIGN KEY (`na_siswa_id`) REFERENCES `siswa` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `nilai_non_akademik`
+--
+ALTER TABLE `nilai_non_akademik`
+  ADD CONSTRAINT `nilai_non_akademik_ibfk_1` FOREIGN KEY (`non_kelas_id`) REFERENCES `kelas` (`id_kelas`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  ADD CONSTRAINT `nilai_non_akademik_ibfk_2` FOREIGN KEY (`non_semester_id`) REFERENCES `semester` (`id_semester`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  ADD CONSTRAINT `nilai_non_akademik_ibfk_3` FOREIGN KEY (`non_wali_kelas_id`) REFERENCES `guru` (`id_guru`) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+--
+-- Ketidakleluasaan untuk tabel `nilai_non_akademik_detail`
+--
+ALTER TABLE `nilai_non_akademik_detail`
+  ADD CONSTRAINT `nilai_non_akademik_detail_ibfk_1` FOREIGN KEY (`nond_siswa_id`) REFERENCES `siswa` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  ADD CONSTRAINT `nilai_non_akademik_detail_ibfk_2` FOREIGN KEY (`nond_non_id`) REFERENCES `nilai_non_akademik` (`non_id`) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+--
+-- Ketidakleluasaan untuk tabel `prestasi`
+--
+ALTER TABLE `prestasi`
+  ADD CONSTRAINT `prestasi_ibfk_1` FOREIGN KEY (`prestasi_nond_id`) REFERENCES `nilai_non_akademik_detail` (`nond_id`) ON DELETE CASCADE ON UPDATE RESTRICT;
 
 --
 -- Ketidakleluasaan untuk tabel `semester`
