@@ -63,28 +63,31 @@ class Auth extends BaseController
         }
         $role = $this->request->getPost('cmbRole');
         $username = $this->request->getPost('txtUsername');
-        $password = base64_decode((string) $this->request->getPost('txtPassword'));
+        $password = base64_encode((string) $this->request->getPost('txtPassword'));
         if ($role == 'Guru') {
-            $dtAkun = $this->modelGuru->where('username', $username)->where('password', $password)->first();
+            $dtAkun = $this->modelGuru->where('username', $username)->first();
             $key = 'id_guru';
         } elseif ($role == 'Siswa') {
-            $dtAkun = $this->modelSiswa->where('username', $username)->where('password', $password)->first();
+            $dtAkun = $this->modelSiswa->where('username', $username)->first();
             $key = 'id';
         } elseif ($role == 'Ortu') {
-            $dtAkun = $this->modelOrtu->where('username', $username)->where('password', $password)->first();
+            $dtAkun = $this->modelOrtu->where('username', $username)->first();
             $key = 'id_orangtua';
         } elseif ($role == 'Administrator') {
-            $dtAkun = $this->modelAdmin->where('username', $username)->where('password', $password)->first();
+            $dtAkun = $this->modelAdmin->where('username', $username)->first();
             $key = 'id';
         } else {
             return redirect()->to(base_url('auth'))->with('danger', 'Role tidak ditemukan');
         }
+        if ($role == 'Administrator') {
+            $link = 'administrator';
+        } else {
+            $link = '';
+        }
         if (empty($dtAkun)) {
-            if ($role == 'Administrator') {
-                $link = 'administrator';
-            } else {
-                $link = '';
-            }
+            return redirect()->to(base_url("auth/$link"))->with('wrongData', 'Username atau password anda salah');
+        }
+        if ($dtAkun['password'] != $password) {
             return redirect()->to(base_url("auth/$link"))->with('wrongData', 'Username atau password anda salah');
         }
         $tmp = [
@@ -103,7 +106,6 @@ class Auth extends BaseController
         session()->set('log_auth', $tmp);
         return redirect()->to(base_url());
     }
-
     public function logout()
     {
         if (!session('log_auth')) {
