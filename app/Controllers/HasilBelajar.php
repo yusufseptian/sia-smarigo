@@ -179,6 +179,16 @@ class HasilBelajar extends BaseController
         if (session('log_auth')['role'] == "GURU") {
             $dtNilai = [];
             $dtSiswa = $this->ModelSiswa->select('id,nis,nama')->where('id_kelas', $dtMapel['kelas_id'])->findAll();
+            if ($dtTA['id'] != $this->ModelTahunAjar->getTANow()['id']) {
+                $dtSiswa = $this->ModelNilaiAkademik->join('kategori_tugas', 'na_kategori_id=kt_id')
+                    ->join('jadwal', 'kt_jadwal_id=jadwal_id')
+                    ->where('jadwal_id', $dtMapel['jadwal_id'])
+                    ->groupBy('na_siswa_id')->findAll();
+            }
+            if (empty($dtSiswa)) {
+                session()->setFlashdata('danger', 'Data siswa masih kosong');
+                return $this->redirectBack();
+            }
             foreach ($dtSiswa as $siswa) {
                 $tmpSiswa = $siswa;
                 foreach ($dtKategori as $dt) {
