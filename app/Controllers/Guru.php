@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ModelGuru;
+use Exception;
 
 class Guru extends BaseController
 {
@@ -29,7 +30,7 @@ class Guru extends BaseController
         $data = [
             'nip' => $this->request->getPost('nip'),
             'username' => $this->request->getPost('username'),
-            'password' => md5((string)$this->request->getPost('password')),
+            'password' => base64_encode((string)$this->request->getPost('password')),
             'nama' => $this->request->getPost('nama'),
             'tempat_lahir' => $this->request->getPost('tempat_lahir'),
             'tgl_lahir' => $this->request->getPost('tgl_lahir'),
@@ -70,12 +71,18 @@ class Guru extends BaseController
                 'jabatan' => $this->request->getPost('jabatan'),
                 'pendidikan_terakhir' => $this->request->getPost('pendidikan_terakhir'),
             ];
+            if (trim((string)$this->request->getPost('password')) != '') {
+                $data['password'] = base64_encode((string)$this->request->getPost('password'));
+            };
             $this->ModelGuru->update($id_guru, $data);
         } else {
             // jika photo diganti
             $guru = $this->ModelGuru->where('id_guru', $id_guru)->get()->getRowArray();
             if ($guru['photo'] != "") {
-                unlink('./foto_guru/' . $guru['photo']);
+                try {
+                    unlink('./foto_guru/' . $guru['photo']);
+                } catch (Exception $e) {
+                }
             }
             $nama_file = $file->getRandomName();
             $data = [
@@ -92,6 +99,9 @@ class Guru extends BaseController
                 'pendidikan_terakhir' => $this->request->getPost('pendidikan_terakhir'),
                 'photo' => $nama_file,
             ];
+            if (trim((string)$this->request->getPost('password')) != '') {
+                $data['password'] = base64_encode((string)$this->request->getPost('password'));
+            };
             $file->move('foto_guru/', $nama_file);
             $this->ModelGuru->update($id_guru, $data);
         }

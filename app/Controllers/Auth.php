@@ -63,7 +63,7 @@ class Auth extends BaseController
         }
         $role = $this->request->getPost('cmbRole');
         $username = $this->request->getPost('txtUsername');
-        $password = md5((string) $this->request->getPost('txtPassword'));
+        $password = base64_decode((string) $this->request->getPost('txtPassword'));
         if ($role == 'Guru') {
             $dtAkun = $this->modelGuru->where('username', $username)->where('password', $password)->first();
             $key = 'id_guru';

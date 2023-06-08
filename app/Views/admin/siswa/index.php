@@ -46,6 +46,7 @@
                         <?php $tmp = [
                             'nis' => $value['nis'],
                             'username' => $value['username'],
+                            'password' => base64_decode($value['password']),
                             'nama' => $value['nama'],
                             'tempatLahir' => $value['tempat_lahir'],
                             'tglLahir' => $value['tgl_lahir'],
@@ -207,7 +208,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" name="password" class="form-control" placeholder="password" required disabled>
+                                <input type="text" name="password" class="form-control" id="txtEditPassword" placeholder="password">
                             </div>
                         </div>
                         <div class="col-6">
@@ -319,6 +320,7 @@
                 $('#cmbGender>option:selected').removeAttr('selected');
                 $("#txtEditNIS").val(element.nis);
                 $("#txtEditUsername").val(element.username);
+                $("#txtEditPassword").val(element.password);
                 $("#txtEditNama").val(element.nama);
                 $("#txtEditTempatLahir").val(element.tempatLahir);
                 $("#txtEditTglLahir").val(element.tglLahir);

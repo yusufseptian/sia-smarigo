@@ -31,7 +31,7 @@ class Ortu extends BaseController
     {
         $data = [
             'username'  => $this->request->getPost('username'),
-            'password' => md5((string)$this->request->getPost('password')),
+            'password' => base64_encode((string)$this->request->getPost('password')),
             'nama'      => $this->request->getPost('nama'),
             'no_hp'     => $this->request->getPost('no_hp'),
             'pekerjaan' => $this->request->getPost('pekerjaan'),
@@ -45,13 +45,15 @@ class Ortu extends BaseController
     {
         $data = [
             'username'  => $this->request->getPost('username'),
-            'password' => md5((string)$this->request->getPost('password')),
             'nama'      => $this->request->getPost('nama'),
             'no_hp'     => $this->request->getPost('no_hp'),
             'pekerjaan' => $this->request->getPost('pekerjaan'),
             'nis_siswa' => $this->request->getPost('nis_siswa'),
             'alamat'    => $this->request->getPost('alamat'),
         ];
+        if (trim((string)$this->request->getPost('password')) != '') {
+            $data['password'] = base64_encode((string)$this->request->getPost('password'));
+        };
         $this->ModelOrtu->update($id_orangtua, $data);
         return redirect()->to(base_url('ortu'))->with('warning', 'Data berhasil diubah');
     }

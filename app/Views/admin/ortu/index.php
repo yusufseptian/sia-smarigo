@@ -125,7 +125,7 @@
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input name="password" type="password" class="form-control" placeholder="Masukkan Password" required>
+                        <input name="password" type="text" class="form-control" value="<?= base64_decode($value['password']) ?>" placeholder="Masukkan Password" required>
                     </div>
                     <div class="form-group">
                         <label>Nama</label>

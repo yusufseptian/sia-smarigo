@@ -48,6 +48,7 @@
                         <?php
                         $tmp = [
                             'username' => $value['username'],
+                            'password' => base64_decode($value['password']),
                             'nip' => $value['nip'],
                             'nama' => $value['nama'],
                             'tempatLahir' => $value['tempat_lahir'],
@@ -215,7 +216,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" name="password" class="form-control" placeholder="password" disabled>
+                                <input type="text" name="password" class="form-control" id="txtEditPassword" placeholder="password">
                             </div>
                         </div>
                     </div>
@@ -351,6 +352,7 @@
             if (element.nip == nip) {
                 $('#cmbGender>option:selected').removeAttr('selected');
                 $("#txtEditUsername").val(element.username);
+                $("#txtEditPassword").val(element.password);
                 $("#txtEditNIP").val(element.nip);
                 $("#txtEditNama").val(element.nama);
                 $("#txtEditTempatLahir").val(element.tempatLahir);

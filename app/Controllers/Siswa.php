@@ -36,7 +36,7 @@ class Siswa extends BaseController
         $data = [
             'nis' => $this->request->getPost('nis'),
             'username' => $this->request->getPost('username'),
-            'password' => md5((string)$this->request->getPost('password')),
+            'password' => base64_encode((string)$this->request->getPost('password')),
             'nama' => $this->request->getPost('nama'),
             'tempat_lahir' => $this->request->getPost('tempat_lahir'),
             'tgl_lahir' => $this->request->getPost('tgl_lahir'),
@@ -54,6 +54,7 @@ class Siswa extends BaseController
     public function editData($nis)
     {
         $dtSiswa = $this->ModelSiswa->where('nis', $nis)->first();
+
         if (empty($dtSiswa)) {
             session()->setFlashdata('danger', 'Data siswa tidak ditemukan');
         }
@@ -70,6 +71,9 @@ class Siswa extends BaseController
                 'no_hp' => $this->request->getPost('no_hp'),
                 'alamat' => $this->request->getPost('alamat'),
             ];
+            if (trim((string)$this->request->getPost('password')) != '') {
+                $data['password'] = base64_encode((string)$this->request->getPost('password'));
+            };
             $this->ModelSiswa->update($id, $data);
         } else {
             // jika logo diganti
@@ -91,6 +95,9 @@ class Siswa extends BaseController
                 'alamat' => $this->request->getPost('alamat'),
                 'photo' => $nama_file,
             ];
+            if (trim((string)$this->request->getPost('password')) != '') {
+                $data['password'] = base64_encode((string)$this->request->getPost('password'));
+            };
             $file->move('foto_siswa/', $nama_file);
             $this->ModelSiswa->update($id, $data);
         }
