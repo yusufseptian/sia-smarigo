@@ -98,14 +98,18 @@ class Siswa extends BaseController
     }
     public function deleteData($nis)
     {
-        $siswa = $this->ModelSiswa->where('nis', $nis)->get()->getRowArray();
-        if ($siswa['photo'] != "") {
-            unlink('./foto_siswa/' . $siswa['photo']);
+        $siswa = $this->ModelSiswa->where('nis', $nis)->first();
+        if (empty($siswa)) {
+            session()->setFlashdata('danger', 'Data siswa tidak ditemukan');
+            return $this->redirectBack();
         }
-        $data = [
-            'id' => $siswa['id'],
-        ];
-        $this->ModelSiswa->delete($data);
+        if ($siswa['photo'] != "") {
+            try {
+                unlink('./foto_siswa/' . $siswa['photo']);
+            } catch (Exception $e) {
+            }
+        }
+        $this->ModelSiswa->delete($siswa['id']);
         return redirect()->to('siswa')->with('success', 'Data berhasil dihapus');
     }
 }
