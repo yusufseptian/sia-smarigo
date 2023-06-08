@@ -62,14 +62,12 @@ class Siswa extends BaseController
         $file = $this->request->getFile('photo');
         if ($file->getError() == 4) {
             $data = [
-                'id' => $id,
                 'nis' => $this->request->getPost('nis'),
                 'nama' => $this->request->getPost('nama'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tgl_lahir' => $this->request->getPost('tgl_lahir'),
                 'gender' => $this->request->getPost('gender'),
                 'no_hp' => $this->request->getPost('no_hp'),
-                'email' => $this->request->getPost('email'),
                 'alamat' => $this->request->getPost('alamat'),
             ];
             $this->ModelSiswa->update($id, $data);
@@ -84,7 +82,6 @@ class Siswa extends BaseController
             }
             $nama_file = $file->getRandomName();
             $data = [
-                'id' => $id,
                 'nis' => $this->request->getPost('nis'),
                 'nama' => $this->request->getPost('nama'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
@@ -92,7 +89,6 @@ class Siswa extends BaseController
                 'gender' => $this->request->getPost('gender'),
                 'no_hp' => $this->request->getPost('no_hp'),
                 'alamat' => $this->request->getPost('alamat'),
-                'jabatan' => $this->request->getPost('jabatan'),
                 'photo' => $nama_file,
             ];
             $file->move('foto_siswa/', $nama_file);

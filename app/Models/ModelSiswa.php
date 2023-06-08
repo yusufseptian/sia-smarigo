@@ -18,6 +18,7 @@ class ModelSiswa extends Model
         'password',
         'nama',
         'tempat_lahir',
+        'tgl_lahir',
         'gender',
         'id_kelas',
         'alamat',
