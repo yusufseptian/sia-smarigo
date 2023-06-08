@@ -181,7 +181,7 @@ class ERaport extends BaseController
             'sub_title' => 'E-Raport',
             'dtSiswa' => $dtSiswa,
             'dtTA' => $dtTA,
-            'dtSmt' => $this->modelSemester->getActiveSemester(),
+            'dtSmt' => $dtSmt,
             'nisSiswa' => $nis,
             'dtNond' => $dtNond,
             'dtPrestasi' => $dtPrestasi,
