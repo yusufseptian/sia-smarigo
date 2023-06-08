@@ -18,7 +18,7 @@
                     <tr>
                         <td>Tahun Ajaran</td>
                         <td class="px-3">:</td>
-                        <td><?= $dtTA['tahun_ajaran'] ?> (<?= (is_null($dtSmt)) ? '<span class="text-danger">Semester Belum Dimulai</span>' : ucfirst($dtSmt['semester']) ?>)</td>
+                        <td><?= $dtTA['tahun_ajaran'] ?> (<?= (is_null($dtSmt)) ? '<span class="text-danger">Tidak ada semester yang aktif</span>' : ucfirst($dtSmt['semester']) ?>)</td>
                     </tr>
                 </table>
             </div>

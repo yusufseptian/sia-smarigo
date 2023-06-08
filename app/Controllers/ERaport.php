@@ -83,7 +83,7 @@ class ERaport extends BaseController
         if (session('log_auth')['role'] == "GURU") {
             $dtSmt = $this->modelSemester->getActiveSemester();
             if (empty($dtSmt)) {
-                session()->setFlashdata('danger', 'Belum ada semester yang dimulai pada tahun ajaran ini. Silahkan hubungi admin');
+                session()->setFlashdata('danger', 'Tidak ada semester yang aktif pada tahun ajaran ini. Silahkan hubungi admin');
                 return $this->redirectBack();
             }
         }

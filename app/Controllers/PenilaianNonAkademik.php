@@ -69,7 +69,7 @@ class PenilaianNonAkademik extends BaseController
         }
         $dtSmt = $this->modelSemester->getActiveSemester();
         if (empty($dtSmt)) {
-            session()->setFlashdata('danger', 'Belum ada semester yang dimulai pada tahun ajaran ini. Silahkan hubungi admin');
+            session()->setFlashdata('danger', 'Tidak ada semester yang aktif pada tahun ajaran ini. Silahkan hubungi admin');
             return $this->redirectBack();
         }
         $dtSiswa = $this->modelSiswa->where('nis', $nis)->where('id_kelas', session('log_auth')['waliKelas']['id'])->first();
@@ -114,7 +114,7 @@ class PenilaianNonAkademik extends BaseController
         }
         $dtSmt = $this->modelSemester->getActiveSemester();
         if (empty($dtSmt)) {
-            session()->setFlashdata('danger', 'Belum ada semester yang dimulai pada tahun ajaran ini. Silahkan hubungi admin');
+            session()->setFlashdata('danger', 'Tidak ada semester yang aktif pada tahun ajaran ini. Silahkan hubungi admin');
             return $this->redirectBack();
         }
         $dtSiswa = $this->modelSiswa->where('nis', $nis)->where('id_kelas', session('log_auth')['waliKelas']['id'])->first();
@@ -236,7 +236,7 @@ class PenilaianNonAkademik extends BaseController
         }
         $dtSmt = $this->modelSemester->getActiveSemester();
         if (empty($dtSmt)) {
-            session()->setFlashdata('danger', 'Belum ada semester yang dimulai pada tahun ajaran ini. Silahkan hubungi admin');
+            session()->setFlashdata('danger', 'Tidak ada semester yang aktif pada tahun ajaran ini. Silahkan hubungi admin');
             return $this->redirectBack();
         }
         $dtSiswa = $this->modelSiswa->where('nis', $nis)->where('id_kelas', session('log_auth')['waliKelas']['id'])->first();
