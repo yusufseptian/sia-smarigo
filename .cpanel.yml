@@ -1,8 +1,19 @@
 ---
 deployment:
   tasks:
-    - export PUBLICPATH=/home/siasmari/public_html/
+    - export ASSETSPATH=/home/siasmari/public_html/assets
+    - export FTGURUPATH=/home/siasmari/public_html/foto_guru
+    - export FTSISWAPATH=/home/siasmari/public_html/foto_siswa
     - export APPPATH=/home/siasmari/sia-smarigo/app/
-    - /bin/rm -rf $PUBLICPATH
-    - /bin/mkdir $PUBLICPATH
-    - /bin/cp -R public/. $PUBLICPATH
+    - /bin/rm -rf $ASSETSPATH
+    - /bin/mkdir $ASSETSPATH
+    - /bin/cp -R public/assets/. $ASSETSPATH
+    - /bin/rm -rf $FTGURUPATH
+    - /bin/mkdir $FTGURUPATH
+    - /bin/cp -R public/foto_guru/. $FTGURUPATH
+    - /bin/rm -rf $FTSISWAPATH
+    - /bin/mkdir $FTSISWAPATH
+    - /bin/cp -R public/foto_siswa/. $FTSISWAPATH
+    - /bin/rm -rf $APPPATH
+    - /bin/mkdir $APPPATH
+    - /bin/cp -R app/. $APPPATH
