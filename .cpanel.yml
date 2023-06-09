@@ -6,4 +6,3 @@ deployment:
     - /bin/rm -rf $PUBLICPATH
     - /bin/mkdir $PUBLICPATH
     - /bin/cp -R public/. $PUBLICPATH
-    - /bin/cp -R . $APPPATH
