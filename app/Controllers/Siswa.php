@@ -7,16 +7,20 @@ use App\Models\ModelSiswa;
 
 use App\Controllers\BaseController;
 use App\Models\ModelKelas;
+use App\Models\ModelOrtu;
 use Exception;
 
 class Siswa extends BaseController
 {
     private $ModelSiswa = null;
     private $ModelKelas = null;
+    private $ModelOrtu = null;
+
     public function __construct()
     {
         $this->ModelSiswa = new ModelSiswa();
         $this->ModelKelas = new ModelKelas();
+        $this->ModelOrtu = new ModelOrtu();
         helper('form');
     }
     public function index()
@@ -117,6 +121,10 @@ class Siswa extends BaseController
             }
         }
         $this->ModelSiswa->delete($siswa['id']);
+        $dtOrtu = $this->ModelOrtu->where('nis_siswa', $siswa['nis'])->first();
+        if (!empty($dtOrtu)) {
+            $this->ModelOrtu->delete($dtOrtu['id_orangtua']);
+        }
         return redirect()->to('siswa')->with('success', 'Data berhasil dihapus');
     }
 }
