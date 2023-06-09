@@ -57,10 +57,4 @@ class Ortu extends BaseController
         $this->ModelOrtu->update($id_orangtua, $data);
         return redirect()->to(base_url('ortu'))->with('warning', 'Data berhasil diubah');
     }
-
-    public function deleteData($id_orangtua)
-    {
-        $this->ModelOrtu->delete($id_orangtua);
-        return redirect()->to(base_url('ortu'))->with('danger', 'Data berhasil dihapus');
-    }
 }
