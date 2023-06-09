@@ -4,7 +4,6 @@ deployment:
     - export ASSETSPATH=/home/siasmari/public_html/assets
     - export FTGURUPATH=/home/siasmari/public_html/foto_guru
     - export FTSISWAPATH=/home/siasmari/public_html/foto_siswa
-    - export APPPATH=/home/siasmari/sia-smarigo/app/
     - /bin/rm -rf $ASSETSPATH
     - /bin/mkdir $ASSETSPATH
     - /bin/cp -R public/assets/. $ASSETSPATH
@@ -14,5 +13,3 @@ deployment:
     - /bin/rm -rf $FTSISWAPATH
     - /bin/mkdir $FTSISWAPATH
     - /bin/cp -R public/foto_siswa/. $FTSISWAPATH
-    - /bin/rm -R app/. $APPPATH
-    - /bin/cp -R app/. $APPPATH
