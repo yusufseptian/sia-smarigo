@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+    - export PUBLICPATH=/home/siasmari/public_html/
+    - export APPPATH=/home/siasmari/sia-smarigo/app/
+    - /bin/rm -rf $PUBLICPATH
+    - /bin/mkdir $PUBLICPATH
+    - /bin/cp -R public/. $PUBLICPATH
+    - /bin/cp -R . $APPPATH
