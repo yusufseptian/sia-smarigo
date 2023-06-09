@@ -38,9 +38,6 @@
                                 <button class="btn btn-xs btn-flat btn-warning" data-toggle="modal" data-target="#edit<?= $value['id_orangtua'] ?>">
                                     <i class="fas fa-pen"></i>
                                 </button>
-                                <button class="btn btn-xs btn-flat btn-danger" data-toggle="modal" data-target="#delete<?= $value['id_orangtua'] ?>">
-                                    <i class="fas fa-trash"></i>
-                                </button>
                             </td>
                         </tr>
                     <?php } ?>
@@ -165,29 +162,5 @@
     </div>
     <!-- /.modal -->
 <?php } ?>
-<!-- Modal Delete -->
-<?php foreach ($ortu as $key => $value) { ?>
-    <div class="modal fade" id="delete<?= $value['id_orangtua'] ?>">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-danger">
-                    <h4 class="modal-title text-white">Hapus Data Orang tua?</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Apakah Anda ingin menghapus data ini</b>?
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
-                    <a href="<?= base_url('ortu/deleteData/' . $value['id_orangtua']) ?>" class="btn btn-danger btn-sm">Hapus</a>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
-<?php } ?>
+
 <?= $this->endSection() ?>
