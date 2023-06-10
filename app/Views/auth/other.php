@@ -5,7 +5,7 @@
         <img src="<?= base_url('assets/img/pattern_book.jpg') ?>" class="img-fluid w-100 mb-3 rounded-top" style="height: 80px; object-fit: cover;">
         <div class="mx-2 mb-4 text-center">
             <h2 class="font-weight-bold text-primary">Login Form</h2>
-            <h5 class="text-primary font-weight-bold">SIA SMA PGRI 1 GOMBONG</h5>
+            <h5 class="text-primary font-weight-bold">SIA SMA PGRI 1</h5>
         </div>
         <form action="<?= base_url('auth/login') ?>" method="post" style="width: 400px;" class="px-3">
             <?php if (session('wrongData')) : ?>
