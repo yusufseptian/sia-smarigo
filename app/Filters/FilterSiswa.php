@@ -25,7 +25,11 @@ class FilterSiswa implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        //
+        if (session('log_auth')['role'] != 'SISWA') {
+            session()->setFlashdata('danger', 'Akses ditolak');
+            echo "<script>window.history.back();</script>";
+            die;
+        }
     }
 
     /**

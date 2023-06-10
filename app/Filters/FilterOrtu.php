@@ -25,7 +25,11 @@ class FilterOrtu implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        //
+        if (session('log_auth')['role'] != 'ORTU') {
+            session()->setFlashdata('danger', 'Akses ditolak');
+            echo "<script>window.history.back();</script>";
+            die;
+        }
     }
 
     /**

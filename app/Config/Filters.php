@@ -2,7 +2,11 @@
 
 namespace Config;
 
+use App\Filters\FilterAdmin;
+use App\Filters\FilterGuru;
 use App\Filters\FilterLogin;
+use App\Filters\FilterOrtu;
+use App\Filters\FilterSiswa;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -22,7 +26,11 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'login'         => FilterLogin::class
+        'login'         => FilterLogin::class,
+        'admin'         => FilterAdmin::class,
+        'ortu'          => FilterOrtu::class,
+        'siswa'         => FilterSiswa::class,
+        'guru'          => FilterGuru::class
     ];
 
     /**
@@ -60,5 +68,18 @@ class Filters extends BaseConfig
      * Example:
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      */
-    public array $filters = [];
+    public array $filters = [
+        'admin' => [
+            'before' => ['guru', 'guru/*', 'siswa', 'siswa/*', 'ortu*', 'kelas*', 'mapel*', 'jadwal*', 'tahunajaran*', 'pengumuman*', 'admin_profil*'],
+        ],
+        'ortu' => [
+            'before' => ['ortu_profil*']
+        ],
+        'guru' => [
+            'before' => ['penilaianakademik*', 'deskripsinilaiakhir*', 'guru_profil*', 'penilaiannonakademik*', 'eraport', 'eraport/', 'eraport/index']
+        ],
+        'siswa' => [
+            'before' => ['siswa_profil*']
+        ]
+    ];
 }
