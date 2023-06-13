@@ -19,6 +19,11 @@ class Ortu extends BaseController
     }
     public function index()
     {
+        // $ignoreSiswa = $this->ModelOrtu->where('nis siswa is not null')->findAll();
+        // $nis = [];
+        // foreach ($ignoreSiswa as $dt) {
+        //     array_push($nis, $dt)
+        // }
         $data = [
             'title'     => 'Siasmarigo',
             'sub_title' => 'Data Orang Tua',

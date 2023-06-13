@@ -141,7 +141,7 @@
                         <select name="nis_siswa" class="form-control">
                             <option value="">--Pilih Siswa--</option>
                             <?php foreach ($siswa as $nilai) : ?>
-                                <option value="<?= $nilai['nis'] ?>"><?= $nilai['nama'] ?></option>
+                                <option value="<?= $nilai['nis'] ?>" <?= ($nilai['nis'] == $value['nis_siswa']) ? 'selected' : '' ?>><?= $nilai['nama'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
