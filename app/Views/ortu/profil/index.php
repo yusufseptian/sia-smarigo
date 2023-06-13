@@ -11,19 +11,19 @@
                             <div class="card-title h3 font-weight-bold text-gray-900">Profil Orang Tua</div>
                             <div class="form-group">
                                 <label for="txtnis">Username</label>
-                                <input type="text" class="form-control px-4" name="username" value="<?= $dt_ortu['username'] ?>" id="txtnip">
+                                <input type="text" class="form-control px-4" name="username" value="<?= $dt_ortu['username'] ?>" id="txtnip" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="txtnama">Nama Orang Tua</label>
-                                <input type="text" class="form-control px-4" name="nama" value="<?= $dt_ortu['nama'] ?>" id="txtnama">
+                                <input type="text" class="form-control px-4" name="nama" value="<?= $dt_ortu['nama'] ?>" id="txtnama" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="txtalamat">Alamat</label>
-                                <input type="text" min="1" class="form-control px-4" name="alamat" value="<?= $dt_ortu['alamat'] ?>" id="txtalamat">
+                                <input type="text" min="1" class="form-control px-4" name="alamat" value="<?= $dt_ortu['alamat'] ?>" id="txtalamat" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="txtNohp">Nomor Telepon</label>
-                                <input type="text" class="form-control px-4" name="no_hp" value="<?= $dt_ortu['no_hp'] ?>" id="txtno">
+                                <input type="text" class="form-control px-4" name="no_hp" value="<?= $dt_ortu['no_hp'] ?>" id="txtno" disabled>
                             </div>
                         </div>
                     </div>
@@ -40,21 +40,21 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="txtnamasiswa">Nama Siswa</label>
-                                        <input type="text" class="form-control px-4" name="" value="" id="txtnamasiswa" disabled>
+                                        <input type="text" class="form-control px-4" name="" value="<?= $dt_siswa['nama'] ?>" id="txtnamasiswa" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="txtkelas">Kelas Siswa</label>
-                                        <input type="text" class="form-control px-4" name="" value="" id="txtkelas" disabled>
+                                        <input type="text" class="form-control px-4" name="" value="<?= $dt_siswa['nama_kelas'] ?>" id="txtkelas" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="txttgl">Tanggal Lahir</label>
-                                        <input type="text" class="form-control px-4" name="" value="" id="txttgl" disabled>
+                                        <input type="text" class="form-control px-4" name="" value="<?= $dt_siswa['tgl_lahir'] ?>" id="txttgl" disabled>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="fotosiswa" class="w-100">Foto Siswa</label>
-                                        <img src="<?= base_url('foto_siswa/1685109930_12449a44f84caeee6634.jpg') ?>" class="img-fluid" width="300px" id="fotosiswa">
+                                        <img src="<?= base_url('foto_siswa/' . $dt_siswa['photo']) ?>" class="img-fluid small text-danger" width="300px" id="fotosiswa" onerror="errorFoto()">
                                     </div>
                                 </div>
                             </div>
@@ -65,5 +65,11 @@
         </div>
     </div>
 </div>
-
+<?= $this->endSection() ?>
+<?= $this->section('bottomScript'); ?>
+<script>
+    function errorFoto() {
+        $("#fotosiswa").attr('alt', "(Foto gagal di-load. Silahkan hubungi admin untuk memperbaharui foto murid).");
+    }
+</script>
 <?= $this->endSection() ?>
