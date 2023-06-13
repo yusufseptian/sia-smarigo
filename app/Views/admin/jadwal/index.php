@@ -108,7 +108,7 @@
                 </div>
                 <div class="form-group">
                     <label>Jam Mengajar</label>
-                    <input name="jam_mengajar" class="form-control" placeholder="Kode Mata Pelajaran" required>
+                    <input name="jam_mengajar" class="form-control" placeholder="Jam mengajar" required>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">

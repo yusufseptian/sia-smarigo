@@ -45,7 +45,21 @@ class Jadwal extends BaseController
     }
     public function insertData()
     {
-        $dt_th_ajar = $this->ModelThajar->first();
+        $dt_th_ajar = $this->ModelThajar->getTANow();
+        $dtMapel = $this->ModelMapel->find($this->request->getPost('mapel_id'));
+        if (empty($dtMapel)) {
+            session()->setFlashdata('danger', 'Data mapel tidak ditemukan');
+            return $this->redirectBack();
+        }
+        $dtKelas = $this->ModelKelas->find($this->request->getPost('kelas_id'));
+        if (empty($dtKelas)) {
+            session()->setFlashdata('danger', 'Data kelas tidak ditemukan');
+            return $this->redirectBack();
+        }
+        if (is_null($dtKelas['wali_kelas_id'])) {
+            session()->setFlashdata('danger', 'Wali kelas belum ditentukan');
+            return $this->redirectBack();
+        }
 
         $data = [
             'mapel_id' => $this->request->getPost('mapel_id'),
@@ -53,6 +67,7 @@ class Jadwal extends BaseController
             'kelas_id' => $this->request->getPost('kelas_id'),
             'hari' => $this->request->getPost('hari'),
             'jam_mengajar' => $this->request->getPost('jam_mengajar'),
+            'wali_kelas_id' => $dtKelas['wali_kelas_id'],
             'tahun_ajaran' => $dt_th_ajar['id']
         ];
         $this->ModelJadwal->insert($data);
