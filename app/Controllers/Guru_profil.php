@@ -35,7 +35,7 @@ class Guru_profil extends BaseController
                 'id_guru' => $id_guru,
                 'nip' => $this->request->getPost('nip'),
                 'username' => $this->request->getPost('username'),
-                'password' => md5((string)$this->request->getPost('password')),
+                'password' => base64_encode((string)$this->request->getPost('password')),
                 'nama' => $this->request->getPost('nama'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tgl_lahir' => $this->request->getPost('tgl_lahir'),
@@ -58,7 +58,7 @@ class Guru_profil extends BaseController
                 'id_guru' => $id_guru,
                 'nip' => $this->request->getPost('nip'),
                 'username' => $this->request->getPost('username'),
-                'password' => md5((string)$this->request->getPost('password')),
+                'password' => base64_encode((string)$this->request->getPost('password')),
                 'nama' => $this->request->getPost('nama'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tgl_lahir' => $this->request->getPost('tgl_lahir'),
@@ -75,8 +75,8 @@ class Guru_profil extends BaseController
         }
         return redirect()->to('guru_profil')->with('warning', 'Data berhasil diubah');
     }
-    public function update(){
-        
+    public function update()
+    {
         $id_guru = session('log_auth')['akunID'];
         // jika photo tidak diganti
         $file = $this->request->getFile('photo');
@@ -85,7 +85,7 @@ class Guru_profil extends BaseController
                 'id_guru' => $id_guru,
                 'nip' => $this->request->getPost('nip'),
                 'username' => $this->request->getPost('username'),
-                'password' => md5((string)$this->request->getPost('password')),
+                'password' => base64_encode((string)$this->request->getPost('password')),
                 'nama' => $this->request->getPost('nama'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tgl_lahir' => $this->request->getPost('tgl_lahir'),
@@ -108,7 +108,7 @@ class Guru_profil extends BaseController
                 'id_guru' => $id_guru,
                 'nip' => $this->request->getPost('nip'),
                 'username' => $this->request->getPost('username'),
-                'password' => md5((string)$this->request->getPost('password')),
+                'password' => base64_encode((string)$this->request->getPost('password')),
                 'nama' => $this->request->getPost('nama'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tgl_lahir' => $this->request->getPost('tgl_lahir'),

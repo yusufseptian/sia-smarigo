@@ -70,7 +70,7 @@ class Filters extends BaseConfig
      */
     public array $filters = [
         'admin' => [
-            'before' => ['guru', 'guru/*', 'siswa', 'siswa/*', 'ortu*', 'kelas*', 'mapel*', 'jadwal*', 'tahunajaran*', 'pengumuman*', 'admin_profil*'],
+            'before' => ['guru', 'guru/*', 'siswa', 'siswa/*', 'ortu', 'ortu/*', 'kelas*', 'mapel*', 'jadwal*', 'tahunajaran*', 'pengumuman*', 'admin_profil*'],
         ],
         'ortu' => [
             'before' => ['ortu_profil*']
