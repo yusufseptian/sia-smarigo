@@ -1,0 +1,16 @@
+INFO - 2023-04-06 00:00:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-04-06 00:00:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-04-06 00:00:44 --> whereNotIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 940.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(853): CodeIgniter\Database\BaseBuilder->_whereIn('id_kelas', '2', true, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(840): CodeIgniter\Database\BaseBuilder->whereNotIn('id_kelas', '2')
+ 3 APPPATH\Controllers\Kelas.php(70): CodeIgniter\Model->__call('whereNotIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Kelas->siswa('2')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kelas))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-04-06 00:07:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-04-06 00:07:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-04-06 00:07:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-04-06 00:08:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
