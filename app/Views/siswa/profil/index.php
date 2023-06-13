@@ -31,13 +31,13 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="txtnis">NIS</label>
-                                    <input type="number" min="1" class="form-control px-4" name="nis" value="<?= $dt_siswa['nis'] ?>" id="txtnip" disabled>
+                                    <input type="number" min="1" class="form-control px-4" value="<?= $dt_siswa['nis'] ?>" id="txtnip" disabled>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="txtusername">Username</label>
-                                    <input type="text" class="form-control px-4" name="username" value="<?= $dt_siswa['username'] ?>" id="txtusername">
+                                    <input type="text" class="form-control px-4" value="<?= $dt_siswa['username'] ?>" id="txtusername" disabled>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="txtusername">Nama Siswa</label>
-                                    <input type="text" class="form-control px-4" name="nama" value="<?= $dt_siswa['nama'] ?>" id="txtnama">
+                                    <input type="text" class="form-control px-4" value="<?= $dt_siswa['nama'] ?>" id="txtnama" disabled>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -59,13 +59,13 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="txtalamat">Alamat</label>
-                                    <input type="text" min="1" class="form-control px-4" name="alamat" value="<?= $dt_siswa['alamat'] ?>" id="txtalamat">
+                                    <input type="text" min="1" class="form-control px-4" value="<?= $dt_siswa['alamat'] ?>" id="txtalamat" disabled>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <div class="mb-2">Ubah Foto</div>
-                                    <input id="photo" type="file" accept="image/*" name="photo" class="form-control" onchange="editGambar(event,'#gambar_load_edit')">
+                                    <input id="photo" type="file" accept="image/*" class="form-control" onchange="editGambar(event,'#gambar_load_edit')" disabled>
                                 </div>
                             </div>
                         </div>
@@ -75,11 +75,11 @@
                                     <label class="font-weight-bold">Jenis Kelamin</label>
                                     <div class="d-flex">
                                         <div class="form-check ml-3">
-                                            <input class="form-check-input" type="radio" id="jk_L" <?= ($dt_siswa['gender'] == "Laki-laki") ? "checked" : '' ?> value="Laki-laki" name="gender">
+                                            <input class="form-check-input" type="radio" id="jk_L" <?= ($dt_siswa['gender'] == "Laki-laki") ? "checked" : '' ?> value="Laki-laki" name="gender" disabled>
                                             <label class="form-check-label" for="jk_L">Laki-laki</label>
                                         </div>
                                         <div class="form-check pl-5">
-                                            <input class="form-check-input" type="radio" id="jk_P" <?= ($dt_siswa['gender'] == "Perempuan") ? "checked" : '' ?> value="Perempuan" name="gender">
+                                            <input class="form-check-input" type="radio" id="jk_P" <?= ($dt_siswa['gender'] == "Perempuan") ? "checked" : '' ?> value="Perempuan" name="gender" disabled>
                                             <label class="form-check-label" for="jk_P">Perempuan</label>
                                         </div>
                                     </div>
@@ -90,19 +90,18 @@
                                     <label class="font-weight-bold">Tempat / Tanggal Lahir</label>
                                     <div class="row">
                                         <div class="col pr-1">
-                                            <input type="text" class="form-control" name="tempat_lahir" value="<?= $dt_siswa['tempat_lahir'] ?>" id="txttempatlahir">
+                                            <input type="text" class="form-control" value="<?= $dt_siswa['tempat_lahir'] ?>" id="txttempatlahir" disabled>
                                         </div>
                                         <div class="col pl-1">
-                                            <input type="date" class="form-control" name="tgl_lahir" value="<?= $dt_siswa['tgl_lahir'] ?>" id="txttgl">
+                                            <input type="date" class="form-control" value="<?= $dt_siswa['tgl_lahir'] ?>" id="txttgl" disabled>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
                         <button class="btn btn-success mt-4" type="submit">
-                                Simpan Data
-                            </button>
+                            Simpan Data
+                        </button>
                     </form>
                 </div>
             </div>
