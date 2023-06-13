@@ -40,7 +40,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="txtusername">Nama Guru</label>
-                                <input type="text" class="form-control px-4" name="nama" value="<?= $dt_guru['nama'] ?>" id="txtnama">
+                                <input type="text" class="form-control px-4" name="nama" value="<?= $dt_guru['nama'] ?>" id="txtnama" disabled>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="txtusername">Jabatan</label>
-                                <input type="text" class="form-control px-4" name="jabatan" value="<?= $dt_guru['jabatan'] ?>" id="txtjabatan">
+                                <input type="text" class="form-control px-4" name="jabatan" value="<?= $dt_guru['jabatan'] ?>" id="txtjabatan" disabled>
                             </div>
                         </div>
                         <div class="col-6">
@@ -62,7 +62,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="txtnip">nip</label>
-                                <input type="text" class="form-control px-4" name="nip" value="<?= $dt_guru['nip'] ?>" id="txtnip">
+                                <input type="text" class="form-control px-4" name="nip" value="<?= $dt_guru['nip'] ?>" id="txtnip" disabled>
                             </div>
                         </div>
                         <div class="col-6">
@@ -78,11 +78,11 @@
                                 <label class="font-weight-bold">Jenis Kelamin</label>
                                 <div class="d-flex">
                                     <div class="form-check ml-3">
-                                        <input class="form-check-input" type="radio" id="jk_L" <?= ($dt_guru['gender'] == "Laki-laki") ? "checked" : '' ?> value="Laki-laki" name="gender">
+                                        <input class="form-check-input" type="radio" id="jk_L" <?= ($dt_guru['gender'] == "Laki-laki") ? "checked" : '' ?> value="Laki-laki" name="gender" disabled>
                                         <label class="form-check-label" for="jk_L">Laki-laki</label>
                                     </div>
                                     <div class="form-check pl-5">
-                                        <input class="form-check-input" type="radio" id="jk_P" <?= ($dt_guru['gender'] == "Perempuan") ? "checked" : '' ?> value="Perempuan" name="gender">
+                                        <input class="form-check-input" type="radio" id="jk_P" <?= ($dt_guru['gender'] == "Perempuan") ? "checked" : '' ?> value="Perempuan" name="gender" disabled>
                                         <label class="form-check-label" for="jk_P">Perempuan</label>
                                     </div>
                                 </div>
@@ -93,10 +93,10 @@
                                 <label class="font-weight-bold">Tempat / Tanggal Lahir</label>
                                 <div class="row">
                                     <div class="col pr-1">
-                                        <input type="text" class="form-control" name="tempat_lahir" value="<?= $dt_guru['tempat_lahir'] ?>" id="txttempatlahir">
+                                        <input type="text" class="form-control" name="tempat_lahir" value="<?= $dt_guru['tempat_lahir'] ?>" id="txttempatlahir" disabled>
                                     </div>
                                     <div class="col pl-1">
-                                        <input type="date" class="form-control" name="tgl_lahir" value="<?= $dt_guru['tgl_lahir'] ?>" id="txttgl">
+                                        <input type="date" class="form-control" name="tgl_lahir" value="<?= $dt_guru['tgl_lahir'] ?>" id="txttgl" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -106,19 +106,18 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="txtalamat">Alamat</label>
-                                <input type="text" min="1" class="form-control px-4" name="alamat" value="<?= $dt_guru['alamat'] ?>" id="txtalamat">
+                                <input type="text" min="1" class="form-control px-4" name="alamat" value="<?= $dt_guru['alamat'] ?>" id="txtalamat" disabled>
                             </div>
                         </div>
-
                         <div class="col">
                             <div class="form-group">
                                 <label for="txtusername">Pendidikan Terakhir</label>
-                                <input type="text" class="form-control px-4" name="pendidikan_terakhir" value="<?= $dt_guru['pendidikan_terakhir'] ?>" id="txtpendidikan">
+                                <input type="text" class="form-control px-4" name="pendidikan_terakhir" value="<?= $dt_guru['pendidikan_terakhir'] ?>" id="txtpendidikan" disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="mb-2">Ubah Foto</div>
-                            <input id="photo" type="file" accept="image/*" name="photo" class="form-control" onchange="editGambar(event,'#gambar_load_edit')">
+                            <input id="photo" type="file" accept="image/*" name="photo" class="form-control" onchange="editGambar(event,'#gambar_load_edit')" disabled>
                         </div>
                     </div>
                     <button class="btn btn-success mt-4" type="submit">
