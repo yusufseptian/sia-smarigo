@@ -222,6 +222,7 @@ class ERaport extends BaseController
             ->join('kelas', 'id_kelas=non_kelas_id')
             ->join('semester', 'id_semester=non_semester_id')
             ->join('tahun_ajaran', 'semester.id_ta=id')
+            ->where('nond_siswa_id', $dtSiswa['id'])
             ->groupBy('id')->findAll();
         $data = [
             'title' => 'Siasmarigo',
