@@ -187,7 +187,7 @@
         $("#btnEdit").addClass('d-none');
         $("#btnSubmit").removeClass('d-none');
         $("#btnBatalEdit").removeClass('d-none');
-        $("#formNilai").attr('action', "<?= base_url("penilaianakademik/editnilai/$mapelID/$kelasID/$kategoriID") ?>");
+        $("#formNilai").attr('action', "<?= base_url("PenilaianAkademik/editnilai/$mapelID/$kelasID/$kategoriID") ?>");
     });
 
     $("#btnBatalEdit").click(function() {
