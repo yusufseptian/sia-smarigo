@@ -202,7 +202,7 @@
             $("#maxBobotInfo_Edit").html(rest);
             $("#alertEdit").addClass('alert-info');
             $("#alertEdit").removeClass('alert-danger');
-            $("#txtBobot_Edit").attr('max', rest);
+            $("#txtBobot_Edit").attr('max', <?= $bobot ?>);
         }
     }
 
