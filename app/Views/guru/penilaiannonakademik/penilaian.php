@@ -312,7 +312,7 @@
                 let txtEkstrakulikulerList = $("<input type='hidden' name='txtEkstrakulikulerList'>");
                 txtEkstrakulikulerList.attr('value', ekstrakulikulerList.length);
                 let form = $("<form method='post' id='formPenilaian'></form>");
-                form.attr('action', "<?= base_url("penilaiannonakademik/$link/$nisSiswa") ?>");
+                form.attr('action', "<?= base_url("PenilaianNonAkademik/$link/$nisSiswa") ?>");
                 form.append(txtEkstrakulikulerList, txtPrestasiList, $("#formContent"));
                 $("#formContainer").append(form);
                 $("#formPenilaian").submit();

@@ -224,7 +224,7 @@ class PenilaianNonAkademik extends BaseController
         } else {
             session()->setFlashdata('danger', 'Nilai non akademik untuk ' . $dtSiswa["nama"] . ' gagal dimasukan');
         }
-        return redirect()->to(base_url("penilaiannonakademik/nilai/$nis"));
+        return redirect()->to(base_url("PenilaianNonAkademik/nilai/$nis"));
     }
 
     public function edit($nis)
@@ -431,6 +431,6 @@ class PenilaianNonAkademik extends BaseController
         } else {
             session()->setFlashdata('danger', 'Nilai non akademik untuk ' . $dtSiswa["nama"] . ' gagal diedit');
         }
-        return redirect()->to(base_url("penilaiannonakademik/nilai/$nis"));
+        return redirect()->to(base_url("PenilaianNonAkademik/nilai/$nis"));
     }
 }
