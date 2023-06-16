@@ -145,7 +145,7 @@ class HasilBelajar extends BaseController
                 return $this->redirectBack();
             }
         }
-        $keterangan = strtoupper($keterangan);
+        $keterangan = strtolower($keterangan);
         if (is_null($keterangan)) {
             $keterangan = 'pengetahuan';
         } else {
@@ -154,9 +154,11 @@ class HasilBelajar extends BaseController
                 return $this->redirectBack();
             }
         }
+        $dtSiswa = $this->ModelSiswa->find(session('log_auth')['akunID']);
         $dtMapel = $this->ModelJadwal->join('matapelajaran', 'id = mapel_id')
             ->join('kelas', 'kelas_id=id_kelas')
             ->where('mapel_id', $idMapel)
+            ->where('kelas_id', $dtSiswa['id_kelas'])
             ->where('tahun_ajaran', $idTahunAjaran);
         if (session('log_auth')['role'] == "GURU") {
             $dtMapel->where('kelas_id', session('idKelasForHasil'))
