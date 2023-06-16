@@ -26,11 +26,12 @@ class ModelJadwal extends Model
     {
         $ModelThajar = new ModelTahunAjar();
         $dtTA = $ModelThajar->getTANow();
-        $dt_jadwal =  $this->db->table('jadwal')
+        $dt_jadwal =  $this->select('*','tahun_ajaran.tahun_ajaran as th')
+            ->join('tahun_ajaran', 'tahun_ajaran.id=jadwal.tahun_ajaran')
             ->join('matapelajaran', 'matapelajaran.id=jadwal.mapel_id')
             ->join('guru', 'guru.id_guru=jadwal.guru_id')
             ->join('kelas', 'kelas.id_kelas=jadwal.kelas_id')
-            ->where('tahun_ajaran', $dtTA['id']);
+            ->where('jadwal.tahun_ajaran', $dtTA['id']);
         if (!is_null($id_guru)) {
             $dt_jadwal->where('guru_id', $id_guru);
         }

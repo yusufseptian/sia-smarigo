@@ -19,7 +19,7 @@
                         <th>KELAS</th>
                         <th>HARI</th>
                         <th>JAM MENGAJAR</th>
-                        <th>TAHUN AARAN</th>
+                        <th>TAHUN AJARAN</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>
@@ -136,7 +136,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Mata Pelajaran</label>
-                        <select name="mapel_id" class="form-control">
+                        <select name="mapel_id" class="form-control" disabled>
                             <option value="">--Pilih Mata Pelajaran--</option>
                             <?php foreach ($dt_mapel as $mpl) : ?>
                                 <option value="<?= $mpl['id'] ?>" <?= $mpl['id'] == ($value['mapel_id']) ? 'selected' : '' ?>><?= $mpl['nama_matapelajaran'] ?></option>
@@ -178,7 +178,7 @@
                     </div>
                     <div class="form-group">
                         <label>Jam Mengajar</label>
-                        <input name="jam_mengajar" class="form-control" placeholder="Kode Mata Pelajaran" required>
+                        <input name="jam_mengajar" class="form-control" placeholder="Jam Mengajar" value="<?= $value['jam_mengajar']?>" required>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
