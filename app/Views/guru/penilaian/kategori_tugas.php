@@ -213,7 +213,6 @@
     $(document).ready(function() {
         $("#totalBobot").html('<?= $bobot ?>%');
         $("#txtBobot").attr("max", (100 - Number(<?= $bobot ?>)));
-        $("#txtBobot_Edit").attr("max", (100 - Number(<?= $bobot ?>)));
         $("#maxBobotInfo_Edit").html((100 - Number(<?= $bobot ?>)));
         $("#maxBobotInfo").html((100 - Number(<?= $bobot ?>)));
     });
