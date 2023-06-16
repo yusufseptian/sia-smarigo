@@ -211,7 +211,7 @@ class PenilaianAkademik extends BaseController
         } else {
             session()->setFlashdata('danger', 'Data gagal ditambahkan');
         }
-        return redirect()->to(base_url("penilaianakademik/kategori/$kat/$idMapel/$idKelas/$idSemester"));
+        return redirect()->to(base_url("PenilainAkademik/kategori/$kat/$idMapel/$idKelas/$idSemester"));
     }
 
     public function editKategori($idMapel, $idKelas, $idKategori)
@@ -260,7 +260,7 @@ class PenilaianAkademik extends BaseController
         } else {
             session()->setFlashdata('danger', 'Data gagal diedit');
         }
-        return redirect()->to(base_url("penilaianakademik/kategori/" . $dtKategori['kt_jenis'] . "/$idMapel/$idKelas/" . $dtKategori['kt_semester_id']));
+        return redirect()->to(base_url("PenilaianAkademik/kategori/" . $dtKategori['kt_jenis'] . "/$idMapel/$idKelas/" . $dtKategori['kt_semester_id']));
     }
 
     public function nilai($idMapel, $idKelas, $idKategori)
@@ -408,7 +408,7 @@ class PenilaianAkademik extends BaseController
         } else {
             session()->setFlashdata('danger', 'Seluruh data gagal dimasukan');
         }
-        return redirect()->to(base_url("penilaianakademik/nilai/$idMapel/$idKelas/$idKategori"));
+        return redirect()->to(base_url("PenilaianAkademik/nilai/$idMapel/$idKelas/$idKategori"));
     }
 
     public function editNilai($idMapel, $idKelas, $idKategori)
@@ -484,6 +484,6 @@ class PenilaianAkademik extends BaseController
         } else {
             session()->setFlashdata('danger', 'Seluruh data gagal diedit');
         }
-        return redirect()->to(base_url("penilaianakademik/nilai/$idMapel/$idKelas/$idKategori"));
+        return redirect()->to(base_url("PenilaianAkademik/nilai/$idMapel/$idKelas/$idKategori"));
     }
 }
