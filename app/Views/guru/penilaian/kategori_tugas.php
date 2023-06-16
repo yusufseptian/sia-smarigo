@@ -186,7 +186,7 @@
         $("#txtKKM_Edit").val(dtKategori[id]['kt_kkm']);
         $("#txtBobot_Edit").val(dtKategori[id]['kt_bobot']);
         $("#txtDeskripsi_Edit").html(dtKategori[id]['kt_deskripsi']);
-        $("#formEditKategori").attr('action', "<?= base_url("penilaianakademik/editKategori/$mapelID/$kelasID") ?>/" + id);
+        $("#formEditKategori").attr('action', "<?= base_url("PenilaianAkademik/editKategori/$mapelID/$kelasID") ?>/" + id);
         bobotEdit = Number(bobot);
     }
 
@@ -215,7 +215,7 @@
     });
 
     function changeSemester(semester) {
-        window.location.href = '<?= base_url("penilaianakademik/kategori/$keteranganKategori/$mapelID/$kelasID") ?>/' + semester;
+        window.location.href = '<?= base_url("PenilaianAkademik/kategori/$keteranganKategori/$mapelID/$kelasID") ?>/' + semester;
     }
 </script>
 <?= $this->endSection() ?>
