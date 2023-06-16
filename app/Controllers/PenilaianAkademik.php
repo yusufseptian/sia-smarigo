@@ -129,7 +129,7 @@ class PenilaianAkademik extends BaseController
             session()->setFlashdata('danger', 'Data kelas tidak ditemukan');
             return $this->redirectBack();
         }
-        $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->first();
+        $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->where('guru_id', session('log_auth')['akunID'])->first();
         if (empty($dtJadwal)) {
             session()->setFlashdata('danger', 'Data jadwal tidak ditemukan');
             return $this->redirectBack();
@@ -175,7 +175,7 @@ class PenilaianAkademik extends BaseController
             session()->setFlashdata('danger', 'Data semester tidak ditemukan');
             return $this->redirectBack();
         }
-        $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->first();
+        $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->where('guru_id', session('log_auth')['akunID'])->first();
         if (empty($dtJadwal)) {
             session()->setFlashdata('danger', 'Data jadwal tidak ditemukan');
             return $this->redirectBack();
@@ -222,7 +222,7 @@ class PenilaianAkademik extends BaseController
             session()->setFlashdata('danger', 'Data tahun ajaran belum ditentukan');
             return $this->redirectBack();
         }
-        $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->first();
+        $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->where('guru_id', session('log_auth')['akunID'])->first();
         if (empty($dtJadwal)) {
             session()->setFlashdata('danger', 'Data jadwal tidak ditemukan');
             return $this->redirectBack();
@@ -286,7 +286,7 @@ class PenilaianAkademik extends BaseController
             session()->setFlashdata('danger', 'Data kelas tidak ditemukan');
             return $this->redirectBack();
         }
-        $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->first();
+        $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->where('guru_id', session('log_auth')['akunID'])->first();
         if (empty($dtJadwal)) {
             session()->setFlashdata('danger', 'Data jadwal tidak ditemukan');
             return $this->redirectBack();
@@ -346,7 +346,7 @@ class PenilaianAkademik extends BaseController
             session()->setFlashdata('danger', 'Mohon aktifkan semester tahun ajaran sakarang terlebih dahulu');
             return $this->redirectBack();
         }
-        $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->first();
+        $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->where('guru_id', session('log_auth')['akunID'])->first();
         if (empty($dtJadwal)) {
             session()->setFlashdata('danger', 'Data jadwal tidak ditemukan');
             return $this->redirectBack();
@@ -424,7 +424,7 @@ class PenilaianAkademik extends BaseController
             session()->setFlashdata('danger', 'Mohon aktifkan semester tahun ajaran sakarang terlebih dahulu');
             return $this->redirectBack();
         }
-        $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->first();
+        $dtJadwal = $this->ModelJadwal->where('mapel_id', $idMapel)->where('kelas_id', $idKelas)->where('tahun_ajaran', $dtTA['id'])->where('guru_id', session('log_auth')['akunID'])->first();
         if (empty($dtJadwal)) {
             session()->setFlashdata('danger', 'Data jadwal tidak ditemukan');
             return $this->redirectBack();
