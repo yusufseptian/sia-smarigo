@@ -154,18 +154,26 @@ class HasilBelajar extends BaseController
                 return $this->redirectBack();
             }
         }
-        $dtSiswa = $this->ModelSiswa->find(session('log_auth')['akunID']);
+        if (session('log_auth')['role'] == "SISWA") {
+            $dtSiswa = $this->ModelSiswa->find(session('log_auth')['akunID']);
+        } elseif (session('log_auth')['role'] == "ORTU") {
+            $dtOrtu = $this->ModelOrtu->find(session('log_auth')['akunID']);
+            $dtSiswa = $this->ModelSiswa->where('nis', $dtOrtu['nis_siswa'])->first();
+            if (empty($dtSiswa)) {
+                session()->setFlashdata('danger', 'Data anak anda tidak ditemukan. Silahkan hubungi admin untuk memperbaiki data');
+                return $this->redirectBack();
+            }
+        }
         $dtMapel = $this->ModelJadwal->join('matapelajaran', 'id = mapel_id')
             ->join('kelas', 'kelas_id=id_kelas')
             ->where('mapel_id', $idMapel)
-            ->where('kelas_id', $dtSiswa['id_kelas'])
             ->where('tahun_ajaran', $idTahunAjaran);
         if (session('log_auth')['role'] == "GURU") {
             $dtMapel->where('kelas_id', session('idKelasForHasil'))
                 ->where('guru_id', session('log_auth')['akunID']);
             $dtMapel = $dtMapel->first();
         } elseif (session('log_auth')['role'] == "SISWA" || session('log_auth')['role'] == "ORTU") {
-            $dtMapel = $dtMapel->first();
+            $dtMapel = $dtMapel->where('kelas_id', $dtSiswa['id_kelas'])->first();
         } else {
             session()->setFlashdata('Anda tidak memiliki akses');
             return $this->redirectBack();
