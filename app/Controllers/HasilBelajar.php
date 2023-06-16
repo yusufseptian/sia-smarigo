@@ -192,6 +192,7 @@ class HasilBelajar extends BaseController
             if ($dtTA['id'] != $this->ModelTahunAjar->getTANow()['id']) {
                 $dtSiswa = $this->ModelNilaiAkademik->join('kategori_tugas', 'na_kategori_id=kt_id')
                     ->join('jadwal', 'kt_jadwal_id=jadwal_id')
+                    ->join('siswa', 'siswa.id=na_siswa_id')
                     ->where('jadwal_id', $dtMapel['jadwal_id'])
                     ->groupBy('na_siswa_id')->findAll();
             }
