@@ -27,7 +27,7 @@
                             <td><?= $value['nis'] ?></td>
                             <td><?= $value['nama'] ?></td>
                             <td align="center">
-                                <button class="btn btn-xs btn-flat btn-danger" data-toggle="modal" data-target="#deleteSiswa" onclick="deleteSiswa(<?= $value['nis'] ?>, '<?= $value['nama'] ?>')">
+                                <button class="btn btn-xs btn-flat btn-danger" data-toggle="modal" data-target="#deleteSiswa" onclick="deleteSiswa('<?= $value['nis'] ?>', '<?= $value['nama'] ?>')">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
