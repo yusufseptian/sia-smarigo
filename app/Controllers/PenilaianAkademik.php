@@ -211,7 +211,7 @@ class PenilaianAkademik extends BaseController
         } else {
             session()->setFlashdata('danger', 'Data gagal ditambahkan');
         }
-        return redirect()->to(base_url("PenilainAkademik/kategori/$kat/$idMapel/$idKelas/$idSemester"));
+        return redirect()->to(base_url("PenilaianAkademik/kategori/$kat/$idMapel/$idKelas/$idSemester"));
     }
 
     public function editKategori($idMapel, $idKelas, $idKategori)
