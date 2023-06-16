@@ -167,7 +167,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary" id="btnSave">Simpan</button>
                 </div>
             </div>
         </div>
@@ -197,12 +197,16 @@
             $("#maxBobotInfo_Edit").html('');
             $("#alertEdit").addClass('alert-danger');
             $("#alertEdit").removeClass('alert-info');
+            $("#btnSave").attr('disabled', '');
+            $("#btnSave").addClass('disabled');
         } else {
             $("#infoEdit").html('Bobot maksimal saat ini adalah');
             $("#maxBobotInfo_Edit").html(rest);
             $("#alertEdit").addClass('alert-info');
             $("#alertEdit").removeClass('alert-danger');
-            $("#txtBobot_Edit").attr('max', <?= $bobot ?>);
+            $("#btnSave").removeAttr('disabled');
+            $("#btnSave").removeClass('disabled');
+            // $("#txtBobot_Edit").attr('max', rest);
         }
     }
 
