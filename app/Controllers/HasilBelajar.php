@@ -43,7 +43,6 @@ class HasilBelajar extends BaseController
             $dtKelas = $this->ModelJadwal->select('kelas_id as idKelas, nama_kelas as namaKelas, tahun_ajaran as idTahunAjaran')
                 ->where('guru_id', session('log_auth')['akunID'])
                 ->join('kelas', 'kelas_id=id_kelas')
-                ->groupBy('kelas_id')
                 ->findAll();
         } elseif (session('log_auth')['role'] == "SISWA") {
             $dtTahun = $this->ModelNilaiAkademik->join('kategori_tugas', 'na_kategori_id=kt_id')
