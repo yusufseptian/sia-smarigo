@@ -33,7 +33,7 @@
                             <td><?= $value['nama_kelas'] ?></td>
                             <td><?= $value['hari'] ?></td>
                             <td><?= $value['jam_mengajar'] ?></td>
-                            <td><?= $value['th'] ?></td>
+                            <td><?= $value['tahun_ajaran'] ?></td>
                             <td>
                                 <button class="btn btn-xs btn-flat btn-warning" data-toggle="modal" data-target="#edit<?= $value['jadwal_id'] ?>">
                                     <i class="fas fa-pen"></i>
