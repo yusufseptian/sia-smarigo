@@ -145,7 +145,7 @@ class HasilBelajar extends BaseController
                 return $this->redirectBack();
             }
         }
-        $keterangan = strtolower($keterangan);
+        $keterangan = strtoupper($keterangan);
         if (is_null($keterangan)) {
             $keterangan = 'pengetahuan';
         } else {
