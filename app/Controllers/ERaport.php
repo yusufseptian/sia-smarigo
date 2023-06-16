@@ -112,7 +112,7 @@ class ERaport extends BaseController
                 session()->setFlashdata('danger', 'Data tidak valid!');
                 return $this->redirectBack();
             }
-            $dtSmt = $this->modelSemester->where('id_ta', $idTA);
+            $dtSmt = $this->modelSemester->where('id_ta', $idTA['id']);
             if ($semester == 1) {
                 $dtSmt->where('semester', 'ganjil');
             } elseif ($semester == 2) {
