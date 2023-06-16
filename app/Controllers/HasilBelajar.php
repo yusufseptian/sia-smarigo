@@ -48,7 +48,9 @@ class HasilBelajar extends BaseController
                     ->join('kelas', 'kelas_id=id_kelas')
                     ->groupBy('kelas_id')
                     ->findAll();
-                array_push($dtKelas, $tmp);
+                foreach ($tmp as $x) {
+                    array_push($dtKelas, $x);
+                }
             }
         } elseif (session('log_auth')['role'] == "SISWA") {
             $dtTahun = $this->ModelNilaiAkademik->join('kategori_tugas', 'na_kategori_id=kt_id')
