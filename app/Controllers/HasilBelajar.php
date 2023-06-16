@@ -40,10 +40,16 @@ class HasilBelajar extends BaseController
                 ->where('guru_id', session('log_auth')['akunID'])
                 ->groupBy('jadwal.tahun_ajaran')
                 ->findAll();
-            $dtKelas = $this->ModelJadwal->select('kelas_id as idKelas, nama_kelas as namaKelas, tahun_ajaran as idTahunAjaran')
-                ->where('guru_id', session('log_auth')['akunID'])
-                ->join('kelas', 'kelas_id=id_kelas')
-                ->findAll();
+            $dtKelas = [];
+            foreach ($dtTahun as $th) {
+                $tmp = $this->ModelJadwal->select('kelas_id as idKelas, nama_kelas as namaKelas, tahun_ajaran as idTahunAjaran')
+                    ->where('guru_id', session('log_auth')['akunID'])
+                    ->where('tahun_ajaran', $th['id'])
+                    ->join('kelas', 'kelas_id=id_kelas')
+                    ->groupBy('kelas_id')
+                    ->findAll();
+                array_push($dtKelas, $tmp);
+            }
         } elseif (session('log_auth')['role'] == "SISWA") {
             $dtTahun = $this->ModelNilaiAkademik->join('kategori_tugas', 'na_kategori_id=kt_id')
                 ->join('jadwal', 'kt_jadwal_id=jadwal_id')
