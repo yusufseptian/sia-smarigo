@@ -72,6 +72,7 @@ class PenilaianAkademik extends BaseController
         $dtJadwal = $this->ModelJadwal->join('kelas', 'kelas_id=id_kelas')
             ->where('mapel_id', $dtMapel['id'])
             ->where('tahun_ajaran', $dtTA['id'])
+            ->where('guru_id', session('log_auth')['akunID'])
             ->groupBy('kelas_id')->findAll();
         if (count($dtJadwal) == 0) {
             session()->setFlashdata('danger', 'Data kelas tidak ditemukan');
