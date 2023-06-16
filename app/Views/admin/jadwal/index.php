@@ -136,7 +136,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Mata Pelajaran</label>
-                        <select name="mapel_id" class="form-control">
+                        <select name="mapel_id" class="form-control" disabled>
                             <option value="">--Pilih Mata Pelajaran--</option>
                             <?php foreach ($dt_mapel as $mpl) : ?>
                                 <option value="<?= $mpl['id'] ?>" <?= $mpl['id'] == ($value['mapel_id']) ? 'selected' : '' ?>><?= $mpl['nama_matapelajaran'] ?></option>

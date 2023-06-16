@@ -86,8 +86,9 @@ class Jadwal extends BaseController
             return $this->redirectBack();
         }
         $data = [
-            'mapel_id' => $this->request->getPost('mapel_id'),
             'jam_mengajar' => $this->request->getPost('jam_mengajar'),
+            'guru_id' => $this->request->getPost('guru_id'),
+            'hari' => $this->request->getPost('hari'),
         ];
         if ($this->validate([
             'kelas_id' => 'required|is_natural_no_zero'
