@@ -19,7 +19,7 @@
                         <th>KELAS</th>
                         <th>HARI</th>
                         <th>JAM MENGAJAR</th>
-                        <th>TAHUN AARAN</th>
+                        <th>TAHUN AJARAN</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>
