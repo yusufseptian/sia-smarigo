@@ -88,8 +88,35 @@ class ERaport extends BaseController
             }
         }
         if (session('log_auth')['role'] == "SISWA" || session('log_auth')['role'] == "ORTU") {
-            $dtSiswa = $this->modelSiswa->where('nis', $nis)->first();
-            $dtKelas =  $this->modelKelas->join('guru', 'id_guru=wali_kelas_id')->where('id_kelas', $dtSiswa['id_kelas'])->first();
+            if (!is_numeric($idTA) || !is_numeric($semester)) {
+                session()->setFlashdata('danger', 'Data tidak valid!');
+                return $this->redirectBack();
+            }
+            $dtTA = $this->modelTahunAjar->find($idTA);
+            if (empty($dtTA)) {
+                session()->setFlashdata('danger', 'Data tidak valid!');
+                return $this->redirectBack();
+            }
+            $dtSmt = $this->modelSemester->where('id_ta', $idTA);
+            if ($semester == 1) {
+                $dtSmt->where('semester', 'ganjil');
+            } elseif ($semester == 2) {
+                $dtSmt->where('semester', 'genap');
+            } else {
+                session()->setFlashdata('danger', 'Data tidak valid!');
+                return $this->redirectBack();
+            }
+            $dtSmt = $dtSmt->first();
+        }
+        if (session('log_auth')['role'] == "SISWA" || session('log_auth')['role'] == "ORTU") {
+            $tmpdt = $this->modelSiswa->where('nis', $nis)->first();
+            $dtSiswa = $this->modelNilaiAkademikDetail->select('siswa.*, jadwal.kelas_id as id_kelas, jadwal_id')
+                ->join('kategori_tugas', 'na_kategori_id=kt_id')
+                ->join('jadwal', 'kt_jadwal_id=jadwal_id')
+                ->join('siswa', 'siswa.id=na_siswa_id')
+                ->where('jadwal.tahun_ajaran', $dtTA['id'])
+                ->where('na_siswa_id', $tmpdt['id'])->first();
+            $dtKelas =  $this->modelJadwal->join('guru', 'id_guru=wali_kelas_id')->join('kelas', 'kelas_id=id_kelas')->find($dtSiswa['jadwal_id']);
         } else {
             $dtSiswa = $this->modelSiswa->where('nis', $nis)->where('id_kelas', session('log_auth')['waliKelas']['id'])->first();
             $dtKelas = $this->modelKelas->join('guru', 'id_guru=wali_kelas_id')->where('id_kelas', $dtSiswa['id_kelas'])->where('wali_kelas_id', session('log_auth')['akunID'])->first();
@@ -101,27 +128,6 @@ class ERaport extends BaseController
         if (empty($dtKelas)) {
             session()->setFlashdata('danger', 'Anda tidak punya akses kesini');
             return $this->redirectBack();
-        }
-        if (session('log_auth')['role'] == "SISWA" || session('log_auth')['role'] == "ORTU") {
-            if (!is_numeric($idTA) || !is_numeric($semester)) {
-                session()->setFlashdata('danger', 'Data tidak valid!');
-                return $this->redirectBack();
-            }
-            $dtTA = $this->modelTahunAjar->find($idTA);
-            if (empty($dtTA)) {
-                session()->setFlashdata('danger', 'Data tidak valid!');
-                return $this->redirectBack();
-            }
-            $dtSmt = $this->modelSemester->where('id_ta', $idTA['id']);
-            if ($semester == 1) {
-                $dtSmt->where('semester', 'ganjil');
-            } elseif ($semester == 2) {
-                $dtSmt->where('semester', 'genap');
-            } else {
-                session()->setFlashdata('danger', 'Data tidak valid!');
-                return $this->redirectBack();
-            }
-            $dtSmt = $dtSmt->first();
         }
         if (session('log_auth')['role'] == "SISWA") {
             $tmpDataSiswa = $this->modelSiswa->find(session('log_auth')['akunID']);
