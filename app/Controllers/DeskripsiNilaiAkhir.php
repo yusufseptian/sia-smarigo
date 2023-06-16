@@ -56,7 +56,7 @@ class DeskripsiNilaiAkhir extends BaseController
             'sub_title' => 'Penilaian Akademik',
             'dtJadwal' => $dtJadwal
         ];
-        return view('guru/DeskripsiNilaiAkhir/index', $data);
+        return view('guru/deskripsinilaiakhir/index', $data);
     }
 
     public function kelas($idMapel)
@@ -94,7 +94,7 @@ class DeskripsiNilaiAkhir extends BaseController
             'mapelID' => $idMapel,
             'dtSemester' => $this->ModelSemester->getActiveSemester()
         ];
-        return view('guru/DeskripsiNilaiAkhir/pilih_kelas', $data);
+        return view('guru/deskripsinilaiakhir/pilih_kelas', $data);
     }
 
     public function nilai($kategori, $idMapel, $idKelas)
@@ -172,7 +172,7 @@ class DeskripsiNilaiAkhir extends BaseController
             'dtSemester' => $this->ModelSemester->getActiveSemester(),
             'isFinished' => $isFinished
         ];
-        return view('guru/DeskripsiNilaiAkhir/penilaian', $data);
+        return view('guru/deskripsinilaiakhir/penilaian', $data);
     }
 
     public function save($kategori, $idMapel, $idKelas)
