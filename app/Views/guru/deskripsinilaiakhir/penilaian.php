@@ -90,7 +90,7 @@
             $("#btnCancleEdit").removeClass('d-none');
             $("#btnEdit").remove();
             $("#containerBtnSave").removeClass('d-none');
-            $("#formDeskripsiNA").attr('action', '<?= base_url("deskripsinilaiakhir/edit/$kategori/$mapelID/$kelasID") ?>');
+            $("#formDeskripsiNA").attr('action', '<?= base_url("DeskripsiNilaiAkhir/edit/$kategori/$mapelID/$kelasID") ?>');
             listID.forEach(element => {
                 $("#" + element).removeAttr('disabled');
             });

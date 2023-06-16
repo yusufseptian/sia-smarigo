@@ -56,7 +56,7 @@ class DeskripsiNilaiAkhir extends BaseController
             'sub_title' => 'Penilaian Akademik',
             'dtJadwal' => $dtJadwal
         ];
-        return view('guru/deskripsinilaiakhir/index', $data);
+        return view('guru/DeskripsiNilaiAkhir/index', $data);
     }
 
     public function kelas($idMapel)
@@ -94,7 +94,7 @@ class DeskripsiNilaiAkhir extends BaseController
             'mapelID' => $idMapel,
             'dtSemester' => $this->ModelSemester->getActiveSemester()
         ];
-        return view('guru/deskripsinilaiakhir/pilih_kelas', $data);
+        return view('guru/DeskripsiNilaiAkhir/pilih_kelas', $data);
     }
 
     public function nilai($kategori, $idMapel, $idKelas)
@@ -172,7 +172,7 @@ class DeskripsiNilaiAkhir extends BaseController
             'dtSemester' => $this->ModelSemester->getActiveSemester(),
             'isFinished' => $isFinished
         ];
-        return view('guru/deskripsinilaiakhir/penilaian', $data);
+        return view('guru/DeskripsiNilaiAkhir/penilaian', $data);
     }
 
     public function save($kategori, $idMapel, $idKelas)
@@ -234,7 +234,7 @@ class DeskripsiNilaiAkhir extends BaseController
             ];
             $this->ModelDeskripsiNA->insert($data);
         }
-        return redirect()->to(base_url("deskripsinilaiakhir/nilai/$kategori/$idMapel/$idKelas"))->with('success', 'Deskripsi nilai akhir berhasil dimasukan');
+        return redirect()->to(base_url("DeskripsiNilaiAkhir/nilai/$kategori/$idMapel/$idKelas"))->with('success', 'Deskripsi nilai akhir berhasil dimasukan');
     }
 
     public function edit($kategori, $idMapel, $idKelas)
@@ -290,6 +290,6 @@ class DeskripsiNilaiAkhir extends BaseController
             ];
             $this->ModelDeskripsiNA->update($dt['dna_id'], $data);
         }
-        return redirect()->to(base_url("deskripsinilaiakhir/nilai/$kategori/$idMapel/$idKelas"))->with('success', 'Deskripsi nilai akhir berhasil dimasukan');
+        return redirect()->to(base_url("DeskripsiNilaiAkhir/nilai/$kategori/$idMapel/$idKelas"))->with('success', 'Deskripsi nilai akhir berhasil dimasukan');
     }
 }
