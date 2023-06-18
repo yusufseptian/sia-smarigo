@@ -251,13 +251,11 @@
 <?= $this->endSection() ?>
 <?= $this->section("bottomScript") ?>
 <script>
-    let btnPrint = $("<a class='btn btn-success ml-auto'></a>");
-    btnPrint.html("Cetak");
     <?php if (session('log_auth')['role'] == 'GURU') : ?>
+        let btnPrint = $("<a class='btn btn-success ml-auto'></a>");
+        btnPrint.html("Cetak");
         btnPrint.attr("href", "<?= base_url('ERaport/print/' . $dtSiswa['nis']) ?>");
-    <?php else : ?>
-        btnPrint.attr("href", "<?= base_url("ERaport/print/" . $dtSiswa['nis'] . "/$taID/$smtID") ?>");
+        $("#addInfo").append(btnPrint);
     <?php endif ?>
-    $("#addInfo").append(btnPrint);
 </script>
 <?= $this->endSection() ?>

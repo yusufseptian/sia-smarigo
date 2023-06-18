@@ -76,7 +76,7 @@ class Filters extends BaseConfig
             'before' => ['ortu_profil*']
         ],
         'guru' => [
-            'before' => ['penilaianakademik*', 'deskripsinilaiakhir*', 'guru_profil*', 'penilaiannonakademik*', 'eraport', 'eraport/', 'eraport/index']
+            'before' => ['penilaianakademik*', 'deskripsinilaiakhir*', 'guru_profil*', 'penilaiannonakademik*', 'eraport', 'eraport/', 'eraport/index', 'eraport/print/*']
         ],
         'siswa' => [
             'before' => ['siswa_profil*']

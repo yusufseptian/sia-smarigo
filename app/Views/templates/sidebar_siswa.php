@@ -32,7 +32,7 @@
                 <h6 class="collapse-header">Sub-Menu</h6>
                 <a class="collapse-item" href="<?= base_url('HasilBelajar') ?>">Rekap Nilai</a>
                 <a class="collapse-item" href="<?= base_url('siswa_profil') ?>">Profil</a>
-                <a class="collapse-item" href="<?= base_url('ERaport/tahun_ajaran') ?>">Cetak Transkrip</a>
+                <a class="collapse-item" href="<?= base_url('ERaport/tahun_ajaran') ?>">Lihat Transkrip</a>
             </div>
         </div>
     </li>
