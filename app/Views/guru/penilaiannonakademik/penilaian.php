@@ -248,7 +248,13 @@
                     </li>
                     <li>
                         <b>Catatan Dari Wali Kelas</b>
-                        <textarea name="txtCatatanWali" id="txtCatatanWali" class="form-control" rows="3" <?= ($isFinished) ? 'disabled' : '' ?> required><?= ($isFinished) ? $dtNond['nond_catatan_wali_kelas'] : '' ?></textarea>
+                        <div class="form-group d-flex">
+                            <textarea name="txtCatatanWali" id="txtCatatanWali" class="form-control" rows="3" <?= ($isFinished) ? 'disabled' : '' ?> onfocus="showHelp('#btnCatatanWaliHelp', this.id)" required><?= ($isFinished) ? $dtNond['nond_catatan_wali_kelas'] : '' ?></textarea>
+                            <div class="d-none flex-column btn-help-deskripsi" id="btnCatatanWaliHelp">
+                                <button class="btn btn-xs btn-primary" style="height: fit-content;" onclick="saveDeskripsi('#txtCatatanWali')"><i class="fas fa-save"></i></button>
+                                <button class="btn btn-xs btn-success" style="height: fit-content;" data-toggle="modal" data-target="#modalListDesk"><i class="fas fa-random"></i></button>
+                            </div>
+                        </div>
                     </li>
                 </ol>
                 <div class="mt-3">
