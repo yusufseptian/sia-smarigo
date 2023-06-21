@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Jun 2023 pada 15.36
+-- Waktu pembuatan: 21 Jun 2023 pada 20.11
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.12
 
@@ -165,9 +165,9 @@ INSERT INTO `deskripsi_nilai_akhir` (`dna_id`, `dna_jadwal_id`, `dna_siswa_id`, 
 (126, 26, 15, 'keterampilan', 'Bagaimanapun sulitnya hidup ini, akan selalu ada sesuatu yang dapat kamu lakukan dan berhasil', 14, '2023-06-17 03:42:12', 11, '2023-06-17 03:42:12', NULL),
 (127, 26, 16, 'keterampilan', 'Bagaimanapun sulitnya hidup ini, akan selalu ada sesuatu yang dapat kamu lakukan dan berhasil', 14, '2023-06-17 03:42:12', 11, '2023-06-17 03:42:12', NULL),
 (128, 26, 17, 'keterampilan', 'Bagaimanapun sulitnya hidup ini, akan selalu ada sesuatu yang dapat kamu lakukan dan berhasil', 14, '2023-06-17 03:42:12', 11, '2023-06-17 03:42:12', NULL),
-(129, 27, 15, 'pengetahuan', 'Sukses tidak akan datang kepadamu begitu saja. Kamu yang harus pergi menjemput dan mengambilnya', 15, '2023-06-17 04:01:05', 1, '2023-06-17 04:01:05', NULL),
-(130, 27, 16, 'pengetahuan', 'Sukses tidak akan datang kepadamu begitu saja. Kamu yang harus pergi menjemput dan mengambilnya', 15, '2023-06-17 04:01:05', 1, '2023-06-17 04:01:05', NULL),
-(131, 27, 17, 'pengetahuan', 'Sukses tidak akan datang kepadamu begitu saja. Kamu yang harus pergi menjemput dan mengambilnya', 15, '2023-06-17 04:01:05', 1, '2023-06-17 04:01:05', NULL),
+(129, 27, 15, 'pengetahuan', 'Sukses tidak akan datang kepadamu begitu saja. Kamu yang harus pergi menjemput dan mengambilnya', 15, '2023-06-17 04:01:05', 1, '2023-06-22 00:09:55', 1),
+(130, 27, 16, 'pengetahuan', 'Sukses tidak akan datang kepadamu begitu saja. Kamu yang harus pergi menjemput dan mengambilnya', 15, '2023-06-17 04:01:05', 1, '2023-06-22 00:09:55', 1),
+(131, 27, 17, 'pengetahuan', 'Sukses tidak akan datang kepadamu begitu saja. Kamu yang harus pergi menjemput dan mengambilnya', 15, '2023-06-17 04:01:05', 1, '2023-06-22 00:09:55', 1),
 (132, 27, 15, 'keterampilan', 'Sukses tidak akan datang kepadamu begitu saja. Kamu yang harus pergi menjemput dan mengambilnya', 15, '2023-06-17 04:01:14', 1, '2023-06-17 04:01:14', NULL),
 (133, 27, 16, 'keterampilan', 'Sukses tidak akan datang kepadamu begitu saja. Kamu yang harus pergi menjemput dan mengambilnya', 15, '2023-06-17 04:01:14', 1, '2023-06-17 04:01:14', NULL),
 (134, 27, 17, 'keterampilan', 'Sukses tidak akan datang kepadamu begitu saja. Kamu yang harus pergi menjemput dan mengambilnya', 15, '2023-06-17 04:01:14', 1, '2023-06-17 04:01:14', NULL),
@@ -504,8 +504,9 @@ CREATE TABLE `list_deskripsi` (
 --
 
 INSERT INTO `list_deskripsi` (`listdesk_id`, `listdesk_guru_id`, `listdesk_deskripsi`) VALUES
-(12, 1, 'berikhtiyar dalam setiap usaha dan berserah diri'),
-(13, 1, 'tanggung jawab; yaitu sikap dalam melaksanakan tugas dan kewajiban yang seharusnya dilaksanakan');
+(13, 1, 'tanggung jawab; yaitu sikap dalam melaksanakan tugas dan kewajiban yang seharusnya dilaksanakan'),
+(15, 1, 'berikhtiyar dalam setiap usaha dan berserah diri'),
+(16, 1, 'Tetap Semangat belajarnya');
 
 -- --------------------------------------------------------
 
@@ -1293,7 +1294,7 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT untuk tabel `list_deskripsi`
 --
 ALTER TABLE `list_deskripsi`
-  MODIFY `listdesk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `listdesk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `matapelajaran`
